@@ -1,8 +1,9 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { buildMetadata, getDictionary, hasLocale, localePath } from "@/lib/i18n";
+import { buildMetadata, getDictionary, getServicesLabel, hasLocale, localePath } from "@/lib/i18n";
 import { JsonLd } from "@/components/json-ld";
 import { getFaqJsonLd, getOrganizationJsonLd, getSeoContent, getWebsiteJsonLd } from "@/lib/seo";
+import { getSalesContent } from "@/lib/sales-content";
 
 export async function generateMetadata(props: PageProps<"/[locale]">) {
   const { locale } = await props.params;
@@ -20,6 +21,8 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
   if (!hasLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const seo = getSeoContent(locale);
+  const servicesLabel = getServicesLabel(locale);
+  const sales = getSalesContent(locale);
 
   return (
     <main>
@@ -92,7 +95,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
                     href={region.servicesHref}
                     className="inline-flex items-center justify-center border border-[color:rgba(0,9,36,0.12)] bg-[var(--surface-low)] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[var(--primary)] transition-colors hover:bg-white"
                   >
-                    {locale === "ru" ? "Услуги" : locale === "zh" ? "服务" : locale === "ka" ? "სერვისები" : locale === "ar" ? "الخدمات" : locale === "tr" ? "Hizmetler" : locale === "es" ? "Servicios" : locale === "fr" ? "Services" : locale === "it" ? "Servizi" : locale === "de" ? "Leistungen" : "Services"}
+                    {servicesLabel}
                   </a>
                 </div>
               </div>
@@ -122,6 +125,38 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
                 </h3>
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{section.body}</p>
               </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{sales.label}</p>
+            <h2 className="mt-4 font-display text-4xl leading-tight tracking-[-0.04em] text-[var(--primary)] md:text-5xl">
+              {sales.title}
+            </h2>
+            <p className="mt-4 text-base leading-8 text-[var(--muted)]">{sales.intro}</p>
+          </div>
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+            {sales.packages.map((item) => (
+              <article key={item.name} className="flex h-full flex-col border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-5 py-5">
+                <h3 className="font-display text-3xl leading-none text-[var(--primary)]">{item.name}</h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{item.body}</p>
+                <ul className="mt-5 flex-1 space-y-3 text-sm leading-7 text-[var(--ink)]">
+                  {item.points.map((point) => (
+                    <li key={point} className="flex gap-3">
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={localePath(locale, "contact")}
+                  className="mt-6 inline-flex items-center justify-center border border-[var(--primary)] bg-[var(--primary)] px-5 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-[var(--primary-soft)]"
+                >
+                  {sales.cta}
+                </Link>
+              </article>
             ))}
           </div>
         </section>

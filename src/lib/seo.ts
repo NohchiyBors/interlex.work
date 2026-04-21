@@ -30,31 +30,29 @@ const seoContent: Record<Locale, SeoContent> = {
         "cross-border legal advisory",
         "company registration Kazakhstan",
         "business setup Georgia",
-        "tax advisory Kazakhstan",
-        "FIZ Georgia",
-        "market entry Kazakhstan",
-        "international business structuring",
+        "market entry advisory",
+        "international structuring",
       ],
       searchLabel: "Search Intent",
       searchTitle: "Topics the hub should rank for before the mandate moves to a market site.",
       searchIntro:
-        "The global hub should capture intent around cross-border legal advisory, market entry, business structuring, and company setup before routing the client into the correct jurisdiction-specific site.",
+        "The global hub should capture demand around cross-border legal support, business structuring, market entry, and company setup before routing the client into the right jurisdiction.",
       searchCards: [
         {
           title: "Company registration in Kazakhstan",
-          body: "Support for market entry, legal setup, tax positioning, accounting coordination, and operating launch in Kazakhstan.",
+          body: "Support for legal setup, tax positioning, accounting coordination, and operational launch in Kazakhstan.",
         },
         {
           title: "Business setup in Georgia",
-          body: "Guidance on Georgia company formation, FIZ pathways, operating structures, tax models, and investor-friendly setup routes.",
+          body: "Guidance on company formation, FIZ routes, tax models, and investor-friendly operating structures in Georgia.",
         },
         {
           title: "Cross-border legal and tax advisory",
-          body: "Mandates that need jurisdiction comparison, holding logic, group structuring, and business continuity across multiple countries.",
+          body: "Mandates that require jurisdiction comparison, holding logic, group structuring, and continuity across multiple countries.",
         },
         {
           title: "International founders and investors",
-          body: "A first step for founders, holding companies, HNW clients, and investor teams comparing Kazakhstan and Georgia as entry points.",
+          body: "A first entry point for founders, family offices, holding companies, and investor teams comparing Kazakhstan and Georgia.",
         },
       ],
       faqLabel: "FAQ",
@@ -63,17 +61,17 @@ const seoContent: Record<Locale, SeoContent> = {
         {
           question: "What is interlex.work used for?",
           answer:
-            "interlex.work is the multilingual global hub of InterLex. It introduces the brand, explains cross-border positioning, and routes the mandate into the correct market-specific site.",
+            "interlex.work is the multilingual global hub of InterLex. It introduces the brand, explains the cross-border logic, and routes each mandate to the correct market-specific site.",
         },
         {
           question: "When should a client use interlex.kz?",
           answer:
-            "A client should use interlex.kz when the work belongs to Kazakhstan, especially for company registration, legal support, tax positioning, accounting, and local operational execution.",
+            "Use interlex.kz when the work belongs to Kazakhstan, especially for company registration, legal support, tax positioning, accounting, and local execution.",
         },
         {
           question: "When should a client use interlex.ge?",
           answer:
-            "A client should use interlex.ge when the work belongs to Georgia, especially for business setup, FIZ structures, tax planning, and English-first market guidance.",
+            "Use interlex.ge when the work belongs to Georgia, especially for company setup, FIZ structures, tax planning, and English-first market guidance.",
         },
       ],
     },
@@ -96,313 +94,574 @@ const seoContent: Record<Locale, SeoContent> = {
   ru: {
     home: {
       description:
-        "InterLex — глобальный хаб для cross-border legal advisory, регистрации компаний, налогового позиционирования, выхода на рынок и business setup в Казахстане и Грузии.",
-      keywords: ["InterLex", "регистрация компании Казахстан", "бизнес в Грузии", "cross-border legal advisory", "налоговое структурирование"],
-      searchLabel: "SEO темы",
-      searchTitle: "Темы, по которым хаб должен находиться до перехода на сайт конкретного рынка.",
+        "InterLex — международный хаб для регистрации компаний, выхода на рынок, структурирования бизнеса и юридического сопровождения проектов в Казахстане и Грузии.",
+      keywords: [
+        "InterLex",
+        "регистрация компании в Казахстане",
+        "открытие бизнеса в Грузии",
+        "международное юридическое сопровождение",
+        "налоговое структурирование",
+      ],
+      searchLabel: "Какие задачи мы решаем",
+      searchTitle: "С чем к нам приходят до выбора конкретной юрисдикции.",
       searchIntro:
-        "Глобальный хаб должен закрывать поисковый спрос вокруг cross-border legal advisory, выхода на рынок, структурирования бизнеса и регистрации компаний, а затем переводить клиента в нужную юрисдикцию.",
+        "InterLex подключается, когда нужно определить правильную юрисдикцию, структуру входа на рынок, модель владения и рабочий маршрут проекта. Мы сопровождаем задачи, связанные с регистрацией компаний, международным структурированием, налоговой логикой и запуском бизнеса в Казахстане и Грузии.",
       searchCards: [
-        { title: "Регистрация компании в Казахстане", body: "Выход на рынок, legal setup, налоги, бухгалтерия и запуск операционной работы в Казахстане." },
-        { title: "Business setup в Грузии", body: "Регистрация компании в Грузии, FIZ-маршруты, налоговые модели и investor-friendly setup." },
-        { title: "Cross-border legal и tax advisory", body: "Сравнение юрисдикций, холдинговая логика, групповое структурирование и устойчивость бизнеса в нескольких странах." },
-        { title: "Международные фаундеры и инвесторы", body: "Первая точка входа для фаундеров, инвесторов и холдингов, которые сравнивают Казахстан и Грузию." },
+        {
+          title: "Регистрация компании в Казахстане",
+          body: "Регистрация компании, локальные требования, налоги, бухгалтерия и подготовка к полноценному запуску в Казахстане.",
+        },
+        {
+          title: "Запуск бизнеса в Грузии",
+          body: "Регистрация компании в Грузии, маршруты FIZ, налоговые модели и понятная структура для международного бизнеса.",
+        },
+        {
+          title: "Международное юридическое и налоговое сопровождение",
+          body: "Сравнение юрисдикций, структура владения, налоговая логика и юридическая координация бизнеса в нескольких странах.",
+        },
+        {
+          title: "Фаундеры, инвесторы и международные группы",
+          body: "Подходящий формат для предпринимателей, инвесторов и команд, которым нужно выбрать рынок, структуру и следующий шаг без лишних переходов.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "Вопросы с высоким поисковым намерением, на которые хаб должен отвечать прямо.",
+      faqTitle: "Коротко о том, как работает хаб.",
       faqItems: [
-        { question: "Для чего нужен interlex.work?", answer: "interlex.work — это мультиязычный глобальный хаб InterLex. Он представляет бренд, объясняет cross-border логику и переводит запрос в нужный рынок." },
-        { question: "Когда использовать interlex.kz?", answer: "interlex.kz нужен, когда задача относится к Казахстану: регистрация компании, юридическое сопровождение, налоги, бухгалтерия и локальная операционная работа." },
-        { question: "Когда использовать interlex.ge?", answer: "interlex.ge нужен, когда задача относится к Грузии: business setup, FIZ-структуры, налоговое планирование и англоязычная рыночная ориентация." },
+        {
+          question: "Для чего нужен interlex.work?",
+          answer:
+            "interlex.work — это международный хаб InterLex. Здесь клиент может описать задачу, понять подходящий рынок и перейти в правильное направление работы.",
+        },
+        {
+          question: "Когда использовать interlex.kz?",
+          answer:
+            "interlex.kz нужен, когда задача относится к Казахстану: регистрация компании, локальное юридическое сопровождение, налоги, бухгалтерия и операционная реализация.",
+        },
+        {
+          question: "Когда использовать interlex.ge?",
+          answer:
+            "interlex.ge нужен, когда задача относится к Грузии: запуск бизнеса, структуры FIZ, налоговое планирование и сопровождение по грузинской юрисдикции.",
+        },
       ],
     },
     about: {
       description:
-        "О InterLex: глобальный бренд-хаб для cross-border legal advisory, стратегии выхода на рынок, структурирования бизнеса и маршрутизации в Казахстан и Грузию.",
-      keywords: ["о InterLex", "международный юридический консалтинг", "выход на рынок", "Казахстан", "Грузия"],
+        "О InterLex: международный хаб для регистрации компаний, структурирования бизнеса, выхода на рынок и сопровождения проектов в Казахстане и Грузии.",
+      keywords: ["о InterLex", "международное юридическое сопровождение", "выход на рынок", "Казахстан", "Грузия"],
     },
     crossBorder: {
       description:
-        "Сравнение Казахстана и Грузии для регистрации компаний, налогового позиционирования, структурирования бизнеса, investor entry и cross-border legal advisory.",
-      keywords: ["Казахстан или Грузия", "сравнение юрисдикций", "структурирование бизнеса", "налоги", "вход инвестора"],
+        "Сравните Казахстан и Грузию для регистрации компании, выхода на рынок, налоговой логики и выбора правильной структуры проекта.",
+      keywords: ["Казахстан или Грузия", "сравнение юрисдикций", "структурирование бизнеса", "налоги", "регистрация компании"],
     },
     contact: {
       description:
-        "Свяжитесь с InterLex по вопросам cross-border legal advisory, выхода на рынок Казахстана, business setup в Грузии и мультиязычной маршрутизации запроса.",
-      keywords: ["контакты InterLex", "юридический консалтинг", "Казахстан", "Грузия", "cross-border"],
+        "Свяжитесь с InterLex по вопросам регистрации компании, выхода на рынок, международного структурирования и юридического сопровождения в Казахстане и Грузии.",
+      keywords: ["контакты InterLex", "юридическое сопровождение", "Казахстан", "Грузия", "международный бизнес"],
     },
   },
   zh: {
     home: {
       description:
-        "InterLex е…ЁзђѓжћўзєЅпјЊи¦†з›–и·Ёеўѓжі•еѕ‹йЎѕй—®гЂЃе…¬еЏёжіЁе†ЊгЂЃзЁЋеЉЎе®љдЅЌгЂЃеё‚ењєиї›е…Ґд»ҐеЏЉе“€иђЁе…‹ж–Їеќ¦е’Њж јйІЃеђ‰дєљзљ„ business setupгЂ‚",
-      keywords: ["InterLex", "е“€иђЁе…‹ж–Їеќ¦е…¬еЏёжіЁе†Њ", "ж јйІЃеђ‰дєљи®ѕз«‹е…¬еЏё", "и·Ёеўѓжі•еѕ‹йЎѕй—®", "зЁЋеЉЎз»“жћ„"],
-      searchLabel: "жђњзґўдё»йў",
-      searchTitle: "ењЁз”Ёж€·иї›е…Ґеё‚ењєз«™з‚№д№‹е‰ЌпјЊжћўзєЅеє”и¦†з›–зљ„жђњзґўж„Џе›ѕгЂ‚",
-      searchIntro: "е…ЁзђѓжћўзєЅеє”е…€и¦†з›–и·Ёеўѓжі•еѕ‹гЂЃеё‚ењєиї›е…ҐгЂЃе…¬еЏёз»“жћ„дёЋи®ѕз«‹з­‰жђњзґўйњЂж±‚пјЊе†ЌжЉЉе®ўж€·еЇјеђ‘ж­ЈзЎ®еЏёжі•иѕ–еЊєгЂ‚",
+        "InterLex 是一个全球品牌入口，用于跨境法律咨询、公司注册、税务定位、市场进入以及在哈萨克斯坦和格鲁吉亚开展业务。",
+      keywords: ["InterLex", "哈萨克斯坦公司注册", "格鲁吉亚设立公司", "跨境法律咨询", "税务架构"],
+      searchLabel: "SEO 主题",
+      searchTitle: "在客户进入具体市场站点之前，全球入口应先覆盖这些搜索意图。",
+      searchIntro:
+        "这个全球入口应先承接与跨境法律支持、市场进入、商业架构和公司设立相关的搜索需求，然后将客户导向合适的司法辖区。",
       searchCards: [
-        { title: "е“€иђЁе…‹ж–Їеќ¦е…¬еЏёжіЁе†Њ", body: "и¦†з›–её‚ењєиї›е…ҐгЂЃжі•еѕ‹и®ѕз«‹гЂЃзЁЋеЉЎе®љдЅЌгЂЃдјљи®ЎеЌЏеђЊдёЋиїђиђҐеђЇеЉЁгЂ‚" },
-        { title: "ж јйІЃеђ‰дєљ business setup", body: "и¦†з›–е…¬еЏёи®ѕз«‹гЂЃFIZ и·Їеѕ„гЂЃзЁЋеЉЎжЁЎећ‹дёЋйќўеђ‘жЉ•иµ„иЂ…зљ„жћ¶жћ„гЂ‚" },
-        { title: "и·Ёеўѓжі•еѕ‹дёЋзЁЋеЉЎйЎѕй—®", body: "йЂ‚з”ЁдєЋйњЂи¦ЃжЇ”иѕѓеЏёжі•иѕ–еЊєгЂЃжЋ§и‚ЎйЂ»иѕ‘е’Њи·Ёе›ЅдёљеЉЎз»“жћ„зљ„йЎ№з›®гЂ‚" },
-        { title: "е›Ѕй™…е€›е§‹дєєдёЋжЉ•иµ„иЂ…", body: "дёєжЇ”иѕѓе“€иђЁе…‹ж–Їеќ¦дёЋж јйІЃеђ‰дєљзљ„е€›е§‹дєєгЂЃе®¶ж—ЏеЉће…¬е®¤е’ЊжЉ•иµ„е›ўйџжЏђдѕ›е…ҐеЏЈгЂ‚" },
+        {
+          title: "哈萨克斯坦公司注册",
+          body: "涵盖市场进入、法律架构、税务定位、会计协调和在哈萨克斯坦的落地启动。",
+        },
+        {
+          title: "格鲁吉亚业务设立",
+          body: "涵盖格鲁吉亚公司设立、FIZ 路径、税务模式以及对投资者友好的运营结构。",
+        },
+        {
+          title: "跨境法律与税务咨询",
+          body: "适用于需要比较司法辖区、设计控股逻辑、集团架构和多国持续运营方案的项目。",
+        },
+        {
+          title: "国际创始人与投资者",
+          body: "为比较哈萨克斯坦和格鲁吉亚的创始人、控股公司、家族办公室和投资团队提供第一入口。",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "жћўзєЅеє”з›ґжЋҐе›ћз­”зљ„й«ж„Џе›ѕй—®йўгЂ‚",
+      faqTitle: "这个入口站点应清晰回答的高意图问题。",
       faqItems: [
-        { question: "interlex.work зљ„дЅњз”ЁжЇд»Ђд№€пјџ", answer: "interlex.work жЇ InterLex зљ„е¤љиЇ­иЁЂе…ЁзђѓжћўзєЅпјЊз”ЁдєЋд»‹з»Ќе“Ѓз‰ЊгЂЃи§Јй‡Љи·Ёеўѓе®љдЅЌпјЊе№¶жЉЉйЎ№з›®еЇјеђ‘ж­ЈзЎ®её‚ењєз«™з‚№гЂ‚" },
-        { question: "д»Ђд№€ж—¶еЂ™еє”иЇҐдЅїз”Ё interlex.kzпјџ", answer: "еЅ“йЎ№з›®жЋзЎ®е±ћдєЋе“€иђЁе…‹ж–Їеќ¦пјЊдѕ‹е¦‚е…¬еЏёжіЁе†ЊгЂЃжі•еѕ‹ж”ЇжЊЃгЂЃзЁЋеЉЎе®љдЅЌгЂЃдјљи®ЎдёЋжњ¬ењ°ж‰§иЎЊж—¶пјЊеє”дЅїз”Ё interlex.kzгЂ‚" },
-        { question: "д»Ђд№€ж—¶еЂ™еє”иЇҐдЅїз”Ё interlex.geпјџ", answer: "еЅ“йЎ№з›®жЋзЎ®е±ћдєЋж јйІЃеђ‰дєљпјЊдѕ‹е¦‚ business setupгЂЃFIZ з»“жћ„гЂЃзЁЋеЉЎи§„е€’дёЋи‹±иЇ­дје…€её‚ењєжЊ‡еЇјж—¶пјЊеє”дЅїз”Ё interlex.geгЂ‚" },
+        {
+          question: "interlex.work 的用途是什么？",
+          answer:
+            "interlex.work 是 InterLex 的多语言全球入口。它介绍品牌、说明跨境业务逻辑，并将每个需求导向正确的市场站点。",
+        },
+        {
+          question: "什么时候应该使用 interlex.kz？",
+          answer:
+            "当项目属于哈萨克斯坦时，应使用 interlex.kz，尤其是公司注册、法律支持、税务定位、会计和本地执行类需求。",
+        },
+        {
+          question: "什么时候应该使用 interlex.ge？",
+          answer:
+            "当项目属于格鲁吉亚时，应使用 interlex.ge，尤其是业务设立、FIZ 结构、税务规划和英文优先的市场导航。",
+        },
       ],
     },
     about: {
-      description: "е…ідєЋ InterLexпјљйќўеђ‘и·Ёеўѓжі•еѕ‹йЎѕй—®гЂЃеё‚ењєиї›е…ҐгЂЃе•†дёљз»“жћ„и®ѕи®Ўд»ҐеЏЉе“€иђЁе…‹ж–Їеќ¦е’Њж јйІЃеђ‰дєљи·Їз”±зљ„е…Ёзђѓе“Ѓз‰ЊжћўзєЅгЂ‚",
-      keywords: ["е…ідєЋ InterLex", "е…Ёзђѓжі•еѕ‹йЎѕй—®", "её‚ењєиї›е…Ґ", "е“€иђЁе…‹ж–Їеќ¦", "ж јйІЃеђ‰дєљ"],
+      description:
+        "关于 InterLex：一个面向跨境法律咨询、市场进入策略、商业架构设计以及通往哈萨克斯坦和格鲁吉亚业务入口的全球品牌枢纽。",
+      keywords: ["关于 InterLex", "全球法律咨询", "市场进入策略", "哈萨克斯坦", "格鲁吉亚"],
     },
     crossBorder: {
-      description: "жЇ”иѕѓе“€иђЁе…‹ж–Їеќ¦дёЋж јйІЃеђ‰дєљењЁе…¬еЏёжіЁе†ЊгЂЃзЁЋеЉЎе®љдЅЌгЂЃдёљеЉЎз»“жћ„и®ѕи®ЎгЂЃжЉ•иµ„иЂ…иї›е…Ґе’Њи·Ёеўѓжі•еѕ‹йЎѕй—®ж–№йќўзљ„е·®еј‚гЂ‚",
-      keywords: ["е“€иђЁе…‹ж–Їеќ¦иїжЇж јйІЃеђ‰дєљ", "е…¬еЏёи®ѕз«‹жЇ”иѕѓ", "зЁЋеЉЎе®љдЅЌ", "жЉ•иµ„иЂ…иї›е…Ґ", "и·Ёеўѓз»“жћ„"],
+      description:
+        "比较哈萨克斯坦与格鲁吉亚在公司注册、税务定位、商业架构、投资者进入和跨境法律咨询方面的差异。",
+      keywords: ["哈萨克斯坦还是格鲁吉亚", "司法辖区比较", "公司设立", "税务规划", "投资者进入"],
     },
     contact: {
-      description: "иЃ”зі» InterLexпјЊи®Ёи®єи·Ёеўѓжі•еѕ‹йЎѕй—®гЂЃе“€иђЁе…‹ж–Їеќ¦её‚ењєиї›е…ҐгЂЃж јйІЃеђ‰дєљ business setup дёЋе¤љиЇ­иЁЂйЎ№з›®и·Їз”±гЂ‚",
-      keywords: ["иЃ”зі» InterLex", "и·Ёеўѓжі•еѕ‹йЎѕй—®", "е“€иђЁе…‹ж–Їеќ¦её‚ењєиї›е…Ґ", "ж јйІЃеђ‰дєљ business setup"],
+      description:
+        "联系 InterLex，咨询跨境法律事务、哈萨克斯坦市场进入、格鲁吉亚业务设立以及多语言需求分流。",
+      keywords: ["联系 InterLex", "跨境法律咨询", "哈萨克斯坦", "格鲁吉亚", "国际业务"],
     },
   },
   it: {
     home: {
-      description: "InterLex global hub per consulenza legale cross-border, registrazione societГ , posizionamento fiscale, market entry e business setup in Kazakistan e Georgia.",
-      keywords: ["InterLex", "registrazione societГ  Kazakistan", "business setup Georgia", "consulenza legale cross-border", "strutturazione fiscale"],
+      description:
+        "InterLex è l'hub globale per advisory legale cross-border, costituzione di società, posizionamento fiscale, market entry e business setup in Kazakistan e Georgia.",
+      keywords: ["InterLex", "costituzione società Kazakistan", "business setup Georgia", "consulenza legale cross-border", "strutturazione fiscale"],
       searchLabel: "Temi SEO",
-      searchTitle: "Argomenti per cui lвЂ™hub dovrebbe posizionarsi prima del passaggio al market site.",
-      searchIntro: "Il global hub dovrebbe intercettare intenti legati a consulenza cross-border, ingresso nei mercati, strutturazione e setup societario.",
+      searchTitle: "Temi per cui l'hub deve posizionarsi prima che il mandato passi al market site.",
+      searchIntro:
+        "L'hub globale deve intercettare la domanda su consulenza legale cross-border, ingresso nel mercato, strutturazione del business e costituzione societaria prima di indirizzare il cliente verso la giurisdizione corretta.",
       searchCards: [
-        { title: "Registrazione societГ  in Kazakistan", body: "Ingresso nel mercato, legal setup, tax positioning, accounting e avvio operativo in Kazakistan." },
-        { title: "Business setup in Georgia", body: "Formazione societaria in Georgia, percorsi FIZ, modelli fiscali e setup investor-friendly." },
-        { title: "Consulenza legale e fiscale cross-border", body: "Confronto tra giurisdizioni, holding logic, group structuring e continuitГ  operativa tra piГ№ paesi." },
-        { title: "Founder e investitori internazionali", body: "Primo ingresso per founder, holding, family office e team che confrontano Kazakistan e Georgia." },
+        {
+          title: "Costituzione di società in Kazakistan",
+          body: "Supporto per market entry, assetto legale, posizionamento fiscale, coordinamento contabile e avvio operativo in Kazakistan.",
+        },
+        {
+          title: "Business setup in Georgia",
+          body: "Guida su costituzione societaria, percorsi FIZ, modelli fiscali e strutture operative favorevoli agli investitori in Georgia.",
+        },
+        {
+          title: "Advisory legale e fiscale cross-border",
+          body: "Mandati che richiedono confronto tra giurisdizioni, logica holding, strutturazione di gruppo e continuità operativa in più Paesi.",
+        },
+        {
+          title: "Founder e investitori internazionali",
+          body: "Primo punto di ingresso per founder, family office, holding e team di investimento che confrontano Kazakistan e Georgia.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "Domande ad alta intenzione che lвЂ™hub dovrebbe chiarire subito.",
+      faqTitle: "Domande ad alta intenzione a cui l'hub deve rispondere con chiarezza.",
       faqItems: [
-        { question: "A cosa serve interlex.work?", answer: "interlex.work ГЁ il global hub multilingue di InterLex. Presenta il brand, spiega il posizionamento cross-border e instrada il mandato verso il market site corretto." },
-        { question: "Quando usare interlex.kz?", answer: "Quando il lavoro appartiene al Kazakistan, in particolare per registrazione societГ , supporto legale, tax positioning, accounting ed esecuzione locale." },
-        { question: "Quando usare interlex.ge?", answer: "Quando il lavoro appartiene alla Georgia, in particolare per business setup, strutture FIZ, pianificazione fiscale e guida di mercato in inglese." },
+        {
+          question: "A cosa serve interlex.work?",
+          answer:
+            "interlex.work è l'hub globale multilingue di InterLex. Presenta il brand, spiega la logica cross-border e instrada ogni mandato verso il market site corretto.",
+        },
+        {
+          question: "Quando usare interlex.kz?",
+          answer:
+            "Usa interlex.kz quando il lavoro riguarda il Kazakistan, soprattutto per costituzione societaria, supporto legale, posizionamento fiscale, contabilità ed execution locale.",
+        },
+        {
+          question: "Quando usare interlex.ge?",
+          answer:
+            "Usa interlex.ge quando il lavoro riguarda la Georgia, soprattutto per business setup, strutture FIZ, pianificazione fiscale e market guidance in inglese.",
+        },
       ],
     },
     about: {
-      description: "Su InterLex: hub globale del brand per consulenza legale cross-border, strategie di market entry, business structuring e routing verso Kazakistan e Georgia.",
-      keywords: ["InterLex", "consulenza legale globale", "market entry", "Kazakistan", "Georgia"],
+      description:
+        "InterLex: hub globale del brand per advisory legale cross-border, strategia di ingresso nel mercato, strutturazione del business e instradamento verso Kazakistan e Georgia.",
+      keywords: ["InterLex", "consulenza legale globale", "ingresso nel mercato", "Kazakistan", "Georgia"],
     },
     crossBorder: {
-      description: "Confronta Kazakistan e Georgia per registrazione societГ , posizionamento fiscale, business structuring, investor entry e consulenza legale cross-border.",
-      keywords: ["Kazakistan o Georgia", "confronto giurisdizioni", "registrazione societГ ", "fiscale", "investor entry"],
+      description:
+        "Confronta Kazakistan e Georgia per costituzione societaria, posizionamento fiscale, business structuring, investor entry e advisory legale cross-border.",
+      keywords: ["Kazakistan o Georgia", "confronto tra giurisdizioni", "costituzione società", "fiscalità", "ingresso investitore"],
     },
     contact: {
-      description: "Contatta InterLex per consulenza legale cross-border, ingresso nel mercato kazako, business setup in Georgia e routing multilingue del mandato.",
+      description:
+        "Contatta InterLex per advisory legale cross-border, ingresso nel mercato kazako, business setup in Georgia e routing multilingue del mandato.",
       keywords: ["contatto InterLex", "consulenza legale", "Kazakistan", "Georgia", "cross-border"],
     },
   },
   fr: {
     home: {
-      description: "Hub mondial InterLex pour le conseil juridique cross-border, lвЂ™immatriculation de sociГ©tГ©s, le positionnement fiscal, lвЂ™entrГ©e sur le marchГ© et le business setup au Kazakhstan et en GГ©orgie.",
-      keywords: ["InterLex", "crГ©ation sociГ©tГ© Kazakhstan", "business setup GГ©orgie", "conseil juridique cross-border", "structuration fiscale"],
-      searchLabel: "ThГЁmes SEO",
-      searchTitle: "Les sujets sur lesquels le hub doit se positionner avant le transfert vers un market site.",
-      searchIntro: "Le hub global doit capter les recherches liГ©es au conseil cross-border, Г  lвЂ™entrГ©e sur le marchГ©, Г  la structuration et au setup dвЂ™entreprise.",
+      description:
+        "InterLex est le hub global pour le conseil juridique cross-border, l'immatriculation d'entreprises, le positionnement fiscal, l'entrée sur le marché et le business setup au Kazakhstan et en Géorgie.",
+      keywords: ["InterLex", "création de société Kazakhstan", "business setup Géorgie", "conseil juridique cross-border", "structuration fiscale"],
+      searchLabel: "Thèmes SEO",
+      searchTitle: "Les sujets sur lesquels le hub doit se positionner avant que le mandat passe vers un site marché.",
+      searchIntro:
+        "Le hub global doit capter la demande autour du conseil juridique cross-border, de l'entrée sur le marché, de la structuration d'entreprise et de la création de société avant d'orienter le client vers la bonne juridiction.",
       searchCards: [
-        { title: "CrГ©ation de sociГ©tГ© au Kazakhstan", body: "EntrГ©e sur le marchГ©, legal setup, tax positioning, accounting et lancement opГ©rationnel au Kazakhstan." },
-        { title: "Business setup en GГ©orgie", body: "CrГ©ation de sociГ©tГ© en GГ©orgie, parcours FIZ, modГЁles fiscaux et setup orientГ© investisseurs." },
-        { title: "Conseil juridique et fiscal cross-border", body: "Comparaison de juridictions, logique de holding, structuration de groupe et continuitГ© opГ©rationnelle multi-pays." },
-        { title: "Fondateurs et investisseurs internationaux", body: "Point dвЂ™entrГ©e pour fondateurs, holdings, family offices et Г©quipes qui comparent Kazakhstan et GГ©orgie." },
+        {
+          title: "Création de société au Kazakhstan",
+          body: "Accompagnement pour l'entrée sur le marché, la structuration juridique, le positionnement fiscal, la coordination comptable et le lancement opérationnel au Kazakhstan.",
+        },
+        {
+          title: "Business setup en Géorgie",
+          body: "Conseil sur la création d'entreprise, les routes FIZ, les modèles fiscaux et les structures opérationnelles favorables aux investisseurs en Géorgie.",
+        },
+        {
+          title: "Conseil juridique et fiscal cross-border",
+          body: "Mandats nécessitant une comparaison de juridictions, une logique holding, une structuration de groupe et une continuité d'activité sur plusieurs pays.",
+        },
+        {
+          title: "Fondateurs et investisseurs internationaux",
+          body: "Point d'entrée pour les fondateurs, family offices, holdings et équipes d'investissement comparant le Kazakhstan et la Géorgie.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "Questions Г  forte intention auxquelles le hub doit rГ©pondre clairement.",
+      faqTitle: "Questions à forte intention auxquelles le hub doit répondre clairement.",
       faqItems: [
-        { question: "ГЂ quoi sert interlex.work ?", answer: "interlex.work est le hub mondial multilingue dвЂ™InterLex. Il prГ©sente la marque, explique le positionnement cross-border et route le mandat vers le bon market site." },
-        { question: "Quand utiliser interlex.kz ?", answer: "LorsquвЂ™un mandat relГЁve du Kazakhstan, notamment pour crГ©ation de sociГ©tГ©, support juridique, positionnement fiscal, comptabilitГ© et exГ©cution locale." },
-        { question: "Quand utiliser interlex.ge ?", answer: "LorsquвЂ™un mandat relГЁve de la GГ©orgie, notamment pour business setup, structures FIZ, planification fiscale et guidance de marchГ© en anglais." },
+        {
+          question: "À quoi sert interlex.work ?",
+          answer:
+            "interlex.work est le hub global multilingue d'InterLex. Il présente la marque, explique la logique cross-border et oriente chaque mandat vers le site marché approprié.",
+        },
+        {
+          question: "Quand utiliser interlex.kz ?",
+          answer:
+            "Utilisez interlex.kz lorsque le travail concerne le Kazakhstan, notamment pour la création de société, le support juridique, le positionnement fiscal, la comptabilité et l'exécution locale.",
+        },
+        {
+          question: "Quand utiliser interlex.ge ?",
+          answer:
+            "Utilisez interlex.ge lorsque le travail concerne la Géorgie, notamment pour le business setup, les structures FIZ, la planification fiscale et la guidance marché en anglais.",
+        },
       ],
     },
     about: {
-      description: "ГЂ propos dвЂ™InterLex : hub global de marque pour le conseil juridique cross-border, la stratГ©gie dвЂ™entrГ©e sur le marchГ©, la structuration business et le routing vers le Kazakhstan et la GГ©orgie.",
-      keywords: ["InterLex", "conseil juridique global", "entrГ©e sur le marchГ©", "Kazakhstan", "GГ©orgie"],
+      description:
+        "À propos d'InterLex : hub global de marque pour le conseil juridique cross-border, la stratégie d'entrée sur le marché, la structuration d'entreprise et l'orientation vers le Kazakhstan et la Géorgie.",
+      keywords: ["InterLex", "conseil juridique international", "entrée sur le marché", "Kazakhstan", "Géorgie"],
     },
     crossBorder: {
-      description: "Comparez le Kazakhstan et la GГ©orgie pour crГ©ation de sociГ©tГ©, positionnement fiscal, business structuring, investor entry et conseil juridique cross-border.",
-      keywords: ["Kazakhstan ou GГ©orgie", "comparaison juridictions", "crГ©ation sociГ©tГ©", "fiscalitГ©", "investisseur"],
+      description:
+        "Comparez le Kazakhstan et la Géorgie pour la création de société, le positionnement fiscal, la structuration d'entreprise, l'entrée d'investisseur et le conseil juridique cross-border.",
+      keywords: ["Kazakhstan ou Géorgie", "comparaison de juridictions", "création de société", "fiscalité", "entrée investisseur"],
     },
     contact: {
-      description: "Contactez InterLex pour du conseil juridique cross-border, lвЂ™entrГ©e sur le marchГ© kazakh, le business setup en GГ©orgie et le routing multilingue du mandat.",
-      keywords: ["contact InterLex", "conseil juridique", "Kazakhstan", "GГ©orgie", "cross-border"],
+      description:
+        "Contactez InterLex pour le conseil juridique cross-border, l'entrée sur le marché kazakh, le business setup en Géorgie et le routage multilingue des mandats.",
+      keywords: ["contact InterLex", "conseil juridique", "Kazakhstan", "Géorgie", "cross-border"],
     },
   },
   ka: {
     home: {
-      description: "InterLex-бѓбѓЎ бѓ’бѓљбѓќбѓ‘бѓђбѓљбѓЈбѓ бѓ бѓ°бѓђбѓ‘бѓ cross-border legal advisory-бѓЎбѓ—бѓ•бѓбѓЎ, бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓ бѓ”бѓ’бѓбѓЎбѓўбѓ бѓђбѓЄбѓбѓбѓЎбѓ—бѓ•бѓбѓЎ, бѓЎбѓђбѓ’бѓђбѓ“бѓђбѓЎбѓђбѓ®бѓђбѓ“бѓќ бѓћбѓќбѓ–бѓбѓЄбѓбѓќбѓњбѓбѓ бѓ”бѓ‘бѓбѓЎбѓ—бѓ•бѓбѓЎ, market entry-бѓЎбѓђ бѓ“бѓђ business setup-бѓбѓЎбѓ—бѓ•бѓбѓЎ бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЎбѓђ бѓ“бѓђ бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЁбѓ.",
-      keywords: ["InterLex", "бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓ бѓ”бѓ’бѓбѓЎбѓўбѓ бѓђбѓЄбѓбѓђ бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЁбѓ", "business setup бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЁбѓ", "cross-border legal advisory", "tax structuring"],
-      searchLabel: "SEO бѓ—бѓ”бѓ›бѓ”бѓ‘бѓ",
-      searchTitle: "бѓ—бѓ”бѓ›бѓ”бѓ‘бѓ, бѓ бѓќбѓ›бѓљбѓ”бѓ‘бѓ–бѓ”бѓЄ бѓ°бѓђбѓ‘бѓ бѓЈбѓњбѓ“бѓђ бѓ©бѓђбѓњбѓ“бѓ”бѓЎ бѓ«бѓбѓ”бѓ‘бѓђбѓЁбѓ market site-бѓ–бѓ” бѓ’бѓђбѓ“бѓђбѓ§бѓ•бѓђбѓњбѓђбѓ›бѓ“бѓ”.",
-      searchIntro: "бѓ’бѓљбѓќбѓ‘бѓђбѓљбѓЈбѓ бѓ›бѓђ бѓ°бѓђбѓ‘бѓ›бѓђ бѓЈбѓњбѓ“бѓђ бѓ“бѓђбѓбѓ­бѓбѓ бѓќбѓЎ бѓ«бѓбѓ”бѓ‘бѓбѓЎ бѓ’бѓђбѓњбѓ–бѓ бѓђбѓ®бѓ•бѓђ cross-border legal advisory, market entry, business structuring бѓ“бѓђ company setup бѓ›бѓбѓ›бѓђбѓ бѓ—бѓЈбѓљбѓ”бѓ‘бѓ”бѓ‘бѓ–бѓ”.",
+      description:
+        "InterLex არის გლობალური ჰაბი საერთაშორისო იურიდიული კონსულტაციისთვის, კომპანიის რეგისტრაციისთვის, საგადასახადო პოზიციონირებისთვის, ბაზარზე შესვლისთვის და ბიზნესის დასაწყებად ყაზახეთსა და საქართველოში.",
+      keywords: ["InterLex", "კომპანიის რეგისტრაცია ყაზახეთში", "ბიზნესის დაწყება საქართველოში", "საერთაშორისო იურიდიული კონსულტაცია", "საგადასახადო სტრუქტურირება"],
+      searchLabel: "SEO თემები",
+      searchTitle: "თემები, რომლებზეც ჰაბი უნდა ჩანდეს, სანამ მანდატი კონკრეტული ბაზრის საიტზე გადავა.",
+      searchIntro:
+        "გლობალურმა ჰაბმა უნდა შეკრიბოს მოთხოვნა საერთაშორისო იურიდიულ მხარდაჭერაზე, ბაზარზე შესვლაზე, ბიზნესის სტრუქტურირებაზე და კომპანიის დაფუძნებაზე, შემდეგ კი მომხმარებელი სწორ იურისდიქციაში გადაიყვანოს.",
       searchCards: [
-        { title: "бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓ бѓ”бѓ’бѓбѓЎбѓўбѓ бѓђбѓЄбѓбѓђ бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЁбѓ", body: "бѓ›бѓќбѓбѓЄбѓђбѓ•бѓЎ бѓ‘бѓђбѓ–бѓђбѓ бѓ–бѓ” бѓЁбѓ”бѓЎбѓ•бѓљбѓђбѓЎ, legal setup-бѓЎ, tax positioning-бѓЎ, accounting-бѓЎ бѓ“бѓђ бѓќбѓћбѓ”бѓ бѓђбѓЄбѓбѓЈбѓљ бѓ“бѓђбѓ¬бѓ§бѓ”бѓ‘бѓђбѓЎ." },
-        { title: "Business setup бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЁбѓ", body: "бѓ›бѓќбѓбѓЄбѓђбѓ•бѓЎ бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓЁбѓ”бѓҐбѓ›бѓњбѓђбѓЎ бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЁбѓ, FIZ бѓ’бѓ–бѓ”бѓ‘бѓЎ, бѓЎбѓђбѓ’бѓђбѓ“бѓђбѓЎбѓђбѓ®бѓђбѓ“бѓќ бѓ›бѓќбѓ“бѓ”бѓљбѓ”бѓ‘бѓЎ бѓ“бѓђ investor-friendly setup-бѓЎ." },
-        { title: "Cross-border legal бѓ“бѓђ tax advisory", body: "бѓбѓЈбѓ бѓЎбѓ“бѓбѓҐбѓЄбѓбѓ”бѓ‘бѓбѓЎ бѓЁбѓ”бѓ“бѓђбѓ бѓ”бѓ‘бѓђ, holding logic, group structuring бѓ“бѓђ бѓ›бѓ бѓђбѓ•бѓђбѓљбѓҐбѓ•бѓ”бѓ§бѓњбѓбѓђбѓњбѓ continuity." },
-        { title: "бѓЎбѓђбѓ”бѓ бѓ—бѓђбѓЁбѓќбѓ бѓбѓЎбѓќ бѓ“бѓђбѓ›бѓ¤бѓЈбѓ«бѓњбѓ”бѓ‘бѓљбѓ”бѓ‘бѓ бѓ“бѓђ бѓбѓњбѓ•бѓ”бѓЎбѓўбѓќбѓ бѓ”бѓ‘бѓ", body: "бѓЁбѓ”бѓЎбѓђбѓЎбѓ•бѓљбѓ”бѓљбѓ founders, holdings, family offices бѓ“бѓђ investor teams-бѓбѓЎбѓ—бѓ•бѓбѓЎ, бѓ бѓќбѓ›бѓљбѓ”бѓ‘бѓбѓЄ бѓђбѓ“бѓђбѓ бѓ”бѓ‘бѓ”бѓњ бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЎбѓђ бѓ“бѓђ бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЎ." },
+        {
+          title: "კომპანიის რეგისტრაცია ყაზახეთში",
+          body: "მოიცავს ბაზარზე შესვლას, იურიდიულ მოწყობას, საგადასახადო პოზიციონირებას, ბუღალტრულ კოორდინაციას და ოპერაციულ გაშვებას ყაზახეთში.",
+        },
+        {
+          title: "ბიზნესის დაწყება საქართველოში",
+          body: "მოიცავს კომპანიის დაფუძნებას, FIZ მარშრუტებს, საგადასახადო მოდელებს და ინვესტორისთვის ხელსაყრელ ოპერაციულ სტრუქტურებს საქართველოში.",
+        },
+        {
+          title: "საერთაშორისო იურიდიული და საგადასახადო კონსულტაცია",
+          body: "პროცესები, სადაც საჭიროა იურისდიქციების შედარება, ჰოლდინგის ლოგიკა, ჯგუფური სტრუქტურირება და მრავალქვეყნიანი ოპერირების გამძლეობა.",
+        },
+        {
+          title: "საერთაშორისო ფაუნდერები და ინვესტორები",
+          body: "პირველი შესასვლელი წერტილი დამფუძნებლებისთვის, ჰოლდინგებისთვის, family office-ებისთვის და საინვესტიციო გუნდებისთვის, რომლებიც ყაზახეთსა და საქართველოს ადარებენ.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "бѓ›бѓђбѓ¦бѓђбѓљбѓ бѓ«бѓбѓ”бѓ‘бѓбѓ—бѓ бѓ’бѓђбѓњбѓ–бѓ бѓђбѓ®бѓ•бѓбѓЎ бѓ™бѓбѓ—бѓ®бѓ•бѓ”бѓ‘бѓ, бѓ бѓќбѓ›бѓљбѓ”бѓ‘бѓ–бѓ”бѓЄ бѓ°бѓђбѓ‘бѓ›бѓђ бѓЈбѓњбѓ“бѓђ бѓЈбѓћбѓђбѓЎбѓЈбѓ®бѓќбѓЎ.",
+      faqTitle: "მაღალი განზრახვის მქონე კითხვები, რომლებზეც ჰაბმა მკაფიო პასუხი უნდა გასცეს.",
       faqItems: [
-        { question: "бѓ бѓбѓЎбѓ—бѓ•бѓбѓЎ бѓ’бѓђбѓ›бѓќбѓбѓ§бѓ”бѓњбѓ”бѓ‘бѓђ interlex.work?", answer: "interlex.work бѓђбѓ бѓбѓЎ InterLex-бѓбѓЎ бѓ›бѓ бѓђбѓ•бѓђбѓљбѓ”бѓњбѓќбѓ•бѓђбѓњбѓ бѓ’бѓљбѓќбѓ‘бѓђбѓљбѓЈбѓ бѓ бѓ°бѓђбѓ‘бѓ. бѓбѓЎ бѓ¬бѓђбѓ бѓ›бѓќбѓђбѓ“бѓ’бѓ”бѓњбѓЎ бѓ‘бѓ бѓ”бѓњбѓ“бѓЎ, бѓ®бѓЎбѓњбѓбѓЎ cross-border бѓћбѓќбѓ–бѓбѓЄбѓбѓќбѓњбѓбѓ бѓ”бѓ‘бѓђбѓЎ бѓ“бѓђ бѓ›бѓђбѓњбѓ“бѓђбѓўбѓЎ бѓЎбѓ¬бѓќбѓ  market site-бѓ–бѓ” бѓ›бѓбѓ›бѓђбѓ бѓ—бѓђбѓ•бѓЎ." },
-        { question: "бѓ бѓќбѓ“бѓбѓЎ бѓЈбѓњбѓ“бѓђ бѓ’бѓђбѓ›бѓќбѓбѓ§бѓ”бѓњбѓќбѓЎ бѓ™бѓљбѓбѓ”бѓњбѓўбѓ›бѓђ interlex.kz?", answer: "бѓ бѓќбѓЄбѓђ бѓЎбѓђбѓҐбѓ›бѓ” бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЎ бѓ”бѓ™бѓЈбѓ—бѓ•бѓњбѓбѓЎ, бѓ’бѓђбѓњбѓЎбѓђбѓ™бѓЈбѓ—бѓ бѓ”бѓ‘бѓбѓ— бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓ бѓ”бѓ’бѓбѓЎбѓўбѓ бѓђбѓЄбѓбѓбѓЎ, legal support-бѓбѓЎ, tax positioning-бѓбѓЎ, accounting-бѓбѓЎбѓђ бѓ“бѓђ бѓђбѓ“бѓ’бѓбѓљбѓќбѓ‘бѓ бѓбѓ•бѓ execution-бѓбѓЎбѓ—бѓ•бѓбѓЎ." },
-        { question: "бѓ бѓќбѓ“бѓбѓЎ бѓЈбѓњбѓ“бѓђ бѓ’бѓђбѓ›бѓќбѓбѓ§бѓ”бѓњбѓќбѓЎ бѓ™бѓљбѓбѓ”бѓњбѓўбѓ›бѓђ interlex.ge?", answer: "бѓ бѓќбѓЄбѓђ бѓЎбѓђбѓҐбѓ›бѓ” бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЎ бѓ”бѓ™бѓЈбѓ—бѓ•бѓњбѓбѓЎ, бѓ’бѓђбѓњбѓЎбѓђбѓ™бѓЈбѓ—бѓ бѓ”бѓ‘бѓбѓ— business setup-бѓбѓЎ, FIZ бѓЎбѓўбѓ бѓЈбѓҐбѓўбѓЈбѓ бѓ”бѓ‘бѓбѓЎ, tax planning-бѓбѓЎбѓђ бѓ“бѓђ English-first market guidance-бѓбѓЎбѓ—бѓ•бѓбѓЎ." },
+        {
+          question: "რისთვის გამოიყენება interlex.work?",
+          answer:
+            "interlex.work არის InterLex-ის მრავალენოვანი გლობალური ჰაბი. ის წარმოადგენს ბრენდს, ხსნის საერთაშორისო მუშაობის ლოგიკას და თითოეულ მოთხოვნას სწორ market-specific საიტზე გადაამისამართებს.",
+        },
+        {
+          question: "როდის უნდა გამოვიყენო interlex.kz?",
+          answer:
+            "interlex.kz გამოიყენეთ მაშინ, როცა საქმე ყაზახეთს ეხება, განსაკუთრებით კომპანიის რეგისტრაციის, იურიდიული მხარდაჭერის, საგადასახადო პოზიციონირების, ბუღალტერიის და ლოკალური შესრულებისთვის.",
+        },
+        {
+          question: "როდის უნდა გამოვიყენო interlex.ge?",
+          answer:
+            "interlex.ge გამოიყენეთ მაშინ, როცა საქმე საქართველოს ეხება, განსაკუთრებით ბიზნესის დაწყებისთვის, FIZ-სტრუქტურებისთვის, საგადასახადო დაგეგმვისა და ინგლისურენოვანი ბაზრის ნავიგაციისთვის.",
+        },
       ],
     },
     about: {
-      description: "InterLex-бѓбѓЎ бѓЁбѓ”бѓЎбѓђбѓ®бѓ”бѓ‘: бѓ’бѓљбѓќбѓ‘бѓђбѓљбѓЈбѓ бѓ бѓ‘бѓ бѓ”бѓњбѓ“-бѓ°бѓђбѓ‘бѓ cross-border legal advisory-бѓЎбѓ—бѓ•бѓбѓЎ, market entry strategy-бѓЎбѓ—бѓ•бѓбѓЎ, business structuring-бѓбѓЎбѓ—бѓ•бѓбѓЎ бѓ“бѓђ routing-бѓбѓЎбѓ—бѓ•бѓбѓЎ бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЎбѓђ бѓ“бѓђ бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЁбѓ.",
-      keywords: ["InterLex", "бѓ’бѓљбѓќбѓ‘бѓђбѓљбѓЈбѓ бѓ бѓбѓЈбѓ бѓбѓ“бѓбѓЈбѓљбѓ бѓ™бѓќбѓњбѓЎбѓђбѓљбѓўбѓбѓњбѓ’бѓ", "market entry", "бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓ", "бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќ"],
+      description:
+        "InterLex-ის შესახებ: გლობალური ბრენდ-ჰაბი საერთაშორისო იურიდიული კონსულტაციისთვის, ბაზარზე შესვლის სტრატეგიისთვის, ბიზნესის სტრუქტურირებისთვის და ყაზახეთსა და საქართველოში მარშრუტიზაციისთვის.",
+      keywords: ["InterLex", "საერთაშორისო იურიდიული კონსულტაცია", "ბაზარზე შესვლა", "ყაზახეთი", "საქართველო"],
     },
     crossBorder: {
-      description: "бѓЁбѓ”бѓђбѓ“бѓђбѓ бѓ”бѓ— бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓ бѓ“бѓђ бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќ бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓ бѓ”бѓ’бѓбѓЎбѓўбѓ бѓђбѓЄбѓбѓбѓЎ, бѓЎбѓђбѓ’бѓђбѓ“бѓђбѓЎбѓђбѓ®бѓђбѓ“бѓќ бѓћбѓќбѓ–бѓбѓЄбѓбѓќбѓњбѓбѓ бѓ”бѓ‘бѓбѓЎ, business structuring-бѓбѓЎ, investor entry-бѓбѓЎбѓђ бѓ“бѓђ cross-border legal advisory-бѓбѓЎбѓ—бѓ•бѓбѓЎ.",
-      keywords: ["бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓ бѓ—бѓЈ бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќ", "бѓбѓЈбѓ бѓбѓЎбѓ“бѓбѓҐбѓЄбѓбѓбѓЎ бѓЁбѓ”бѓ“бѓђбѓ бѓ”бѓ‘бѓђ", "бѓ™бѓќбѓ›бѓћбѓђбѓњбѓбѓбѓЎ бѓ бѓ”бѓ’бѓбѓЎбѓўбѓ бѓђбѓЄбѓбѓђ", "бѓ’бѓђбѓ“бѓђбѓЎбѓђбѓ®бѓђбѓ“бѓ”бѓ‘бѓ", "бѓбѓњбѓ•бѓ”бѓЎбѓўбѓќбѓ бѓ"],
+      description:
+        "შეადარეთ ყაზახეთი და საქართველო კომპანიის რეგისტრაციის, საგადასახადო პოზიციონირების, ბიზნესის სტრუქტურირების, ინვესტორის შესვლის და საერთაშორისო იურიდიული მხარდაჭერის კუთხით.",
+      keywords: ["ყაზახეთი თუ საქართველო", "იურისდიქციების შედარება", "კომპანიის დაფუძნება", "გადასახადები", "ინვესტორის შესვლა"],
     },
     contact: {
-      description: "бѓ“бѓђбѓЈбѓ™бѓђбѓ•бѓЁбѓбѓ бѓ“бѓбѓ— InterLex-бѓЎ cross-border legal advisory-бѓбѓЎбѓ—бѓ•бѓбѓЎ, бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓЁбѓ market entry-бѓЎбѓ—бѓ•бѓбѓЎ, бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќбѓЁбѓ business setup-бѓбѓЎбѓ—бѓ•бѓбѓЎ бѓ“бѓђ бѓ›бѓ бѓђбѓ•бѓђбѓљбѓ”бѓњбѓќбѓ•бѓђбѓњбѓ routing-бѓбѓЎбѓ—бѓ•бѓбѓЎ.",
-      keywords: ["InterLex бѓ™бѓќбѓњбѓўбѓђбѓҐбѓўбѓ", "бѓбѓЈбѓ бѓбѓ“бѓбѓЈбѓљбѓ бѓ™бѓќбѓњбѓЎбѓђбѓљбѓўбѓбѓњбѓ’бѓ", "бѓ§бѓђбѓ–бѓђбѓ®бѓ”бѓ—бѓ", "бѓЎбѓђбѓҐбѓђбѓ бѓ—бѓ•бѓ”бѓљбѓќ", "cross-border"],
+      description:
+        "დაუკავშირდით InterLex-ს საერთაშორისო იურიდიულ საკითხებზე, ყაზახეთში ბაზარზე შესვლისთვის, საქართველოში ბიზნესის დასაწყებად და მრავალენოვანი მოთხოვნის მარშრუტიზაციისთვის.",
+      keywords: ["InterLex კონტაქტი", "იურიდიული კონსულტაცია", "ყაზახეთი", "საქართველო", "საერთაშორისო ბიზნესი"],
     },
   },
   de: {
     home: {
-      description: "InterLex Global Hub fГјr cross-border Rechtsberatung, GesellschaftsgrГјndung, steuerliche Positionierung, Markteintritt und Business Setup in Kasachstan und Georgien.",
-      keywords: ["InterLex", "GesellschaftsgrГјndung Kasachstan", "Business Setup Georgien", "Cross-border Rechtsberatung", "Steuerstrukturierung"],
-      searchLabel: "SEO Themen",
-      searchTitle: "Themen, fГјr die der Hub ranken sollte, bevor das Mandat auf eine Marktseite wechselt.",
-      searchIntro: "Der globale Hub sollte Suchintentionen rund um cross-border Beratung, Markteintritt, Strukturierung und Gesellschaftsaufbau abdecken.",
+      description:
+        "InterLex ist der globale Hub für grenzüberschreitende Rechtsberatung, Gesellschaftsgründung, steuerliche Positionierung, Markteintritt und Business Setup in Kasachstan und Georgien.",
+      keywords: ["InterLex", "Firmengründung Kasachstan", "Business Setup Georgien", "grenzüberschreitende Rechtsberatung", "Steuerstrukturierung"],
+      searchLabel: "SEO-Themen",
+      searchTitle: "Themen, für die der Hub sichtbar sein sollte, bevor das Mandat auf eine Marktseite wechselt.",
+      searchIntro:
+        "Der globale Hub sollte Nachfrage rund um grenzüberschreitende Rechtsberatung, Markteintritt, Unternehmensstrukturierung und Gesellschaftsgründung aufnehmen und den Kunden danach in die passende Jurisdiktion weiterleiten.",
       searchCards: [
-        { title: "GesellschaftsgrГјndung in Kasachstan", body: "Markteintritt, Legal Setup, steuerliche Positionierung, Accounting und operativer Start in Kasachstan." },
-        { title: "Business Setup in Georgien", body: "GrГјndung in Georgien, FIZ-Pfade, Steuerlogik und investor-friendly Setup-Modelle." },
-        { title: "Cross-border Legal- und Tax-Advisory", body: "Vergleich von Jurisdiktionen, Holding-Logik, Konzernstrukturierung und Business Continuity Гјber mehrere LГ¤nder." },
-        { title: "Internationale GrГјnder und Investoren", body: "Erster Einstieg fГјr GrГјnder, Holdings, Family Offices und Teams, die Kasachstan und Georgien vergleichen." },
+        {
+          title: "Gesellschaftsgründung in Kasachstan",
+          body: "Begleitung bei Markteintritt, rechtlichem Setup, steuerlicher Positionierung, Buchhaltungskoordination und operativem Start in Kasachstan.",
+        },
+        {
+          title: "Business Setup in Georgien",
+          body: "Beratung zu Gründung, FIZ-Modellen, Steuerstrukturen und investorfreundlichen Betriebsmodellen in Georgien.",
+        },
+        {
+          title: "Grenzüberschreitende Rechts- und Steuerberatung",
+          body: "Mandate mit Bedarf an Jurisdiktionsvergleich, Holding-Logik, Gruppenstrukturierung und Kontinuität über mehrere Länder hinweg.",
+        },
+        {
+          title: "Internationale Gründer und Investoren",
+          body: "Erster Einstiegspunkt für Gründer, Holdings, Family Offices und Investmentteams, die Kasachstan und Georgien vergleichen.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "Suchstarke Fragen, die der Hub klar beantworten sollte.",
+      faqTitle: "Fragen mit hoher Suchintention, die der Hub klar beantworten sollte.",
       faqItems: [
-        { question: "WofГјr dient interlex.work?", answer: "interlex.work ist der mehrsprachige globale Hub von InterLex. Er stellt die Marke vor, erklГ¤rt die cross-border Positionierung und routet das Mandat auf die richtige Marktseite." },
-        { question: "Wann sollte interlex.kz genutzt werden?", answer: "Wenn das Mandat zu Kasachstan gehГ¶rt, insbesondere fГјr GesellschaftsgrГјndung, Rechtsberatung, steuerliche Positionierung, Accounting und lokale Umsetzung." },
-        { question: "Wann sollte interlex.ge genutzt werden?", answer: "Wenn das Mandat zu Georgien gehГ¶rt, insbesondere fГјr Business Setup, FIZ-Strukturen, Steuerplanung und englischsprachige MarktfГјhrung." },
+        {
+          question: "Wofür wird interlex.work genutzt?",
+          answer:
+            "interlex.work ist der mehrsprachige globale Hub von InterLex. Er stellt die Marke vor, erklärt die grenzüberschreitende Logik und leitet jedes Mandat an die passende Marktseite weiter.",
+        },
+        {
+          question: "Wann sollte interlex.kz genutzt werden?",
+          answer:
+            "interlex.kz sollte genutzt werden, wenn das Vorhaben nach Kasachstan gehört, insbesondere für Firmengründung, rechtliche Begleitung, steuerliche Positionierung, Buchhaltung und lokale Umsetzung.",
+        },
+        {
+          question: "Wann sollte interlex.ge genutzt werden?",
+          answer:
+            "interlex.ge sollte genutzt werden, wenn das Vorhaben nach Georgien gehört, insbesondere für Business Setup, FIZ-Strukturen, Steuerplanung und englischsprachige Marktführung.",
+        },
       ],
     },
     about: {
-      description: "Гњber InterLex: globaler Marken-Hub fГјr cross-border Rechtsberatung, Markteintrittsstrategie, Business Structuring und Routing nach Kasachstan und Georgien.",
-      keywords: ["InterLex", "globale Rechtsberatung", "Markteintritt", "Kasachstan", "Georgien"],
+      description:
+        "Über InterLex: globaler Marken-Hub für grenzüberschreitende Rechtsberatung, Markteintrittsstrategie, Unternehmensstrukturierung und Routing nach Kasachstan und Georgien.",
+      keywords: ["InterLex", "internationale Rechtsberatung", "Markteintritt", "Kasachstan", "Georgien"],
     },
     crossBorder: {
-      description: "Vergleichen Sie Kasachstan und Georgien fГјr GesellschaftsgrГјndung, steuerliche Positionierung, Business Structuring, Investor Entry und cross-border Rechtsberatung.",
-      keywords: ["Kasachstan oder Georgien", "Jurisdiktionsvergleich", "GesellschaftsgrГјndung", "Steuern", "Investor Entry"],
+      description:
+        "Vergleichen Sie Kasachstan und Georgien für Gesellschaftsgründung, steuerliche Positionierung, Unternehmensstrukturierung, Investor Entry und grenzüberschreitende Rechtsberatung.",
+      keywords: ["Kasachstan oder Georgien", "Jurisdiktionsvergleich", "Firmengründung", "Steuern", "Investor Entry"],
     },
     contact: {
-      description: "Kontaktieren Sie InterLex fГјr cross-border Rechtsberatung, Markteintritt in Kasachstan, Business Setup in Georgien und mehrsprachiges Mandatsrouting.",
-      keywords: ["Kontakt InterLex", "Rechtsberatung", "Kasachstan", "Georgien", "cross-border"],
+      description:
+        "Kontaktieren Sie InterLex für grenzüberschreitende Rechtsberatung, Markteintritt in Kasachstan, Business Setup in Georgien und mehrsprachiges Mandatsrouting.",
+      keywords: ["InterLex Kontakt", "Rechtsberatung", "Kasachstan", "Georgien", "cross-border"],
     },
   },
   ar: {
     home: {
-      description: "Ш§Щ„Щ…Ш±ЩѓШІ Ш§Щ„Ш№Ш§Щ„Щ…ЩЉ Щ„ЩЂ InterLex Щ„Щ„Ш§ШіШЄШґШ§Ш±Ш§ШЄ Ш§Щ„Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇШЊ Щ€ШЄШіШ¬ЩЉЩ„ Ш§Щ„ШґШ±ЩѓШ§ШЄШЊ Щ€Ш§Щ„ШЄЩ…Щ€Ш¶Ш№ Ш§Щ„Ш¶Ш±ЩЉШЁЩЉШЊ Щ€Ш§Щ„ШЇШ®Щ€Щ„ ШҐЩ„Щ‰ Ш§Щ„ШіЩ€Щ‚ШЊ Щ€business setup ЩЃЩЉ ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ† Щ€Ш¬Щ€Ш±Ш¬ЩЉШ§.",
-      keywords: ["InterLex", "ШЄШіШ¬ЩЉЩ„ ШґШ±ЩѓШ© ЩЃЩЉ ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†", "ШЄШЈШіЩЉШі ШЈШ№Щ…Ш§Щ„ ЩЃЩЉ Ш¬Щ€Ш±Ш¬ЩЉШ§", "Ш§ШіШЄШґШ§Ш±Ш§ШЄ Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇ", "Щ‡ЩЉЩѓЩ„Ш© Ш¶Ш±ЩЉШЁЩЉШ©"],
-      searchLabel: "Щ…Щ€Ш¶Щ€Ш№Ш§ШЄ SEO",
-      searchTitle: "Ш§Щ„Щ…Щ€Ш¶Щ€Ш№Ш§ШЄ Ш§Щ„ШЄЩЉ ЩЉШ¬ШЁ ШЈЩ† ЩЉШёЩ‡Ш± ЩЃЩЉЩ‡Ш§ Ш§Щ„Щ…Ш±ЩѓШІ Щ‚ШЁЩ„ Ш§Щ†ШЄЩ‚Ш§Щ„ Ш§Щ„ШЄЩѓЩ„ЩЉЩЃ ШҐЩ„Щ‰ Щ…Щ€Щ‚Ш№ Ш§Щ„ШіЩ€Щ‚.",
-      searchIntro: "ЩЉШ¬ШЁ ШЈЩ† ЩЉЩ„ШЄЩ‚Ш· Ш§Щ„Щ…Ш±ЩѓШІ Ш§Щ„Ш№Ш§Щ„Щ…ЩЉ Щ†ЩЉШ© Ш§Щ„ШЁШ­Ш« Ш­Щ€Щ„ Ш§Щ„Ш§ШіШЄШґШ§Ш±Ш§ШЄ Ш§Щ„Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇШЊ Щ€Ш§Щ„ШЇШ®Щ€Щ„ ШҐЩ„Щ‰ Ш§Щ„ШіЩ€Щ‚ШЊ Щ€Щ‡ЩЉЩѓЩ„Ш© Ш§Щ„ШЈШ№Щ…Ш§Щ„ШЊ Щ€ШЄШЈШіЩЉШі Ш§Щ„ШґШ±ЩѓШ§ШЄ.",
+      description:
+        "InterLex هو المركز العالمي للاستشارات القانونية العابرة للحدود، وتسجيل الشركات، والتموضع الضريبي، ودخول الأسواق، وإطلاق الأعمال في كازاخستان وجورجيا.",
+      keywords: ["InterLex", "تسجيل شركة في كازاخستان", "تأسيس أعمال في جورجيا", "استشارات قانونية عابرة للحدود", "هيكلة ضريبية"],
+      searchLabel: "موضوعات SEO",
+      searchTitle: "الموضوعات التي يجب أن يظهر فيها هذا المركز قبل انتقال العميل إلى موقع السوق المناسب.",
+      searchIntro:
+        "يجب أن يلتقط هذا المركز العالمي الطلب المرتبط بالاستشارات القانونية العابرة للحدود، ودخول الأسواق، وهيكلة الأعمال، وتأسيس الشركات، ثم يوجّه العميل إلى الولاية القضائية المناسبة.",
       searchCards: [
-        { title: "ШЄШіШ¬ЩЉЩ„ ШґШ±ЩѓШ© ЩЃЩЉ ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†", body: "ЩЉШґЩ…Щ„ ШЇШ®Щ€Щ„ Ш§Щ„ШіЩ€Щ‚ШЊ Щ€Ш§Щ„ЩЂ legal setupШЊ Щ€Ш§Щ„ШЄЩ…Щ€Ш¶Ш№ Ш§Щ„Ш¶Ш±ЩЉШЁЩЉШЊ Щ€Ш§Щ„Щ…Ш­Ш§ШіШЁШ©ШЊ Щ€Ш§Щ„Ш§Щ†Ш·Щ„Ш§Щ‚ Ш§Щ„ШЄШґШєЩЉЩ„ЩЉ ЩЃЩЉ ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†." },
-        { title: "Business setup ЩЃЩЉ Ш¬Щ€Ш±Ш¬ЩЉШ§", body: "ЩЉШґЩ…Щ„ ШЄШЈШіЩЉШі Ш§Щ„ШґШ±ЩѓШ§ШЄ ЩЃЩЉ Ш¬Щ€Ш±Ш¬ЩЉШ§ШЊ Щ€Щ…ШіШ§Ш±Ш§ШЄ FIZШЊ Щ€Ш§Щ„Щ†Щ…Ш§Ш°Ш¬ Ш§Щ„Ш¶Ш±ЩЉШЁЩЉШ©ШЊ Щ€Щ‡ЩЉШ§ЩѓЩ„ ШµШЇЩЉЩ‚Ш© Щ„Щ„Щ…ШіШЄШ«Щ…Ш±." },
-        { title: "Ш§ШіШЄШґШ§Ш±Ш§ШЄ Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Щ€Ш¶Ш±ЩЉШЁЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇ", body: "Щ„Щ…ШґШ±Щ€Ш№Ш§ШЄ ШЄШ­ШЄШ§Ш¬ ШҐЩ„Щ‰ Щ…Щ‚Ш§Ш±Щ†Ш© Ш§Щ„Щ€Щ„Ш§ЩЉШ§ШЄ Ш§Щ„Щ‚Ш¶Ш§Ш¦ЩЉШ©ШЊ Щ€Щ…Щ†Ш·Щ‚ Ш§Щ„Щ‡ЩЉШ§ЩѓЩ„ Ш§Щ„Щ‚Ш§ШЁШ¶Ш©ШЊ Щ€Ш§ШіШЄЩ…Ш±Ш§Ш±ЩЉШ© Ш§Щ„ШЈШ№Щ…Ш§Щ„ Ш№ШЁШ± ШЈЩѓШ«Ш± Щ…Щ† ШЁЩ„ШЇ." },
-        { title: "Ш§Щ„Щ…Ш¤ШіШіЩ€Щ† Щ€Ш§Щ„Щ…ШіШЄШ«Щ…Ш±Щ€Щ† Ш§Щ„ШЇЩ€Щ„ЩЉЩ€Щ†", body: "Щ†Щ‚Ш·Ш© ШЇШ®Щ€Щ„ Щ„Щ„Щ…Ш¤ШіШіЩЉЩ† Щ€Ш§Щ„Щ‡ЩЉШ§ЩѓЩ„ Ш§Щ„Щ‚Ш§ШЁШ¶Ш© Щ€Ш§Щ„Ш№Ш§Ш¦Щ„Ш§ШЄ Ш§Щ„Ш§ШіШЄШ«Щ…Ш§Ш±ЩЉШ© Щ€Ш§Щ„ЩЃШ±Щ‚ Ш§Щ„ШЄЩЉ ШЄЩ‚Ш§Ш±Щ† ШЁЩЉЩ† ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ† Щ€Ш¬Щ€Ш±Ш¬ЩЉШ§." },
+        {
+          title: "تسجيل شركة في كازاخستان",
+          body: "يشمل دخول السوق، والهيكلة القانونية، والتموضع الضريبي، وتنسيق المحاسبة، والانطلاق التشغيلي داخل كازاخستان.",
+        },
+        {
+          title: "تأسيس الأعمال في جورجيا",
+          body: "يشمل تأسيس الشركة في جورجيا، ومسارات FIZ، والنماذج الضريبية، والهياكل التشغيلية المناسبة للمستثمرين.",
+        },
+        {
+          title: "استشارات قانونية وضريبية عابرة للحدود",
+          body: "للمهام التي تتطلب مقارنة بين الولايات القضائية، ومنطق الهياكل القابضة، وهيكلة المجموعات، واستمرارية الأعمال عبر عدة دول.",
+        },
+        {
+          title: "المؤسسون والمستثمرون الدوليون",
+          body: "نقطة دخول أولى للمؤسسين، والهولدينغات، وفرق الاستثمار، والمكاتب العائلية التي تقارن بين كازاخستان وجورجيا.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "ШЈШіШ¦Щ„Ш© Ш°Ш§ШЄ Щ†ЩЉШ© ШЁШ­Ш« Ш№Ш§Щ„ЩЉШ© ЩЉШ¬ШЁ ШЈЩ† ЩЉШ¬ЩЉШЁ Ш№Щ†Щ‡Ш§ Ш§Щ„Щ…Ш±ЩѓШІ ШЁЩ€Ш¶Щ€Ш­.",
+      faqTitle: "أسئلة عالية النية يجب أن يجيب عنها هذا المركز بوضوح.",
       faqItems: [
-        { question: "Щ…Ш§ Щ€ШёЩЉЩЃШ© interlex.workШџ", answer: "interlex.work Щ‡Щ€ Ш§Щ„Щ…Ш±ЩѓШІ Ш§Щ„Ш№Ш§Щ„Щ…ЩЉ Щ…ШЄШ№ШЇШЇ Ш§Щ„Щ„ШєШ§ШЄ Щ„ЩЂ InterLex. ЩЉШ№Ш±Щ‘ЩЃ ШЁШ§Щ„Ш№Щ„Ш§Щ…Ш© Щ€ЩЉШґШ±Ш­ Ш§Щ„ШЄЩ…Ш±ЩѓШІ Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇ Щ€ЩЉЩ€Ш¬Щ‡ Ш§Щ„ШЄЩѓЩ„ЩЉЩЃ ШҐЩ„Щ‰ Щ…Щ€Щ‚Ш№ Ш§Щ„ШіЩ€Щ‚ Ш§Щ„Щ…Щ†Ш§ШіШЁ." },
-        { question: "Щ…ШЄЩ‰ ЩЉШ¬ШЁ Ш§ШіШЄШ®ШЇШ§Щ… interlex.kzШџ", answer: "Ш№Щ†ШЇЩ…Ш§ ЩЉЩѓЩ€Щ† Ш§Щ„Ш№Щ…Щ„ Щ…ШЄШ№Щ„Щ‚Ш§Щ‹ ШЁЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†ШЊ Щ€Ш®ШµЩ€ШµШ§Щ‹ Щ„ШЄШіШ¬ЩЉЩ„ Ш§Щ„ШґШ±ЩѓШ§ШЄШЊ Щ€Ш§Щ„ШЇШ№Щ… Ш§Щ„Щ‚Ш§Щ†Щ€Щ†ЩЉШЊ Щ€Ш§Щ„ШЄЩ…Щ€Ш¶Ш№ Ш§Щ„Ш¶Ш±ЩЉШЁЩЉШЊ Щ€Ш§Щ„Щ…Ш­Ш§ШіШЁШ©ШЊ Щ€Ш§Щ„ШЄЩ†ЩЃЩЉШ° Ш§Щ„Щ…Ш­Щ„ЩЉ." },
-        { question: "Щ…ШЄЩ‰ ЩЉШ¬ШЁ Ш§ШіШЄШ®ШЇШ§Щ… interlex.geШџ", answer: "Ш№Щ†ШЇЩ…Ш§ ЩЉЩѓЩ€Щ† Ш§Щ„Ш№Щ…Щ„ Щ…ШЄШ№Щ„Щ‚Ш§Щ‹ ШЁШ¬Щ€Ш±Ш¬ЩЉШ§ШЊ Щ€Ш®ШµЩ€ШµШ§Щ‹ Щ„ЩЂ business setupШЊ Щ€Щ‡ЩЉШ§ЩѓЩ„ FIZШЊ Щ€Ш§Щ„ШЄШ®Ш·ЩЉШ· Ш§Щ„Ш¶Ш±ЩЉШЁЩЉШЊ Щ€Ш§Щ„ШҐШ±ШґШ§ШЇ Ш§Щ„ШіЩ€Щ‚ЩЉ ШЁШ§Щ„Щ„ШєШ© Ш§Щ„ШҐЩ†Ш¬Щ„ЩЉШІЩЉШ©." },
+        {
+          question: "ما الغرض من interlex.work؟",
+          answer:
+            "interlex.work هو المركز العالمي متعدد اللغات لشركة InterLex. يعرّف بالعلامة التجارية، ويشرح المنطق العابر للحدود، ويوجّه كل تفويض إلى موقع السوق المناسب.",
+        },
+        {
+          question: "متى يجب استخدام interlex.kz؟",
+          answer:
+            "استخدم interlex.kz عندما يكون العمل مرتبطاً بكازاخستان، خصوصاً في تسجيل الشركات، والدعم القانوني، والتموضع الضريبي، والمحاسبة، والتنفيذ المحلي.",
+        },
+        {
+          question: "متى يجب استخدام interlex.ge؟",
+          answer:
+            "استخدم interlex.ge عندما يكون العمل مرتبطاً بجورجيا، خصوصاً في تأسيس الأعمال، وهياكل FIZ، والتخطيط الضريبي، والتوجيه السوقي باللغة الإنجليزية.",
+        },
       ],
     },
     about: {
-      description: "Ш­Щ€Щ„ InterLex: Щ…Ш±ЩѓШІ Ш№Ш§Щ„Щ…ЩЉ Щ„Щ„Ш№Щ„Ш§Щ…Ш© Щ…Щ† ШЈШ¬Щ„ Ш§Щ„Ш§ШіШЄШґШ§Ш±Ш§ШЄ Ш§Щ„Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇШЊ Щ€Ш§ШіШЄШ±Ш§ШЄЩЉШ¬ЩЉШ© ШЇШ®Щ€Щ„ Ш§Щ„ШіЩ€Щ‚ШЊ Щ€Щ‡ЩЉЩѓЩ„Ш© Ш§Щ„ШЈШ№Щ…Ш§Щ„ШЊ Щ€Ш§Щ„ШЄЩ€Ш¬ЩЉЩ‡ ШҐЩ„Щ‰ ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ† Щ€Ш¬Щ€Ш±Ш¬ЩЉШ§.",
-      keywords: ["InterLex", "Ш§ШіШЄШґШ§Ш±Ш§ШЄ Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№Ш§Щ„Щ…ЩЉШ©", "ШЇШ®Щ€Щ„ Ш§Щ„ШіЩ€Щ‚", "ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†", "Ш¬Щ€Ш±Ш¬ЩЉШ§"],
+      description:
+        "حول InterLex: مركز عالمي للعلامة التجارية للاستشارات القانونية العابرة للحدود، واستراتيجية دخول الأسواق، وهيكلة الأعمال، والتوجيه نحو كازاخستان وجورجيا.",
+      keywords: ["InterLex", "استشارات قانونية دولية", "دخول الأسواق", "كازاخستان", "جورجيا"],
     },
     crossBorder: {
-      description: "Щ‚Ш§Ш±Щ† ШЁЩЉЩ† ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ† Щ€Ш¬Щ€Ш±Ш¬ЩЉШ§ Щ…Щ† Ш­ЩЉШ« ШЄШіШ¬ЩЉЩ„ Ш§Щ„ШґШ±ЩѓШ§ШЄШЊ Щ€Ш§Щ„ШЄЩ…Щ€Ш¶Ш№ Ш§Щ„Ш¶Ш±ЩЉШЁЩЉШЊ Щ€Щ‡ЩЉЩѓЩ„Ш© Ш§Щ„ШЈШ№Щ…Ш§Щ„ШЊ Щ€ШЇШ®Щ€Щ„ Ш§Щ„Щ…ШіШЄШ«Щ…Ш±ШЊ Щ€Ш§Щ„Ш§ШіШЄШґШ§Ш±Ш§ШЄ Ш§Щ„Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇ.",
-      keywords: ["ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ† ШЈЩ… Ш¬Щ€Ш±Ш¬ЩЉШ§", "Щ…Щ‚Ш§Ш±Щ†Ш© Ш§Щ„Щ€Щ„Ш§ЩЉШ§ШЄ Ш§Щ„Щ‚Ш¶Ш§Ш¦ЩЉШ©", "ШЄШіШ¬ЩЉЩ„ Ш§Щ„ШґШ±ЩѓШ§ШЄ", "Ш§Щ„Ш¶Ш±Ш§Ш¦ШЁ", "ШЇШ®Щ€Щ„ Ш§Щ„Щ…ШіШЄШ«Щ…Ш±"],
+      description:
+        "قارن بين كازاخستان وجورجيا من حيث تسجيل الشركات، والتموضع الضريبي، وهيكلة الأعمال، ودخول المستثمرين، والاستشارات القانونية العابرة للحدود.",
+      keywords: ["كازاخستان أم جورجيا", "مقارنة الولايات القضائية", "تأسيس شركة", "ضرائب", "دخول المستثمر"],
     },
     contact: {
-      description: "ШЄЩ€Ш§ШµЩ„ Щ…Ш№ InterLex ШЁШ®ШµЩ€Шµ Ш§Щ„Ш§ШіШЄШґШ§Ш±Ш§ШЄ Ш§Щ„Щ‚Ш§Щ†Щ€Щ†ЩЉШ© Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇШЊ Щ€ШЇШ®Щ€Щ„ Ш§Щ„ШіЩ€Щ‚ ЩЃЩЉ ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†ШЊ Щ€business setup ЩЃЩЉ Ш¬Щ€Ш±Ш¬ЩЉШ§ШЊ Щ€Ш§Щ„ШЄЩ€Ш¬ЩЉЩ‡ Щ…ШЄШ№ШЇШЇ Ш§Щ„Щ„ШєШ§ШЄ.",
-      keywords: ["Ш§ШЄШµШ§Щ„ InterLex", "Ш§ШіШЄШґШ§Ш±Ш§ШЄ Щ‚Ш§Щ†Щ€Щ†ЩЉШ©", "ЩѓШ§ШІШ§Ш®ШіШЄШ§Щ†", "Ш¬Щ€Ш±Ш¬ЩЉШ§", "Ш№ШЁШ± Ш§Щ„Ш­ШЇЩ€ШЇ"],
+      description:
+        "تواصل مع InterLex بشأن الاستشارات القانونية العابرة للحدود، ودخول سوق كازاخستان، وتأسيس الأعمال في جورجيا، وتوجيه الطلبات متعددة اللغات.",
+      keywords: ["الاتصال بـ InterLex", "استشارات قانونية", "كازاخستان", "جورجيا", "أعمال دولية"],
     },
   },
   tr: {
     home: {
-      description: "InterLex global hub; sД±nД±r Г¶tesi hukuk danД±ЕџmanlД±ДџД±, Еџirket kuruluЕџu, vergi konumlandД±rmasД±, pazara giriЕџ ve Kazakistan ile GГјrcistanвЂ™da business setup iГ§in.",
-      keywords: ["InterLex", "Kazakistan Еџirket kuruluЕџu", "GГјrcistan business setup", "sД±nД±r Г¶tesi hukuk danД±ЕџmanlД±ДџД±", "vergi yapД±landД±rmasД±"],
-      searchLabel: "SEO KonularД±",
-      searchTitle: "Mandat market siteвЂ™a taЕџД±nmadan Г¶nce hubвЂ™Д±n gГ¶rГјnmesi gereken arama niyetleri.",
-      searchIntro: "Global hub; sД±nД±r Г¶tesi hukuk danД±ЕџmanlД±ДџД±, pazara giriЕџ, iЕџ yapД±landД±rmasД± ve Еџirket kuruluЕџu etrafД±ndaki arama niyetini yakalamalД±dД±r.",
+      description:
+        "InterLex; sınır ötesi hukuk danışmanlığı, şirket kuruluşu, vergi konumlandırması, pazara giriş ve Kazakistan ile Gürcistan'da business setup için global hub'dır.",
+      keywords: ["InterLex", "Kazakistan şirket kuruluşu", "Gürcistan business setup", "sınır ötesi hukuk danışmanlığı", "vergi yapılandırması"],
+      searchLabel: "SEO Konuları",
+      searchTitle: "Mandat market site'a taşınmadan önce hub'ın görünmesi gereken arama niyetleri.",
+      searchIntro:
+        "Global hub; sınır ötesi hukuk danışmanlığı, pazara giriş, iş yapılandırması ve şirket kuruluşu etrafındaki arama niyetini yakalamalı, ardından müşteriyi doğru yargı alanına yönlendirmelidir.",
       searchCards: [
-        { title: "KazakistanвЂ™da Еџirket kuruluЕџu", body: "Pazara giriЕџ, legal setup, vergi konumlandД±rmasД±, muhasebe ve operasyonel baЕџlangД±Г§ konularД±nД± kapsar." },
-        { title: "GГјrcistanвЂ™da business setup", body: "Ећirket kurulumu, FIZ yollarД±, vergi modelleri ve investor-friendly setup yapД±larД±." },
-        { title: "SД±nД±r Г¶tesi hukuk ve vergi danД±ЕџmanlД±ДџД±", body: "YargД± alanД± karЕџД±laЕџtД±rmasД±, holding logic, grup yapД±landД±rmasД± ve Г§ok Гјlkeli iЕџ sГјrekliliДџi." },
-        { title: "UluslararasД± kurucular ve yatД±rД±mcД±lar", body: "Kazakistan ve GГјrcistanвЂ™Д± karЕџД±laЕџtД±ran kurucular, holdingler ve yatД±rД±m ekipleri iГ§in ilk giriЕџ noktasД±." },
+        {
+          title: "Kazakistan'da şirket kuruluşu",
+          body: "Pazara giriş, legal setup, vergi konumlandırması, muhasebe koordinasyonu ve operasyonel başlangıç konularını kapsar.",
+        },
+        {
+          title: "Gürcistan'da business setup",
+          body: "Şirket kuruluşu, FIZ yolları, vergi modelleri ve yatırımcı dostu operasyon yapıları hakkında rehberlik sunar.",
+        },
+        {
+          title: "Sınır ötesi hukuk ve vergi danışmanlığı",
+          body: "Yargı alanı karşılaştırması, holding logic, grup yapılandırması ve çok ülkeli iş sürekliliği gerektiren mandatlar içindir.",
+        },
+        {
+          title: "Uluslararası kurucular ve yatırımcılar",
+          body: "Kazakistan ve Gürcistan'ı karşılaştıran kurucular, holdingler, family office'ler ve yatırım ekipleri için ilk giriş noktasıdır.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "HubвЂ™Д±n aГ§Д±k biГ§imde yanД±tlamasД± gereken yГјksek niyetli sorular.",
+      faqTitle: "Hub'ın açık biçimde yanıtlaması gereken yüksek niyetli sorular.",
       faqItems: [
-        { question: "interlex.work ne iГ§in kullanД±lД±r?", answer: "interlex.work, InterLexвЂ™in Г§ok dilli global hubвЂ™Д±dД±r. MarkayД± tanД±tД±r, sД±nД±r Г¶tesi konumlandД±rmayД± aГ§Д±klar ve mandatД± doДџru market siteвЂ™a yГ¶nlendirir." },
-        { question: "Ne zaman interlex.kz kullanД±lmalД±?", answer: "Д°Еџ KazakistanвЂ™a ait olduДџunda, Г¶zellikle Еџirket kuruluЕџu, hukuki destek, vergi konumlandД±rmasД±, muhasebe ve yerel execution iГ§in interlex.kz kullanД±lmalД±dД±r." },
-        { question: "Ne zaman interlex.ge kullanД±lmalД±?", answer: "Д°Еџ GГјrcistanвЂ™a ait olduДџunda, Г¶zellikle business setup, FIZ yapД±larД±, vergi planlamasД± ve English-first market guidance iГ§in interlex.ge kullanД±lmalД±dД±r." },
+        {
+          question: "interlex.work ne için kullanılır?",
+          answer:
+            "interlex.work, InterLex'in çok dilli global hub'ıdır. Markayı tanıtır, sınır ötesi iş mantığını açıklar ve her mandatı doğru market site'a yönlendirir.",
+        },
+        {
+          question: "Ne zaman interlex.kz kullanılmalı?",
+          answer:
+            "İş Kazakistan'a ait olduğunda, özellikle şirket kuruluşu, hukuki destek, vergi konumlandırması, muhasebe ve yerel execution için interlex.kz kullanılmalıdır.",
+        },
+        {
+          question: "Ne zaman interlex.ge kullanılmalı?",
+          answer:
+            "İş Gürcistan'a ait olduğunda, özellikle business setup, FIZ yapıları, vergi planlaması ve English-first market guidance için interlex.ge kullanılmalıdır.",
+        },
       ],
     },
     about: {
-      description: "InterLex hakkД±nda: sД±nД±r Г¶tesi hukuk danД±ЕџmanlД±ДџД±, pazara giriЕџ stratejisi, iЕџ yapД±landД±rmasД± ve Kazakistan ile GГјrcistanвЂ™a routing iГ§in global marka hubвЂ™Д±.",
-      keywords: ["InterLex", "kГјresel hukuk danД±ЕџmanlД±ДџД±", "pazara giriЕџ", "Kazakistan", "GГјrcistan"],
+      description:
+        "InterLex hakkında: sınır ötesi hukuk danışmanlığı, pazara giriş stratejisi, iş yapılandırması ve Kazakistan ile Gürcistan'a routing için global marka hub'ı.",
+      keywords: ["InterLex", "küresel hukuk danışmanlığı", "pazara giriş", "Kazakistan", "Gürcistan"],
     },
     crossBorder: {
-      description: "Ећirket kuruluЕџu, vergi konumlandД±rmasД±, business structuring, investor entry ve sД±nД±r Г¶tesi hukuk danД±ЕџmanlД±ДџД± iГ§in Kazakistan ile GГјrcistanвЂ™Д± karЕџД±laЕџtД±rД±n.",
-      keywords: ["Kazakistan mД± GГјrcistan mД±", "yargД± alanД± karЕџД±laЕџtД±rmasД±", "Еџirket kuruluЕџu", "vergiler", "yatД±rД±mcД± giriЕџi"],
+      description:
+        "Şirket kuruluşu, vergi konumlandırması, business structuring, investor entry ve sınır ötesi hukuk danışmanlığı için Kazakistan ile Gürcistan'ı karşılaştırın.",
+      keywords: ["Kazakistan mı Gürcistan mı", "yargı alanı karşılaştırması", "şirket kuruluşu", "vergiler", "yatırımcı girişi"],
     },
     contact: {
-      description: "SД±nД±r Г¶tesi hukuk danД±ЕџmanlД±ДџД±, Kazakistan pazar giriЕџi, GГјrcistan business setup ve Г§ok dilli mandat routing iГ§in InterLex ile iletiЕџime geГ§in.",
-      keywords: ["InterLex iletiЕџim", "hukuk danД±ЕџmanlД±ДџД±", "Kazakistan", "GГјrcistan", "sД±nД±r Г¶tesi"],
+      description:
+        "Sınır ötesi hukuk danışmanlığı, Kazakistan pazarına giriş, Gürcistan'da business setup ve çok dilli mandat routing için InterLex ile iletişime geçin.",
+      keywords: ["InterLex iletişim", "hukuk danışmanlığı", "Kazakistan", "Gürcistan", "uluslararası iş"],
     },
   },
   es: {
     home: {
-      description: "Hub global de InterLex para advisory legal cross-border, registro de empresas, posicionamiento fiscal, entrada de mercado y business setup en KazajistГЎn y Georgia.",
-      keywords: ["InterLex", "registro de empresa KazajistГЎn", "business setup Georgia", "advisory legal cross-border", "estructuraciГіn fiscal"],
+      description:
+        "InterLex es el hub global para advisory legal cross-border, constitución de empresas, posicionamiento fiscal, entrada de mercado y business setup en Kazajistán y Georgia.",
+      keywords: ["InterLex", "registro de empresa en Kazajistán", "business setup en Georgia", "asesoría legal cross-border", "estructuración fiscal"],
       searchLabel: "Temas SEO",
       searchTitle: "Temas por los que el hub debe posicionar antes de enviar el mandato al market site.",
-      searchIntro: "El hub global debe captar intenciГіn de bГєsqueda sobre asesorГ­a cross-border, entrada de mercado, estructuraciГіn empresarial y constituciГіn de compaГ±Г­as.",
+      searchIntro:
+        "El hub global debe captar intención de búsqueda sobre asesoría legal cross-border, entrada de mercado, estructuración empresarial y constitución de compañías antes de dirigir al cliente a la jurisdicción correcta.",
       searchCards: [
-        { title: "Registro de empresa en KazajistГЎn", body: "Entrada de mercado, legal setup, posicionamiento fiscal, contabilidad y lanzamiento operativo en KazajistГЎn." },
-        { title: "Business setup en Georgia", body: "ConstituciГіn en Georgia, rutas FIZ, modelos fiscales y estructuras investor-friendly." },
-        { title: "AsesorГ­a legal y fiscal cross-border", body: "ComparaciГіn de jurisdicciones, holding logic, estructuraciГіn de grupo y continuidad empresarial en varios paГ­ses." },
-        { title: "Founders e inversores internacionales", body: "Punto de entrada para founders, holdings, family offices y equipos que comparan KazajistГЎn y Georgia." },
+        {
+          title: "Registro de empresa en Kazajistán",
+          body: "Entrada de mercado, legal setup, posicionamiento fiscal, coordinación contable y lanzamiento operativo en Kazajistán.",
+        },
+        {
+          title: "Business setup en Georgia",
+          body: "Constitución en Georgia, rutas FIZ, modelos fiscales y estructuras operativas favorables para inversores.",
+        },
+        {
+          title: "Asesoría legal y fiscal cross-border",
+          body: "Mandatos que requieren comparación de jurisdicciones, holding logic, estructuración de grupo y continuidad operativa en varios países.",
+        },
+        {
+          title: "Founders e inversores internacionales",
+          body: "Punto de entrada para founders, family offices, holdings y equipos que comparan Kazajistán y Georgia.",
+        },
       ],
       faqLabel: "FAQ",
-      faqTitle: "Preguntas de alta intenciГіn que el hub debe responder con claridad.",
+      faqTitle: "Preguntas de alta intención que el hub debe responder con claridad.",
       faqItems: [
-        { question: "ВїPara quГ© sirve interlex.work?", answer: "interlex.work es el hub global multilingГјe de InterLex. Presenta la marca, explica el posicionamiento cross-border y dirige el mandato al market site correcto." },
-        { question: "ВїCuГЎndo usar interlex.kz?", answer: "Cuando el trabajo pertenece a KazajistГЎn, especialmente para registro de empresa, soporte legal, posicionamiento fiscal, contabilidad y ejecuciГіn local." },
-        { question: "ВїCuГЎndo usar interlex.ge?", answer: "Cuando el trabajo pertenece a Georgia, especialmente para business setup, estructuras FIZ, planificaciГіn fiscal y guidance de mercado en inglГ©s." },
+        {
+          question: "¿Para qué sirve interlex.work?",
+          answer:
+            "interlex.work es el hub global multilingüe de InterLex. Presenta la marca, explica la lógica cross-border y dirige cada mandato al market site correcto.",
+        },
+        {
+          question: "¿Cuándo usar interlex.kz?",
+          answer:
+            "Use interlex.kz cuando el trabajo pertenezca a Kazajistán, especialmente para constitución de empresas, soporte legal, posicionamiento fiscal, contabilidad y ejecución local.",
+        },
+        {
+          question: "¿Cuándo usar interlex.ge?",
+          answer:
+            "Use interlex.ge cuando el trabajo pertenezca a Georgia, especialmente para business setup, estructuras FIZ, planificación fiscal y market guidance en inglés.",
+        },
       ],
     },
     about: {
-      description: "Sobre InterLex: hub global de marca para advisory legal cross-border, estrategia de entrada de mercado, business structuring y routing hacia KazajistГЎn y Georgia.",
-      keywords: ["InterLex", "asesorГ­a jurГ­dica global", "entrada de mercado", "KazajistГЎn", "Georgia"],
+      description:
+        "Sobre InterLex: hub global de marca para advisory legal cross-border, estrategia de entrada de mercado, business structuring y routing hacia Kazajistán y Georgia.",
+      keywords: ["InterLex", "asesoría jurídica internacional", "entrada de mercado", "Kazajistán", "Georgia"],
     },
     crossBorder: {
-      description: "Compare KazajistГЎn y Georgia para registro de empresas, posicionamiento fiscal, business structuring, investor entry y advisory legal cross-border.",
-      keywords: ["KazajistГЎn o Georgia", "comparaciГіn de jurisdicciones", "registro de empresas", "fiscalidad", "entrada de inversor"],
+      description:
+        "Compare Kazajistán y Georgia para constitución de empresas, posicionamiento fiscal, business structuring, investor entry y advisory legal cross-border.",
+      keywords: ["Kazajistán o Georgia", "comparación de jurisdicciones", "constitución de empresas", "fiscalidad", "entrada del inversor"],
     },
     contact: {
-      description: "Contacte con InterLex para advisory legal cross-border, entrada al mercado de KazajistГЎn, business setup en Georgia y routing multilingГјe del mandato.",
-      keywords: ["contacto InterLex", "asesorГ­a jurГ­dica", "KazajistГЎn", "Georgia", "cross-border"],
+      description:
+        "Contacte con InterLex para advisory legal cross-border, entrada al mercado de Kazajistán, business setup en Georgia y routing multilingüe del mandato.",
+      keywords: ["contacto InterLex", "asesoría legal", "Kazajistán", "Georgia", "cross-border"],
     },
   },
 };

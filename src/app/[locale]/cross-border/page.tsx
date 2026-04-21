@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { buildMetadata, getDictionary, hasLocale, localePath } from "@/lib/i18n";
+import { buildMetadata, getDictionary, getServicesLabel, hasLocale, localePath } from "@/lib/i18n";
 import { JsonLd } from "@/components/json-ld";
 import { getBreadcrumbJsonLd, getSeoContent } from "@/lib/seo";
 
@@ -19,6 +19,7 @@ export default async function CrossBorderPage(props: PageProps<"/[locale]/cross-
   const { locale } = await props.params;
   if (!hasLocale(locale)) notFound();
   const dict = getDictionary(locale);
+  const servicesLabel = getServicesLabel(locale);
   const rows = [dict.crossBorder.marketEntry, dict.crossBorder.investor, dict.crossBorder.language];
 
   return (
@@ -84,7 +85,7 @@ export default async function CrossBorderPage(props: PageProps<"/[locale]/cross-
                 href={region.servicesHref}
                 className={`inline-flex items-center justify-center border px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] transition-colors ${index === 1 ? "border-white/18 bg-transparent text-white hover:bg-white/8" : "border-[color:rgba(0,9,36,0.12)] bg-[var(--surface-low)] text-[var(--primary)] hover:bg-white"}`}
               >
-                {locale === "ru" ? "Услуги" : locale === "zh" ? "服务" : locale === "ka" ? "სერვისები" : locale === "ar" ? "الخدمات" : locale === "tr" ? "Hizmetler" : locale === "es" ? "Servicios" : locale === "fr" ? "Services" : locale === "it" ? "Servizi" : locale === "de" ? "Leistungen" : "Services"}
+                {servicesLabel}
               </a>
             </div>
           </article>
