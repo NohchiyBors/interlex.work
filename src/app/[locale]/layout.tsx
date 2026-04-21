@@ -1,9 +1,12 @@
 import type { Metadata } from "next";
 import { Cormorant_Garamond, Manrope } from "next/font/google";
 import { notFound } from "next/navigation";
+import Script from "next/script";
 import "../globals.css";
 import { SiteFrame } from "@/components/site-frame";
 import { baseUrl, buildMetadata, getDictionary, hasLocale, locales } from "@/lib/i18n";
+
+const GA_MEASUREMENT_ID = "G-V16R7S8WGC";
 
 const display = Cormorant_Garamond({
   variable: "--font-display",
@@ -56,6 +59,15 @@ export default async function LocaleLayout(props: LayoutProps<"/[locale]">) {
         <SiteFrame locale={locale} dict={dict}>
           {props.children}
         </SiteFrame>
+        <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`} strategy="afterInteractive" />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '${GA_MEASUREMENT_ID}');
+          `}
+        </Script>
       </body>
     </html>
   );
