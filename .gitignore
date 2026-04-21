@@ -17,12 +17,33 @@
 /.next/
 /out/
 
+# turbopack / build caches
+.turbo
+.swc
+
 # production
 /build
 
 # misc
 .DS_Store
 *.pem
+
+# local / editor
+.idea/
+*.sublime-project
+*.sublime-workspace
+.history/
+
+# caches & temp
+.cache/
+.eslintcache
+*.tmp
+*.temp
+
+# OS (Windows)
+Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # debug
 npm-debug.log*

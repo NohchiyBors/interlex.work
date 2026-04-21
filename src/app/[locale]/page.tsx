@@ -1,0 +1,164 @@
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { buildMetadata, getDictionary, hasLocale, localePath } from "@/lib/i18n";
+import { JsonLd } from "@/components/json-ld";
+import { getFaqJsonLd, getOrganizationJsonLd, getSeoContent, getWebsiteJsonLd } from "@/lib/seo";
+
+export async function generateMetadata(props: PageProps<"/[locale]">) {
+  const { locale } = await props.params;
+  if (!hasLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+  const seo = getSeoContent(locale);
+  return {
+    ...buildMetadata(locale, dict.site.title, seo.home.description),
+    keywords: seo.home.keywords,
+  };
+}
+
+export default async function HomePage(props: PageProps<"/[locale]">) {
+  const { locale } = await props.params;
+  if (!hasLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+  const seo = getSeoContent(locale);
+
+  return (
+    <main>
+      <JsonLd data={[getOrganizationJsonLd(locale), getWebsiteJsonLd(locale), getFaqJsonLd(seo.home.faqItems)]} />
+      <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 pb-12 pt-8 md:px-8 xl:px-12 xl:pt-12">
+        <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10 xl:px-10 xl:py-12">
+            <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-[var(--accent)]">{dict.home.eyebrow}</p>
+            <h1 className="max-w-4xl font-display text-5xl leading-[0.96] tracking-[-0.04em] text-[var(--primary)] md:text-6xl lg:text-7xl">
+              {dict.home.title}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)] md:text-lg">{dict.home.lead}</p>
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link
+                href={localePath(locale, "cross-border")}
+                className="inline-flex items-center justify-center border border-[var(--primary)] bg-[var(--primary)] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-[var(--primary-soft)]"
+              >
+                {dict.home.primaryCta}
+              </Link>
+              <Link
+                href={localePath(locale, "about")}
+                className="inline-flex items-center justify-center border border-[color:rgba(0,9,36,0.12)] bg-[var(--surface-low)] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[var(--primary)] transition-colors hover:bg-white"
+              >
+                {dict.home.secondaryCta}
+              </Link>
+            </div>
+          </div>
+
+          <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{dict.home.logicLabel}</p>
+            <div className="mt-5 space-y-6">
+              {dict.home.notes.map((note, index) => (
+                <div key={note} className="flex gap-4">
+                  <span className="font-display text-3xl leading-none text-[var(--accent)]">0{index + 1}</span>
+                  <p className="pt-1 text-sm leading-7 text-[var(--ink)]">{note}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 border border-[color:rgba(0,9,36,0.08)] bg-white p-5">
+              <p className="text-sm leading-7 text-[var(--muted)]">{dict.home.logicBody}</p>
+            </div>
+          </div>
+        </div>
+
+        <section className="grid gap-6 lg:grid-cols-2">
+          {dict.regionLinks.map((region) => (
+            <article key={region.domain} className="relative overflow-hidden border border-[color:rgba(0,9,36,0.08)] bg-white p-7 shadow-sm">
+              <div className="absolute right-0 top-0 h-full w-2 bg-[var(--accent)]" />
+              <div className="relative flex h-full flex-col">
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">{region.language}</p>
+                <h2 className="mt-3 font-display text-4xl leading-none text-[var(--primary)]">{region.name}</h2>
+                <p className="mt-2 text-base text-[var(--muted)]">{region.domain}</p>
+                <p className="mt-5 max-w-xl text-sm leading-7 text-[var(--ink)]">{region.strapline}</p>
+                <ul className="mt-6 space-y-3 text-sm leading-7 text-[var(--ink)]">
+                  {region.points.map((point) => (
+                    <li key={point} className="flex gap-3">
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+                  <a
+                    href={region.href}
+                    className="inline-flex items-center justify-center border border-[var(--primary)] bg-[var(--primary)] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-[var(--primary-soft)]"
+                  >
+                    {region.domain}
+                  </a>
+                  <a
+                    href={region.servicesHref}
+                    className="inline-flex items-center justify-center border border-[color:rgba(0,9,36,0.12)] bg-[var(--surface-low)] px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[var(--primary)] transition-colors hover:bg-white"
+                  >
+                    {locale === "ru" ? "Услуги" : locale === "zh" ? "服务" : locale === "ka" ? "სერვისები" : locale === "ar" ? "الخدمات" : locale === "tr" ? "Hizmetler" : locale === "es" ? "Servicios" : locale === "fr" ? "Services" : locale === "it" ? "Servizi" : locale === "de" ? "Leistungen" : "Services"}
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8">
+            <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{dict.home.positioningLabel}</p>
+            <h2 className="mt-4 max-w-3xl font-display text-4xl leading-tight tracking-[-0.04em] text-[var(--primary)] md:text-5xl">
+              {dict.home.positioningTitle}
+            </h2>
+            <p className="mt-5 max-w-2xl text-base leading-8 text-[var(--muted)]">{dict.home.positioningBody}</p>
+          </div>
+
+          <div className="grid gap-4">
+            {dict.home.sections.map((section) => (
+              <Link
+                key={section.slug}
+                href={localePath(locale, section.slug)}
+                className="border border-[color:rgba(0,9,36,0.08)] bg-white px-5 py-5 transition-colors hover:border-[color:rgba(117,91,0,0.28)] hover:bg-[var(--surface-low)]"
+              >
+                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[var(--accent)]">{section.label}</p>
+                <h3 className="mt-3 font-display text-3xl leading-none tracking-[-0.03em] text-[var(--primary)]">
+                  {section.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{section.body}</p>
+              </Link>
+            ))}
+          </div>
+        </section>
+
+        <section className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{seo.home.searchLabel}</p>
+          <div className="mt-4 grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+            <div>
+              <h2 className="font-display text-4xl leading-tight tracking-[-0.04em] text-[var(--primary)]">
+                {seo.home.searchTitle}
+              </h2>
+              <p className="mt-4 max-w-2xl text-base leading-8 text-[var(--muted)]">{seo.home.searchIntro}</p>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              {seo.home.searchCards.map((card) => (
+                <article key={card.title} className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-5 py-5">
+                  <h3 className="font-display text-3xl leading-none text-[var(--primary)]">{card.title}</h3>
+                  <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{card.body}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8">
+          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{seo.home.faqLabel}</p>
+          <h2 className="mt-4 font-display text-4xl leading-tight tracking-[-0.04em] text-[var(--primary)]">{seo.home.faqTitle}</h2>
+          <div className="mt-6 grid gap-4 lg:grid-cols-3">
+            {seo.home.faqItems.map((item) => (
+              <article key={item.question} className="border border-[color:rgba(0,9,36,0.08)] bg-white px-5 py-5">
+                <h3 className="font-display text-3xl leading-none text-[var(--primary)]">{item.question}</h3>
+                <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{item.answer}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+      </section>
+    </main>
+  );
+}
