@@ -60,3 +60,12 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Служебные заметки и инструкции для агентов/процессов (не код сайта)
+/AGENTS.md
+/AGENT-TASK.md
+/CLAUDE.md
+/MEMORY.md
+/PROJECT-RESUME.md
+/STATUS-LOG.md
+/TODO.md
