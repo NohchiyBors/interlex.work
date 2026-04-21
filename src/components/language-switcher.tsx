@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
-import { getDictionary, locales, type Locale } from "@/lib/i18n";
+import { locales, type Locale } from "@/lib/i18n";
 
 const languageLabels: Record<Locale, string> = {
   en: "Language",
@@ -14,6 +14,19 @@ const languageLabels: Record<Locale, string> = {
   ar: "اللغة",
   tr: "Dil",
   es: "Idioma",
+};
+
+const localeMeta: Record<Locale, { native: string; flag: string }> = {
+  en: { native: "English", flag: "🇬🇧" },
+  ru: { native: "Русский", flag: "🇷🇺" },
+  zh: { native: "中文", flag: "🇨🇳" },
+  it: { native: "Italiano", flag: "🇮🇹" },
+  fr: { native: "Français", flag: "🇫🇷" },
+  ka: { native: "ქართული", flag: "🇬🇪" },
+  de: { native: "Deutsch", flag: "🇩🇪" },
+  ar: { native: "العربية", flag: "🇸🇦" },
+  tr: { native: "Türkçe", flag: "🇹🇷" },
+  es: { native: "Español", flag: "🇪🇸" },
 };
 
 type Props = {
@@ -44,23 +57,23 @@ export function LanguageSwitcher({ locale }: Props) {
     <div className="flex flex-col gap-2 md:items-end">
       <div className="hidden flex-wrap gap-1.5 md:flex">
         {locales.map((item) => {
-          const dict = getDictionary(item);
           const active = item === locale;
+          const meta = localeMeta[item];
 
           return (
             <button
               key={item}
               type="button"
               onClick={() => switchLocale(item)}
-              title={dict.localeNative}
-              aria-label={dict.localeNative}
+              title={meta.native}
+              aria-label={meta.native}
               className={`inline-flex h-9 w-9 items-center justify-center border text-base transition-colors ${
                 active
                   ? "border-[var(--primary)] bg-[var(--primary)] text-white"
                   : "border-[color:rgba(0,9,36,0.08)] bg-white hover:border-[color:rgba(117,91,0,0.28)]"
               }`}
             >
-              <span aria-hidden>{dict.flag}</span>
+              <span aria-hidden>{meta.flag}</span>
             </button>
           );
         })}
@@ -74,11 +87,11 @@ export function LanguageSwitcher({ locale }: Props) {
           className="border border-[color:rgba(0,9,36,0.12)] bg-white px-3 py-2 text-xs uppercase tracking-[0.12em] text-[var(--primary)] outline-none transition-colors hover:border-[color:rgba(117,91,0,0.28)]"
         >
           {locales.map((item) => {
-            const dict = getDictionary(item);
+            const meta = localeMeta[item];
 
             return (
               <option key={item} value={item}>
-                {dict.flag} {dict.localeNative}
+                {meta.flag} {meta.native}
               </option>
             );
           })}
