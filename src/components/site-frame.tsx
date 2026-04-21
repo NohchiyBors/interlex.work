@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, localePath, locales, type Locale } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -16,11 +17,17 @@ export function SiteFrame({ children, locale, dict }: Props) {
       <header className="fixed inset-x-0 top-0 z-30 border-b border-[color:rgba(15,32,68,0.08)] bg-[rgba(247,249,252,0.9)] backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-5 py-4 md:px-8 xl:px-12 xl:py-5">
           <Link href={localePath(locale)} className="flex items-center gap-4">
-            <span className="inline-flex h-11 w-11 items-center justify-center border border-[color:rgba(0,9,36,0.12)] bg-white font-display text-xl text-[var(--primary)] shadow-sm">
-              IL
+            <span className="relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-[1rem] border border-[color:rgba(0,9,36,0.08)] bg-white shadow-sm md:hidden">
+              <Image src="/brand/IL_symbol.svg" alt="InterLex" fill className="object-contain p-1.5" priority />
             </span>
-            <div className="leading-none">
-              <p className="font-display text-[1.9rem] tracking-[-0.04em] text-[var(--primary)]">{dict.site.brand}</p>
+            <div className="hidden md:flex md:flex-col md:gap-1">
+              <span className="relative h-[2.9rem] w-[13rem]">
+                <Image src="/brand/IL_logo_dark.svg" alt="InterLex" fill className="object-contain object-left" priority />
+              </span>
+              <p className="pl-1 text-[10px] uppercase tracking-[0.26em] text-[color:rgba(25,28,30,0.56)]">{dict.site.hubLabel}</p>
+            </div>
+            <div className="leading-none md:hidden">
+              <p className="font-display text-[1.6rem] tracking-[-0.04em] text-[var(--primary)]">{dict.site.brand}</p>
               <p className="mt-1 text-[10px] uppercase tracking-[0.26em] text-[color:rgba(25,28,30,0.56)]">{dict.site.hubLabel}</p>
             </div>
           </Link>

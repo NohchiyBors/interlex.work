@@ -3,6 +3,19 @@
 import { usePathname, useRouter } from "next/navigation";
 import { getDictionary, locales, type Locale } from "@/lib/i18n";
 
+const languageLabels: Record<Locale, string> = {
+  en: "Language",
+  ru: "Язык",
+  zh: "语言",
+  it: "Lingua",
+  fr: "Langue",
+  ka: "ენა",
+  de: "Sprache",
+  ar: "اللغة",
+  tr: "Dil",
+  es: "Idioma",
+};
+
 type Props = {
   locale: Locale;
 };
@@ -29,7 +42,7 @@ export function LanguageSwitcher({ locale }: Props) {
 
   return (
     <div className="flex flex-col gap-2 md:items-end">
-      <div className="flex flex-wrap gap-1.5">
+      <div className="hidden flex-wrap gap-1.5 md:flex">
         {locales.map((item) => {
           const dict = getDictionary(item);
           const active = item === locale;
@@ -54,7 +67,7 @@ export function LanguageSwitcher({ locale }: Props) {
       </div>
 
       <label className="flex items-center gap-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--muted)]">
-        <span>Language</span>
+        <span>{languageLabels[locale]}</span>
         <select
           value={locale}
           onChange={(event) => switchLocale(event.target.value as Locale)}

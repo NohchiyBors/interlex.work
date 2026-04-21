@@ -1,0 +1,85 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 130" width="580" height="130">
+  <defs>
+    <linearGradient id="gold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#C9A84C"/><stop offset="100%" style="stop-color:#E8C96A"/>
+    </linearGradient>
+    <linearGradient id="teal" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0D9488"/><stop offset="100%" style="stop-color:#2DD4BF"/>
+    </linearGradient>
+    <linearGradient id="bridge" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#C9A84C"/><stop offset="100%" style="stop-color:#0D9488"/>
+    </linearGradient>
+  </defs>
+  <rect width="580" height="130" rx="10" fill="#0F2044"/>
+
+  <!-- ── KZ HEXAGON (gold) ── -->
+  <polygon points="48,10 80,28 80,64 48,82 16,64 16,28"
+           fill="#112244" stroke="url(#gold)" stroke-width="2.4"/>
+
+  <!-- KZ Sun: 8 rays clean, round centre -->
+  <!-- Rays: 8 directions, alternating long/short -->
+  <line x1="48" y1="25" x2="48" y2="31" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="48" y1="61" x2="48" y2="67" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="31" y1="46" x2="37" y2="46" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="59" y1="46" x2="65" y2="46" stroke="#C9A84C" stroke-width="2.2" stroke-linecap="round"/>
+  <!-- Diagonal rays (shorter) -->
+  <line x1="35" y1="30" x2="39" y2="34" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="57" y1="58" x2="61" y2="62" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="57" y1="30" x2="61" y2="34" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+  <line x1="35" y1="58" x2="39" y2="62" stroke="#C9A84C" stroke-width="1.8" stroke-linecap="round"/>
+  <!-- Sun ring -->
+  <circle cx="48" cy="46" r="11" fill="none" stroke="#C9A84C" stroke-width="1.6"/>
+  <!-- Sun core -->
+  <circle cx="48" cy="46" r="5" fill="#C9A84C"/>
+
+  <!-- KZ label below -->
+  <text x="48" y="95" font-family="'Arial',sans-serif" font-size="9.5" font-weight="700"
+        text-anchor="middle" fill="#C9A84C" letter-spacing="3" opacity="0.85">KZ</text>
+
+  <!-- ── BRIDGE ── -->
+  <!-- Gradient line -->
+  <rect x="82" y="43" width="26" height="6" rx="3" fill="url(#bridge)" opacity="0.65"/>
+  <!-- Two junction dots -->
+  <circle cx="89" cy="46" r="2.8" fill="#C9A84C" opacity="0.7"/>
+  <circle cx="101" cy="46" r="2.8" fill="#0D9488" opacity="0.7"/>
+
+  <!-- ── GE HEXAGON (teal) ── -->
+  <polygon points="126,10 158,28 158,64 126,82 94,64 94,28"
+           fill="#0C2035" stroke="url(#teal)" stroke-width="2.4"/>
+
+  <!-- GE Bolnisi Cross (Georgian national symbol) — 4 equal arms, each with small notch at tip -->
+  <!-- Vertical arm -->
+  <rect x="123" y="28" width="6" height="36" rx="2" fill="#0D9488"/>
+  <!-- Horizontal arm -->
+  <rect x="110" y="43" width="32" height="6" rx="2" fill="#0D9488"/>
+  <!-- Corner squares (Bolnisi cross characteristic) -->
+  <rect x="113" y="30" width="8" height="8" rx="1" fill="#0D9488" opacity="0.5"/>
+  <rect x="131" y="30" width="8" height="8" rx="1" fill="#0D9488" opacity="0.5"/>
+  <rect x="113" y="54" width="8" height="8" rx="1" fill="#0D9488" opacity="0.5"/>
+  <rect x="131" y="54" width="8" height="8" rx="1" fill="#0D9488" opacity="0.5"/>
+  <!-- Centre dot -->
+  <circle cx="126" cy="46" r="4" fill="#0F2044"/>
+  <circle cx="126" cy="46" r="2.5" fill="#0D9488"/>
+
+  <!-- GE label below -->
+  <text x="126" y="95" font-family="'Arial',sans-serif" font-size="9.5" font-weight="700"
+        text-anchor="middle" fill="#0D9488" letter-spacing="3" opacity="0.85">GE</text>
+
+  <!-- ── WORDMARK ── -->
+  <text x="178" y="68" font-family="Georgia,serif" font-size="48" font-weight="700"
+        letter-spacing="2" fill="white">INTER</text>
+  <text x="410" y="68" font-family="Georgia,serif" font-size="48" font-weight="700"
+        letter-spacing="2" fill="url(#gold)">LEX</text>
+
+  <!-- Gold hairline -->
+  <rect x="178" y="75" width="385" height="1.2" rx="1" fill="#C9A84C" opacity="0.4"/>
+
+  <!-- Tagline -->
+  <text x="178" y="96" font-family="Georgia,serif" font-size="13" letter-spacing="1.6"
+        fill="#A8C0E0" font-style="italic">Business Registration &amp; Legal Services</text>
+
+  <!-- Country line -->
+  <circle cx="178" cy="116" r="2" fill="#C9A84C"/>
+  <text x="186" y="120" font-family="Arial,sans-serif" font-size="11" letter-spacing="2"
+        fill="#64748B">Kazakhstan  ·  Georgia</text>
+</svg>
