@@ -15,7 +15,6 @@ export async function generateMetadata(props: PageProps<"/[locale]/kazakhstan-vs
   const { locale } = await props.params;
   if (!hasLocale(locale)) notFound();
   const content = getKazakhstanVsGeorgiaContent(locale);
-  const structuringPage = getCrossBorderStructuringContent(locale);
 
   return {
     ...buildMetadata(locale, content.title, content.description, "kazakhstan-vs-georgia"),

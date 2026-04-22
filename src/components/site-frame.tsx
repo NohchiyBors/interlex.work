@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { getDictionary, localePath, locales, type Locale } from "@/lib/i18n";
+import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
 
 type Props = Readonly<{
