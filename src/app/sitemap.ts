@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { baseUrl, defaultLocale, localePath, locales } from "@/lib/i18n";
 
-const routeSlugs = ["", "about", "cross-border", "contact"] as const;
+const routeSlugs = ["", "about", "cross-border", "contact", "kazakhstan-vs-georgia", "cross-border-structuring", "international-market-entry"] as const;
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

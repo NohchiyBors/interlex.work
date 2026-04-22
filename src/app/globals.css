@@ -17,6 +17,9 @@
   --primary: #000924;
   --primary-soft: #0f2044;
   --primary-ink: #ffffff;
+  --button-primary: #12234a;
+  --button-primary-hover: #1a2f61;
+  --button-primary-ink: #f8fbff;
 }
 
 @theme inline {
@@ -50,6 +53,41 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+}
+
+.btn-primary {
+  border-color: var(--button-primary);
+  background: var(--button-primary);
+  color: var(--button-primary-ink);
+}
+
+.btn-primary:hover {
+  border-color: var(--button-primary-hover);
+  background: var(--button-primary-hover);
+}
+
+.btn-light {
+  border-color: rgba(0, 9, 36, 0.12);
+  background: var(--surface-low);
+  color: var(--primary);
+}
+
+.btn-light:hover {
+  border-color: rgba(117, 91, 0, 0.28);
+  background: #ffffff;
+  color: var(--primary);
+}
+
+.btn-white {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: #ffffff;
+  color: var(--primary);
+}
+
+.btn-white:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--primary);
 }
 
 p,

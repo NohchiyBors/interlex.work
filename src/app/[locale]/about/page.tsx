@@ -69,7 +69,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
               <p className="mt-2 text-sm text-[var(--muted)]">{region.strapline}</p>
               <a
                 href={region.href}
-                className="mt-6 inline-flex items-center border border-[color:rgba(0,9,36,0.12)] bg-[var(--surface-low)] px-5 py-2.5 text-xs font-medium uppercase tracking-[0.18em] text-[var(--primary)] transition-colors hover:bg-white"
+                className="btn-light mt-6 inline-flex items-center border px-5 py-2.5 text-xs font-medium uppercase tracking-[0.18em] transition-colors"
               >
                 {region.domain}
               </a>
@@ -87,7 +87,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
           </div>
           <Link
             href={localePath(locale, "cross-border")}
-            className="inline-flex items-center justify-center border border-white/15 bg-white px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-[var(--primary)] transition-colors hover:bg-[rgba(255,255,255,0.9)]"
+            className="btn-white inline-flex items-center justify-center border px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] transition-colors"
           >
             {dict.about.nextCta}
           </Link>

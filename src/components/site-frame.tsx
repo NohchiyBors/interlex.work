@@ -15,9 +15,9 @@ export function SiteFrame({ children, locale, dict }: Props) {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(182,198,243,0.18),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.65)_0%,rgba(247,249,252,0)_22%)]" />
 
       <header className="fixed inset-x-0 top-0 z-30 border-b border-[color:rgba(15,32,68,0.08)] bg-[rgba(247,249,252,0.9)] backdrop-blur-xl">
-        <div className="mx-auto flex w-full max-w-7xl items-center justify-between gap-6 px-5 py-4 md:px-8 xl:px-12 xl:py-5">
-          <Link href={localePath(locale)} className="flex items-center gap-4">
-            <span className="relative inline-flex h-12 w-12 items-center justify-center overflow-hidden rounded-[1rem] border border-[color:rgba(0,9,36,0.08)] bg-white shadow-sm md:hidden">
+        <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center gap-3 px-4 py-3 md:gap-6 md:px-8 md:py-4 xl:flex-nowrap xl:px-12 xl:py-5">
+          <Link href={localePath(locale)} className="flex shrink-0 items-center gap-4">
+            <span className="relative inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-[0.9rem] border border-[color:rgba(0,9,36,0.08)] bg-white shadow-sm md:hidden">
               <Image src="/brand/IL_symbol.svg" alt="InterLex" fill className="object-contain p-1.5" priority />
             </span>
             <div className="hidden md:flex md:flex-col md:gap-1">
@@ -27,12 +27,12 @@ export function SiteFrame({ children, locale, dict }: Props) {
               <p className="pl-1 text-[10px] uppercase tracking-[0.26em] text-[color:rgba(25,28,30,0.56)]">{dict.site.hubLabel}</p>
             </div>
             <div className="leading-none md:hidden">
-              <p className="font-display text-[1.6rem] tracking-[-0.04em] text-[var(--primary)]">{dict.site.brand}</p>
-              <p className="mt-1 text-[10px] uppercase tracking-[0.26em] text-[color:rgba(25,28,30,0.56)]">{dict.site.hubLabel}</p>
+              <p className="font-display text-[1.35rem] tracking-[-0.04em] text-[var(--primary)]">{dict.site.brand}</p>
+              <p className="mt-0.5 text-[9px] uppercase tracking-[0.2em] text-[color:rgba(25,28,30,0.5)]">{dict.site.hubLabel}</p>
             </div>
           </Link>
 
-          <nav className="hidden items-center gap-6 text-xs font-medium uppercase tracking-[0.18em] text-[color:rgba(25,28,30,0.62)] md:flex">
+          <nav className="order-3 hidden basis-full items-center justify-center gap-6 border-t border-[color:rgba(0,9,36,0.06)] pt-4 text-center text-xs font-medium uppercase tracking-[0.18em] text-[color:rgba(25,28,30,0.62)] md:flex xl:order-none xl:basis-auto xl:flex-1 xl:justify-center xl:border-t-0 xl:pt-0">
             {dict.nav.map((item) => (
               <Link
                 key={item.slug}
@@ -46,18 +46,39 @@ export function SiteFrame({ children, locale, dict }: Props) {
 
           <Link
             href={localePath(locale, "cross-border")}
-            className="inline-flex items-center border border-[color:rgba(0,9,36,0.12)] bg-[var(--primary)] px-4 py-2 text-xs font-medium uppercase tracking-[0.18em] text-white transition-colors hover:bg-[var(--primary-soft)]"
+            className="btn-primary ml-auto inline-flex shrink-0 items-center border px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors md:px-4 md:text-xs md:tracking-[0.18em] xl:ml-0"
           >
             {dict.site.compareMarkets}
           </Link>
+
+          <details className="order-4 basis-full border-t border-[color:rgba(0,9,36,0.06)] pt-3 md:hidden">
+            <summary className="flex cursor-pointer list-none items-center justify-between border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
+              <span>Меню</span>
+              <span aria-hidden>+</span>
+            </summary>
+            <div className="mt-2 grid gap-2">
+              {dict.nav.map((item) => (
+                <Link
+                  key={item.slug}
+                  href={localePath(locale, item.slug)}
+                  className="border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[color:rgba(25,28,30,0.72)] transition-colors hover:border-[var(--accent)] hover:text-[var(--primary)]"
+                >
+                  {item.label}
+                </Link>
+              ))}
+              <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2.5">
+                <LanguageSwitcher locale={locale} mobileInMenu />
+              </div>
+            </div>
+          </details>
         </div>
 
-        <div className="mx-auto flex w-full max-w-7xl justify-end border-t border-[color:rgba(0,9,36,0.06)] px-5 py-2 md:px-8 xl:px-12">
+        <div className="mx-auto hidden w-full max-w-7xl justify-end border-t border-[color:rgba(0,9,36,0.06)] px-4 py-1.5 md:flex md:px-8 md:py-2 xl:px-12">
           <LanguageSwitcher locale={locale} />
         </div>
       </header>
 
-      <div className="pt-[7.6rem] md:pt-[8rem]">{children}</div>
+      <div className="pt-[4.9rem] md:pt-[10.5rem] xl:pt-[8rem]">{children}</div>
 
       <footer className="border-t border-[color:rgba(0,9,36,0.06)] bg-[var(--surface-low)]">
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:px-8 xl:px-12">
