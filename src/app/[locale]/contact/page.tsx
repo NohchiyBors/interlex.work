@@ -1,8 +1,9 @@
 import { notFound } from "next/navigation";
-import { buildMetadata, getDictionary, hasLocale } from "@/lib/i18n";
+import { buildMetadata, getDictionary, hasLocale, localePath } from "@/lib/i18n";
 import { JsonLd } from "@/components/json-ld";
+import { ContactForm } from "@/components/contact-form";
+import { getContactFormCopy } from "@/lib/contact-form-copy";
 import { getBreadcrumbJsonLd, getSeoContent } from "@/lib/seo";
-import { localePath } from "@/lib/i18n";
 
 export async function generateMetadata(props: PageProps<"/[locale]/contact">) {
   const { locale } = await props.params;
@@ -18,7 +19,9 @@ export async function generateMetadata(props: PageProps<"/[locale]/contact">) {
 export default async function ContactPage(props: PageProps<"/[locale]/contact">) {
   const { locale } = await props.params;
   if (!hasLocale(locale)) notFound();
+
   const dict = getDictionary(locale);
+  const formCopy = getContactFormCopy(locale);
   const whatsappHref = "https://wa.me/77000070021";
   const whatsappLabel = locale === "ru" ? "Написать в WhatsApp" : "Write on WhatsApp";
 
@@ -30,7 +33,8 @@ export default async function ContactPage(props: PageProps<"/[locale]/contact">)
           { name: dict.contactPage.title, url: `https://interlex.work${localePath(locale, "contact")}` },
         ])}
       />
-      <section className="grid gap-6 lg:grid-cols-[1fr_0.92fr]">
+
+      <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[var(--accent)]">{dict.contactPage.eyebrow}</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.96] tracking-[-0.04em] text-[var(--primary)] md:text-6xl">
@@ -49,17 +53,19 @@ export default async function ContactPage(props: PageProps<"/[locale]/contact">)
           </div>
         </div>
 
-        <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{dict.contactPage.flowLabel}</p>
-          <ol className="mt-5 space-y-4">
-            {dict.contactPage.steps.map((step, index) => (
-              <li key={step} className="flex gap-4 border border-[color:rgba(0,9,36,0.08)] bg-white px-4 py-4">
-                <span className="font-display text-3xl leading-none text-[var(--accent)]">0{index + 1}</span>
-                <span className="pt-1 text-sm leading-7 text-[var(--ink)]">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
+        <ContactForm locale={locale} copy={formCopy} />
+      </section>
+
+      <section className="mt-6 border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">
+        <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{dict.contactPage.flowLabel}</p>
+        <ol className="mt-5 grid gap-4 lg:grid-cols-3">
+          {dict.contactPage.steps.map((step, index) => (
+            <li key={step} className="flex gap-4 border border-[color:rgba(0,9,36,0.08)] bg-white px-4 py-4">
+              <span className="font-display text-3xl leading-none text-[var(--accent)]">0{index + 1}</span>
+              <span className="pt-1 text-sm leading-7 text-[var(--ink)]">{step}</span>
+            </li>
+          ))}
+        </ol>
       </section>
 
       <section className="mt-6 grid gap-4 md:grid-cols-3">

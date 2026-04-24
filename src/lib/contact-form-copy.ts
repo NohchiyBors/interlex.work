@@ -1,0 +1,317 @@
+import type { Locale } from "@/lib/i18n";
+
+export const marketValues = ["kz", "ge", "compare", "ma", "other"] as const;
+
+export type ContactMarket = (typeof marketValues)[number];
+
+type MarketOption = Readonly<{
+  value: ContactMarket;
+  label: string;
+}>;
+
+export type ContactFormCopy = Readonly<{
+  label: string;
+  title: string;
+  body: string;
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  companyLabel: string;
+  companyPlaceholder: string;
+  marketLabel: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  submitIdle: string;
+  submitPending: string;
+  successMessage: string;
+  errorMessage: string;
+  marketOptions: readonly MarketOption[];
+}>;
+
+const baseMarkets = {
+  kz: "kz" as const,
+  ge: "ge" as const,
+  compare: "compare" as const,
+  ma: "ma" as const,
+  other: "other" as const,
+};
+
+const copy: Record<Locale, ContactFormCopy> = {
+  en: {
+    label: "Email Intake",
+    title: "Send the request by email.",
+    body: "Fill in the basic details. The message will be delivered to the inbox together with context from the contact route.",
+    nameLabel: "Name",
+    namePlaceholder: "Your name",
+    emailLabel: "Email",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp or phone",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Company",
+    companyPlaceholder: "Company or project name",
+    marketLabel: "Market or track",
+    messageLabel: "Request",
+    messagePlaceholder: "Describe the task, market, timing, and what decision needs to be made first.",
+    submitIdle: "Send Request",
+    submitPending: "Sending...",
+    successMessage: "The message has been sent. We received the request by email.",
+    errorMessage: "The message could not be sent right now. Please try again or use WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Need help deciding" },
+      { value: baseMarkets.kz, label: "Kazakhstan" },
+      { value: baseMarkets.ge, label: "Georgia" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Other" },
+    ],
+  },
+  ru: {
+    label: "Email Intake",
+    title: "Отправьте запрос письмом.",
+    body: "Заполните базовую информацию. Сообщение придет на email вместе с контекстом из contact route.",
+    nameLabel: "Имя",
+    namePlaceholder: "Как к вам обращаться",
+    emailLabel: "Email",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp или телефон",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Компания",
+    companyPlaceholder: "Название компании или проекта",
+    marketLabel: "Рынок или направление",
+    messageLabel: "Запрос",
+    messagePlaceholder: "Кратко опишите задачу, рынок, сроки и какое решение нужно принять в первую очередь.",
+    submitIdle: "Отправить запрос",
+    submitPending: "Отправляем...",
+    successMessage: "Сообщение отправлено. Мы получили запрос на email.",
+    errorMessage: "Сейчас не удалось отправить сообщение. Повторите попытку или используйте WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Нужна помощь с выбором" },
+      { value: baseMarkets.kz, label: "Казахстан" },
+      { value: baseMarkets.ge, label: "Грузия" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Другое" },
+    ],
+  },
+  zh: {
+    label: "邮件表单",
+    title: "通过邮件发送请求。",
+    body: "填写基础信息。消息会连同联系页上下文一起发送到邮箱。",
+    nameLabel: "姓名",
+    namePlaceholder: "如何称呼您",
+    emailLabel: "邮箱",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp 或电话",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "公司",
+    companyPlaceholder: "公司或项目名称",
+    marketLabel: "市场或方向",
+    messageLabel: "请求内容",
+    messagePlaceholder: "请简要说明任务、市场、时间安排以及首先需要做出的决定。",
+    submitIdle: "发送请求",
+    submitPending: "发送中...",
+    successMessage: "消息已发送。我们已通过邮箱收到请求。",
+    errorMessage: "当前无法发送消息。请稍后重试或使用 WhatsApp。",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "需要帮助判断" },
+      { value: baseMarkets.kz, label: "哈萨克斯坦" },
+      { value: baseMarkets.ge, label: "格鲁吉亚" },
+      { value: baseMarkets.ma, label: "跨境 / M&A" },
+      { value: baseMarkets.other, label: "其他" },
+    ],
+  },
+  it: {
+    label: "Modulo email",
+    title: "Invia la richiesta via email.",
+    body: "Compila i dati essenziali. Il messaggio arrivera nella casella email insieme al contesto della pagina contatti.",
+    nameLabel: "Nome",
+    namePlaceholder: "Come possiamo chiamarti",
+    emailLabel: "Email",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp o telefono",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Societa",
+    companyPlaceholder: "Nome della societa o del progetto",
+    marketLabel: "Mercato o track",
+    messageLabel: "Richiesta",
+    messagePlaceholder: "Descrivi in breve task, mercato, tempistiche e quale decisione va presa per prima.",
+    submitIdle: "Invia richiesta",
+    submitPending: "Invio...",
+    successMessage: "Messaggio inviato. Abbiamo ricevuto la richiesta via email.",
+    errorMessage: "Impossibile inviare il messaggio adesso. Riprova o usa WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Serve aiuto per decidere" },
+      { value: baseMarkets.kz, label: "Kazakistan" },
+      { value: baseMarkets.ge, label: "Georgia" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Altro" },
+    ],
+  },
+  fr: {
+    label: "Formulaire email",
+    title: "Envoyez la demande par email.",
+    body: "Renseignez les informations essentielles. Le message arrivera dans la boite email avec le contexte de la page contact.",
+    nameLabel: "Nom",
+    namePlaceholder: "Comment vous appeler",
+    emailLabel: "Email",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp ou telephone",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Societe",
+    companyPlaceholder: "Nom de la societe ou du projet",
+    marketLabel: "Marche ou parcours",
+    messageLabel: "Demande",
+    messagePlaceholder: "Decrivez brievement la mission, le marche, le timing et la premiere decision a prendre.",
+    submitIdle: "Envoyer la demande",
+    submitPending: "Envoi...",
+    successMessage: "Le message a ete envoye. Nous avons recu la demande par email.",
+    errorMessage: "Impossible d'envoyer le message pour le moment. Reessayez ou utilisez WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Besoin d'aide pour choisir" },
+      { value: baseMarkets.kz, label: "Kazakhstan" },
+      { value: baseMarkets.ge, label: "Georgie" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Autre" },
+    ],
+  },
+  ka: {
+    label: "Email ფორმა",
+    title: "გამოგვიგზავნეთ მოთხოვნა ელფოსტით.",
+    body: "შეავსეთ ძირითადი ინფორმაცია. წერილი მივა ელფოსტაზე contact გვერდის კონტექსტთან ერთად.",
+    nameLabel: "სახელი",
+    namePlaceholder: "როგორ მოგმართოთ",
+    emailLabel: "Email",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp ან ტელეფონი",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "კომპანია",
+    companyPlaceholder: "კომპანიის ან პროექტის სახელი",
+    marketLabel: "ბაზარი ან მიმართულება",
+    messageLabel: "მოთხოვნა",
+    messagePlaceholder: "მოკლედ აღწერეთ ამოცანა, ბაზარი, ვადები და რომელი გადაწყვეტილებაა პირველად მისაღები.",
+    submitIdle: "მოთხოვნის გაგზავნა",
+    submitPending: "იგზავნება...",
+    successMessage: "შეტყობინება გაიგზავნა. მოთხოვნა ელფოსტაზე მივიღეთ.",
+    errorMessage: "ახლა შეტყობინების გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან ან გამოიყენეთ WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "მჭირდება არჩევაში დახმარება" },
+      { value: baseMarkets.kz, label: "ყაზახეთი" },
+      { value: baseMarkets.ge, label: "საქართველო" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "სხვა" },
+    ],
+  },
+  de: {
+    label: "E-Mail-Formular",
+    title: "Senden Sie die Anfrage per E-Mail.",
+    body: "Tragen Sie die Basisdaten ein. Die Nachricht geht zusammen mit dem Kontext der Kontaktseite an das Postfach.",
+    nameLabel: "Name",
+    namePlaceholder: "Wie wir Sie ansprechen sollen",
+    emailLabel: "E-Mail",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp oder Telefon",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Unternehmen",
+    companyPlaceholder: "Name des Unternehmens oder Projekts",
+    marketLabel: "Markt oder Track",
+    messageLabel: "Anfrage",
+    messagePlaceholder: "Beschreiben Sie kurz Aufgabe, Markt, Timing und welche Entscheidung zuerst getroffen werden muss.",
+    submitIdle: "Anfrage senden",
+    submitPending: "Wird gesendet...",
+    successMessage: "Die Nachricht wurde gesendet. Wir haben die Anfrage per E-Mail erhalten.",
+    errorMessage: "Die Nachricht konnte gerade nicht gesendet werden. Bitte erneut versuchen oder WhatsApp nutzen.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Hilfe bei der Entscheidung" },
+      { value: baseMarkets.kz, label: "Kasachstan" },
+      { value: baseMarkets.ge, label: "Georgien" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Sonstiges" },
+    ],
+  },
+  ar: {
+    label: "نموذج البريد",
+    title: "ارسل الطلب عبر البريد.",
+    body: "املأ المعلومات الاساسية. ستصل الرسالة الى البريد مع سياق صفحة التواصل.",
+    nameLabel: "الاسم",
+    namePlaceholder: "كيف نخاطبك",
+    emailLabel: "البريد",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "واتساب او هاتف",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "الشركة",
+    companyPlaceholder: "اسم الشركة او المشروع",
+    marketLabel: "السوق او المسار",
+    messageLabel: "الطلب",
+    messagePlaceholder: "اشرح باختصار المهمة والسوق والتوقيت وما القرار الذي يجب اتخاذه اولا.",
+    submitIdle: "ارسال الطلب",
+    submitPending: "جار الارسال...",
+    successMessage: "تم ارسال الرسالة. وصلنا الطلب عبر البريد.",
+    errorMessage: "تعذر ارسال الرسالة حاليا. حاول مرة اخرى او استخدم WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "احتاج مساعدة في الاختيار" },
+      { value: baseMarkets.kz, label: "كازاخستان" },
+      { value: baseMarkets.ge, label: "جورجيا" },
+      { value: baseMarkets.ma, label: "عبر الحدود / M&A" },
+      { value: baseMarkets.other, label: "اخرى" },
+    ],
+  },
+  tr: {
+    label: "E-posta formu",
+    title: "Talebi e-postayla gonderin.",
+    body: "Temel bilgileri doldurun. Mesaj, contact sayfasi baglami ile birlikte gelen kutusuna ulasir.",
+    nameLabel: "Ad",
+    namePlaceholder: "Size nasil hitap edelim",
+    emailLabel: "E-posta",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp veya telefon",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Sirket",
+    companyPlaceholder: "Sirket veya proje adi",
+    marketLabel: "Pazar veya track",
+    messageLabel: "Talep",
+    messagePlaceholder: "Gorevi, pazari, zamanlamayi ve once hangi kararin alinmasi gerektigini kisaca aciklayin.",
+    submitIdle: "Talebi gonder",
+    submitPending: "Gonderiliyor...",
+    successMessage: "Mesaj gonderildi. Talebi e-posta ile aldik.",
+    errorMessage: "Mesaj su anda gonderilemedi. Tekrar deneyin veya WhatsApp kullanin.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Karar icin yardim gerekiyor" },
+      { value: baseMarkets.kz, label: "Kazakistan" },
+      { value: baseMarkets.ge, label: "Gurcistan" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Diger" },
+    ],
+  },
+  es: {
+    label: "Formulario email",
+    title: "Envie la solicitud por email.",
+    body: "Complete los datos basicos. El mensaje llegara al correo junto con el contexto de la pagina de contacto.",
+    nameLabel: "Nombre",
+    namePlaceholder: "Como debemos dirigirnos a usted",
+    emailLabel: "Email",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp o telefono",
+    phonePlaceholder: "+7 ... / +995 ...",
+    companyLabel: "Empresa",
+    companyPlaceholder: "Nombre de la empresa o del proyecto",
+    marketLabel: "Mercado o track",
+    messageLabel: "Solicitud",
+    messagePlaceholder: "Describa brevemente la tarea, el mercado, los tiempos y que decision debe tomarse primero.",
+    submitIdle: "Enviar solicitud",
+    submitPending: "Enviando...",
+    successMessage: "El mensaje fue enviado. Hemos recibido la solicitud por email.",
+    errorMessage: "No se pudo enviar el mensaje ahora. Intente de nuevo o use WhatsApp.",
+    marketOptions: [
+      { value: baseMarkets.compare, label: "Necesito ayuda para decidir" },
+      { value: baseMarkets.kz, label: "Kazajistan" },
+      { value: baseMarkets.ge, label: "Georgia" },
+      { value: baseMarkets.ma, label: "Cross-border / M&A" },
+      { value: baseMarkets.other, label: "Otro" },
+    ],
+  },
+};
+
+export function getContactFormCopy(locale: Locale) {
+  return copy[locale];
+}
