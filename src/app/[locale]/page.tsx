@@ -43,7 +43,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
             <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)] md:text-lg">{dict.home.lead}</p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link
-                href={localePath(locale, "cross-border")}
+                href={locale === "ru" ? localePath(locale, "contact") : localePath(locale, "cross-border")}
                 className="btn-primary inline-flex items-center justify-center border px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition-colors"
               >
                 {dict.home.primaryCta}
@@ -143,7 +143,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
             </h2>
             <p className="mt-4 text-base leading-8 text-[var(--muted)]">{guideSection.home.body}</p>
           </div>
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {guideCards.map((card) => (
               <Link
                 key={card.slug}

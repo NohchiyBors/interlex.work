@@ -10,24 +10,38 @@ const publicFiles = [
   "/site.webmanifest",
 ];
 
-const localizedSlugs = new Set(["/", "/about", "/cross-border", "/contact"]);
+const localizedSlugs = new Set([
+  "/",
+  "/about",
+  "/cross-border",
+  "/contact",
+  "/kz",
+  "/kz/sez",
+  "/kz/aifc",
+  "/ge",
+  "/ge/vz",
+  "/ma",
+  "/ma/dd",
+  "/investors",
+]);
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
+  const normalizedPathname = pathname !== "/" && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
   if (
-    pathname.startsWith("/_next/") ||
-    pathname.startsWith("/api/") ||
-    pathname.includes(".") ||
-    publicFiles.some((file) => pathname === file || pathname.startsWith(`${file}/`)) ||
-    hasLocalePrefix(pathname) ||
-    !localizedSlugs.has(pathname)
+    normalizedPathname.startsWith("/_next/") ||
+    normalizedPathname.startsWith("/api/") ||
+    normalizedPathname.includes(".") ||
+    publicFiles.some((file) => normalizedPathname === file || normalizedPathname.startsWith(`${file}/`)) ||
+    hasLocalePrefix(normalizedPathname) ||
+    !localizedSlugs.has(normalizedPathname)
   ) {
     return NextResponse.next();
   }
 
   const locale = detectLocaleFromHeader(request.headers.get("accept-language"));
-  const slug = pathname === "/" ? "" : pathname.slice(1);
+  const slug = normalizedPathname === "/" ? "" : normalizedPathname.slice(1);
   const url = request.nextUrl.clone();
 
   url.pathname = localePath(locale, slug);

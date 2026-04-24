@@ -10,6 +10,9 @@ type Props = Readonly<{
 }>;
 
 export function SiteFrame({ children, locale, dict }: Props) {
+  const stickyCtaLabel = locale === "ru" ? "Бесплатная консультация" : dict.site.compareMarkets;
+  const stickyCtaHref = locale === "ru" ? localePath(locale, "contact") : localePath(locale, "cross-border");
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--background)] text-[var(--ink)]">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_right,rgba(182,198,243,0.18),transparent_28%),linear-gradient(180deg,rgba(255,255,255,0.65)_0%,rgba(247,249,252,0)_22%)]" />
@@ -45,10 +48,10 @@ export function SiteFrame({ children, locale, dict }: Props) {
           </nav>
 
           <Link
-            href={localePath(locale, "cross-border")}
+            href={stickyCtaHref}
             className="btn-primary ml-auto inline-flex shrink-0 items-center border px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors md:px-4 md:text-xs md:tracking-[0.18em] xl:ml-0"
           >
-            {dict.site.compareMarkets}
+            {stickyCtaLabel}
           </Link>
 
           <details className="order-4 basis-full border-t border-[color:rgba(0,9,36,0.06)] pt-3 md:hidden">
@@ -84,6 +87,7 @@ export function SiteFrame({ children, locale, dict }: Props) {
         <div className="mx-auto grid w-full max-w-7xl gap-10 px-6 py-14 md:grid-cols-[1.2fr_0.8fr_0.8fr] md:px-8 xl:px-12">
           <div className="space-y-4">
             <p className="text-xs uppercase tracking-[0.28em] text-[color:rgba(25,28,30,0.56)]">{dict.site.brand}</p>
+            <p className="text-sm font-medium tracking-[0.01em] text-[var(--accent)]">{dict.site.tagline}</p>
             <h2 className="font-display text-4xl leading-none tracking-[-0.04em] text-[var(--primary)]">{dict.site.footerTitle}</h2>
             <p className="max-w-xl text-sm leading-7 text-[var(--muted)]">{dict.site.footerBody}</p>
           </div>

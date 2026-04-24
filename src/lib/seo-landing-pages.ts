@@ -1,4 +1,5 @@
 import type { Locale } from "@/lib/i18n";
+import { getHubSeoPage, type HubSeoPageContent } from "@/lib/hub-seo-pages";
 
 type ComparisonRow = {
   label: string;
@@ -106,6 +107,33 @@ export type SeoGuideCard = {
   eyebrow: string;
   title: string;
   body: string;
+};
+
+function normalizeGuideCardTitle(title: string) {
+  return title.replace(/\s+[—-]\s+InterLex$/u, "");
+}
+
+const ruHubGuideCardOverrides: Record<string, Omit<SeoGuideCard, "slug">> = {
+  "kz/sez": {
+    eyebrow: "Казахстан / СЭЗ",
+    title: "16 СЭЗ Казахстана: подберите режим под реальный бизнес.",
+    body: "Льготы, профиль зоны, требования к проекту и маршрут регистрации без иллюзий про «универсальную» льготу.",
+  },
+  "ge/vz": {
+    eyebrow: "Грузия / Virtual Zone",
+    title: "Virtual Zone Person: проверьте, подходит ли 0% именно вашей IT-модели.",
+    body: "Помогаем проверить применимость режима, собрать структуру и отделить рабочий налоговый инструмент от опасных фантазий.",
+  },
+  ma: {
+    eyebrow: "M&A",
+    title: "Хотите купить актив в Казахстане или Грузии? Начните с проверки, а не с оплаты.",
+    body: "Скрининг цели, структура сделки, переговоры и due diligence в одном контуре до подписания.",
+  },
+  investors: {
+    eyebrow: "Инвесторам / GR",
+    title: "Преференции, гранты и GR лучше собирать до переговоров, а не после.",
+    body: "InterLex помогает упаковать проект, понять, где нужны льготы, и выстроить прямой рабочий диалог с профильными органами.",
+  },
 };
 
 const kazakhstanVsGeorgiaContent: Record<Locale, ComparisonLandingPage> = {
@@ -1407,6 +1435,19 @@ export function getSeoGuideCards(locale: Locale): SeoGuideCard[] {
   const comparison = getKazakhstanVsGeorgiaContent(locale);
   const structuring = getCrossBorderStructuringContent(locale);
   const marketEntry = getInternationalMarketEntryContent(locale);
+  const hubCards = ["kz/sez", "ge/vz", "ma", "investors"]
+    .map((slug) => getHubSeoPage(locale, slug))
+    .filter((page): page is HubSeoPageContent => page !== null)
+    .map((page) => {
+      const override = locale === "ru" ? ruHubGuideCardOverrides[page.slug] : undefined;
+
+      return {
+        slug: page.slug,
+        eyebrow: override?.eyebrow ?? page.eyebrow,
+        title: override?.title ?? normalizeGuideCardTitle(page.title),
+        body: override?.body ?? page.description,
+      };
+    });
 
   return [
     {
@@ -1427,5 +1468,6 @@ export function getSeoGuideCards(locale: Locale): SeoGuideCard[] {
       title: marketEntry.heroTitle,
       body: marketEntry.overviewBody,
     },
+    ...hubCards,
   ];
 }

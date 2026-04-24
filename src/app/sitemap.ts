@@ -1,7 +1,17 @@
 import type { MetadataRoute } from "next";
 import { baseUrl, defaultLocale, localePath, locales } from "@/lib/i18n";
+import { getHubSeoPageSlugs } from "@/lib/hub-seo-pages";
 
-const routeSlugs = ["", "about", "cross-border", "contact", "kazakhstan-vs-georgia", "cross-border-structuring", "international-market-entry"] as const;
+const routeSlugs = [
+  "",
+  "about",
+  "cross-border",
+  "contact",
+  "kazakhstan-vs-georgia",
+  "cross-border-structuring",
+  "international-market-entry",
+  ...getHubSeoPageSlugs(),
+] as const;
 const now = new Date();
 
 export default function sitemap(): MetadataRoute.Sitemap {

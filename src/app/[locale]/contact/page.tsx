@@ -19,6 +19,8 @@ export default async function ContactPage(props: PageProps<"/[locale]/contact">)
   const { locale } = await props.params;
   if (!hasLocale(locale)) notFound();
   const dict = getDictionary(locale);
+  const whatsappHref = "https://wa.me/77000070021";
+  const whatsappLabel = locale === "ru" ? "Написать в WhatsApp" : "Write on WhatsApp";
 
   return (
     <main className="mx-auto w-full max-w-7xl px-6 pb-14 pt-8 md:px-8 xl:px-12 xl:pt-12">
@@ -35,6 +37,16 @@ export default async function ContactPage(props: PageProps<"/[locale]/contact">)
             {dict.contactPage.introTitle}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)]">{dict.contactPage.introBody}</p>
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noreferrer"
+              className="btn-primary inline-flex items-center justify-center border px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition-colors"
+            >
+              {whatsappLabel}
+            </a>
+          </div>
         </div>
 
         <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">

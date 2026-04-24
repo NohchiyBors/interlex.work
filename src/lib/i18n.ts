@@ -39,6 +39,7 @@ type Dictionary = {
     title: string;
     description: string;
     brand: string;
+    tagline: string;
     hubLabel: string;
     compareMarkets: string;
     markets: string;
@@ -170,6 +171,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "Global hub for InterLex with multilingual routing into Kazakhstan and Georgia.",
       brand: "InterLex",
+      tagline: "Two Markets. One Partner.",
       hubLabel: "Global Hub",
       compareMarkets: "Compare Markets",
       markets: "Markets",
@@ -312,6 +314,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "Глобальный хаб InterLex с мультиязычным маршрутом в Казахстан и Грузию.",
       brand: "InterLex",
+      tagline: "Два рынка. Один партнёр.",
       hubLabel: "Глобальный хаб",
       compareMarkets: "Сравнить рынки",
       markets: "Рынки",
@@ -329,7 +332,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       eyebrow: "InterLex Global Hub",
       title: "InterLex помогает безопасно выходить в Казахстан и Грузию через одну сильную точку входа.",
       lead: "Здесь начинается работа с международными проектами: выбор юрисдикции, структура бизнеса, выход на рынок, запуск компании и передача проекта в правильную локальную команду.",
-      primaryCta: "Обсудить международный проект",
+      primaryCta: "Получить бесплатную консультацию",
       secondaryCta: "Посмотреть направления работы",
       logicLabel: "Как мы работаем",
       notes: [
@@ -338,13 +341,29 @@ const dictionaries: Record<Locale, Dictionary> = {
         "После этого передаем проект в нужную страновую команду без потери контекста.",
       ],
       logicBody: "Если рынок уже понятен, можно сразу переходить к локальной работе. Если сначала нужно принять сильное решение по структуре, стране входа или формату запуска, начните с хаба и соберите проект правильно с самого начала.",
-      positioningLabel: "Почему это удобно клиенту",
-      positioningTitle: "Одна точка входа для международного проекта, два сильных локальных направления для исполнения.",
-      positioningBody: "InterLex нужен, когда по проекту важно быстро принять первое верное решение: где запускаться, как строить структуру и с какой команды начинать. Мы помогаем определить это сразу, чтобы дальше проект шел без лишних кругов и переделок.",
+      positioningLabel: "Почему InterLex",
+      positioningTitle: "Мы не продаем регистрации. Мы строим бизнес-инфраструктуру под новую юрисдикцию.",
+      positioningBody:
+        "InterLex подключается там, где важно не просто открыть компанию, а правильно зайти в страну, собрать структуру и передать проект в сильную локальную команду. Для клиента это одна команда, один маршрут и законные рабочие решения для Казахстана и Грузии без лишних кругов и переделок.",
       sections: [
-        { label: "О нас", slug: "about", title: "Как работает InterLex и почему международные проекты удобнее собирать через хаб.", body: "Эта страница объясняет, как мы соединяем глобальную рамку проекта с сильным локальным исполнением в нужной юрисдикции." },
-        { label: "Международные проекты", slug: "cross-border", title: "Как мы помогаем выбрать страну, собрать структуру и подготовить запуск.", body: "Раздел нужен для проектов, где важно сначала принять правильные решения по рынку, структуре и логике входа." },
-        { label: "Контакты", slug: "contact", title: "Быстрый первый вход, если вы уже готовы обсуждать задачу.", body: "Напишите команде InterLex и получите понятный следующий шаг: консультацию, сборку структуры или передачу в локальную практику." },
+        {
+          label: "О нас",
+          slug: "about",
+          title: "Мы не просто регистрируем компании — мы помогаем строить бизнес в новой юрисдикции.",
+          body: "InterLex ведет проект от первой стратегии до передачи в локальную практику, поэтому клиенту не нужно заново собирать отдельных консультантов по Казахстану и Грузии.",
+        },
+        {
+          label: "Международные проекты",
+          slug: "cross-border",
+          title: "Выход на рынок, международное структурирование и дальнейшее сопровождение.",
+          body: "Раздел помогает быстро понять, с чего лучше начинать: со сравнения стран, со сборки структуры или с подготовки запуска.",
+        },
+        {
+          label: "Контакты",
+          slug: "contact",
+          title: "Быстрый первый разговор, если задача уже готова к обсуждению.",
+          body: "Напишите команде InterLex и получите понятный следующий шаг: консультацию, сборку структуры, запуск сделки или передачу в локальную практику.",
+        },
       ],
     },
     about: {
@@ -417,23 +436,25 @@ const dictionaries: Record<Locale, Dictionary> = {
       {
         name: "Казахстан",
         ...sharedDomains[0],
-        language: "Казахстанская практика",
-        strapline: "Для проектов, которым нужен реальный запуск, юридическое сопровождение, бухгалтерия, налоги и операционная работа в Казахстане.",
+        language: "Казахстан / СЭЗ",
+        strapline:
+          "Для проектов, которым нужен реальный запуск в Казахстане: СЭЗ, AIFC, локальное сопровождение, налоги, бухгалтерия и операционная работа на месте.",
         points: [
-          "Подходит для фаундеров, инвесторов и команд, которые выходят в Казахстан или расширяют там бизнес.",
-          "Лучший выбор, если проект зависит от местной регистрации, локального сопровождения и работы на месте.",
-          "Здесь проект переходит из стратегии в практическое исполнение внутри Казахстана.",
+          "СЭЗ в Казахстане — это не оффшорная оболочка, а государственный инструмент для запуска и масштабирования бизнеса под конкретную отрасль.",
+          "16 специальных зон и отдельные режимы вроде AIFC нужно подбирать под реальную операционную модель, а не под красивую презентацию льгот.",
+          "Казахстан остается сильным входом, если проекту нужен рынок ЕАЭС, локальная инфраструктура и исполнение внутри страны.",
         ],
       },
       {
         name: "Грузия",
         ...sharedDomains[1],
-        language: "Грузинская практика",
-        strapline: "Для проектов, где важны гибкая структура, FIZ, международная логика бизнеса и дальнейшее сопровождение в Грузии.",
+        language: "Грузия / Virtual Zone",
+        strapline:
+          "Для проектов, где важны быстрая регистрация, Virtual Zone, экспортная IT-модель, гибкая структура и дальнейшее сопровождение в Грузии.",
         points: [
-          "Подходит международным клиентам, холдингам и founder-led командам, которым важна гибкость структуры и англоязычная коммуникация.",
-          "Сильный маршрут для задач, связанных с FIZ, международным структурированием и входом через Грузию.",
-          "Здесь проект получает локальное исполнение уже внутри грузинской юрисдикции.",
+          "Virtual Zone Person может давать 0% корпоративного налога для IT-экспорта, если режим действительно подходит под модель бизнеса и реальную деятельность.",
+          "LLC, Virtual Zone и специальные режимы позволяют быстро собрать вход под сервисный, технологический и международный бизнес.",
+          "Грузия подходит, когда проекту нужна гибкая международная структура, понятный вход и рабочее сопровождение уже внутри юрисдикции.",
         ],
       },
     ],
@@ -454,6 +475,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex 全球枢纽",
       description: "InterLex 的多语言全球枢纽，可将需求路由到哈萨克斯坦和格鲁吉亚。",
       brand: "InterLex",
+      tagline: "两个市场，一个伙伴。",
       hubLabel: "全球枢纽",
       compareMarkets: "比较市场",
       markets: "市场",
@@ -596,6 +618,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "Hub globale multilingue di InterLex con instradamento verso Kazakistan e Georgia.",
       brand: "InterLex",
+      tagline: "Due mercati. Un partner.",
       hubLabel: "Hub Globale",
       compareMarkets: "Confronta i Mercati",
       markets: "Mercati",
@@ -738,6 +761,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "Hub mondial multilingue d’InterLex avec routage vers le Kazakhstan et la Géorgie.",
       brand: "InterLex",
+      tagline: "Deux marchés. Un partenaire.",
       hubLabel: "Hub Global",
       compareMarkets: "Comparer les Marchés",
       markets: "Marchés",
@@ -880,6 +904,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "InterLex-ის მრავალენოვანი გლობალური ჰაბი, რომელიც მომხმარებელს ყაზახეთისა და საქართველოს მიმართულებით გადაამისამართებს.",
       brand: "InterLex",
+      tagline: "ორი ბაზარი. ერთი პარტნიორი.",
       hubLabel: "გლობალური ჰაბი",
       compareMarkets: "ბაზრების შედარება",
       markets: "ბაზრები",
@@ -1022,6 +1047,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "Mehrsprachiger globaler Hub von InterLex mit Routing nach Kasachstan und Georgien.",
       brand: "InterLex",
+      tagline: "Zwei Märkte. Ein Partner.",
       hubLabel: "Global Hub",
       compareMarkets: "Märkte Vergleichen",
       markets: "Märkte",
@@ -1164,6 +1190,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "المركز العالمي متعدد اللغات لـ InterLex مع توجيه نحو كازاخستان وجورجيا.",
       brand: "InterLex",
+      tagline: "سوقان. شريك واحد.",
       hubLabel: "المركز العالمي",
       compareMarkets: "مقارنة الأسواق",
       markets: "الأسواق",
@@ -1306,6 +1333,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "InterLex’in Kazakistan ve Gürcistan’a yönlendiren çok dilli global hub’ı.",
       brand: "InterLex",
+      tagline: "İki pazar. Tek ortak.",
       hubLabel: "Global Hub",
       compareMarkets: "Pazarları Karşılaştır",
       markets: "Pazarlar",
@@ -1448,6 +1476,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       title: "InterLex Global Hub",
       description: "Hub global multilingüe de InterLex con enrutamiento hacia Kazajistán y Georgia.",
       brand: "InterLex",
+      tagline: "Dos mercados. Un socio.",
       hubLabel: "Hub Global",
       compareMarkets: "Comparar Mercados",
       markets: "Mercados",
