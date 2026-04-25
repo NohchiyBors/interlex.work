@@ -56,7 +56,7 @@ export function SiteFrame({ children, locale, dict }: Props) {
 
           <details className="order-4 basis-full border-t border-[color:rgba(0,9,36,0.06)] pt-3 md:hidden">
             <summary className="flex cursor-pointer list-none items-center justify-between border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
-              <span>Меню</span>
+              <span>{dict.site.menuLabel}</span>
               <span aria-hidden>+</span>
             </summary>
             <div className="mt-2 grid gap-2">

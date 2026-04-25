@@ -7,7 +7,7 @@ export const baseUrl = "https://interlex.work";
 export type Locale = (typeof locales)[number];
 
 type NavItem = {
-  slug: "" | "about" | "cross-border" | "contact";
+  slug: "" | "about" | "cross-border" | "contact" | "briefs";
   label: string;
 };
 
@@ -42,6 +42,7 @@ type Dictionary = {
     tagline: string;
     hubLabel: string;
     compareMarkets: string;
+    menuLabel: string;
     markets: string;
     contact: string;
     footerTitle: string;
@@ -174,6 +175,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Two Markets. One Partner.",
       hubLabel: "Global Hub",
       compareMarkets: "Compare Markets",
+      menuLabel: "Menu",
       markets: "Markets",
       contact: "Contact",
       footerTitle: "A global front door with local execution where it belongs.",
@@ -184,6 +186,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "About" },
       { slug: "cross-border", label: "Cross-border" },
       { slug: "contact", label: "Contact" },
+      { slug: "briefs", label: "Briefs" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -317,6 +320,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Два рынка. Один партнёр.",
       hubLabel: "Глобальный хаб",
       compareMarkets: "Сравнить рынки",
+      menuLabel: "Меню",
       markets: "Рынки",
       contact: "Контакты",
       footerTitle: "Глобальная точка входа с локальным исполнением там, где ему место.",
@@ -327,6 +331,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "О нас" },
       { slug: "cross-border", label: "Международные проекты" },
       { slug: "contact", label: "Контакты" },
+      { slug: "briefs", label: "Брифы" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -478,6 +483,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "两个市场，一个伙伴。",
       hubLabel: "全球枢纽",
       compareMarkets: "比较市场",
+      menuLabel: "菜单",
       markets: "市场",
       contact: "联系",
       footerTitle: "全球入口，执行仍然留在应当执行的本地市场。",
@@ -488,6 +494,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "关于" },
       { slug: "cross-border", label: "跨境" },
       { slug: "contact", label: "联系" },
+      { slug: "briefs", label: "简报" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -621,6 +628,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Due mercati. Un partner.",
       hubLabel: "Hub Globale",
       compareMarkets: "Confronta i Mercati",
+      menuLabel: "Menu",
       markets: "Mercati",
       contact: "Contatti",
       footerTitle: "Un ingresso globale con esecuzione locale dove deve stare.",
@@ -631,6 +639,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "Chi Siamo" },
       { slug: "cross-border", label: "Cross-border" },
       { slug: "contact", label: "Contatti" },
+      { slug: "briefs", label: "Brief" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -764,6 +773,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Deux marchés. Un partenaire.",
       hubLabel: "Hub Global",
       compareMarkets: "Comparer les Marchés",
+      menuLabel: "Menu",
       markets: "Marchés",
       contact: "Contact",
       footerTitle: "Une porte d’entrée mondiale avec l’exécution locale à sa juste place.",
@@ -774,6 +784,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "À Propos" },
       { slug: "cross-border", label: "Cross-border" },
       { slug: "contact", label: "Contact" },
+      { slug: "briefs", label: "Briefs" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -907,6 +918,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "ორი ბაზარი. ერთი პარტნიორი.",
       hubLabel: "გლობალური ჰაბი",
       compareMarkets: "ბაზრების შედარება",
+      menuLabel: "მენიუ",
       markets: "ბაზრები",
       contact: "კონტაქტი",
       footerTitle: "გლობალური შესასვლელი, სადაც ლოკალური შესრულება თავის სწორ ადგილზე რჩება.",
@@ -917,6 +929,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "ჩვენ შესახებ" },
       { slug: "cross-border", label: "Cross-border" },
       { slug: "contact", label: "კონტაქტი" },
+      { slug: "briefs", label: "ბრიფები" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -1050,6 +1063,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Zwei Märkte. Ein Partner.",
       hubLabel: "Global Hub",
       compareMarkets: "Märkte Vergleichen",
+      menuLabel: "Menü",
       markets: "Märkte",
       contact: "Kontakt",
       footerTitle: "Ein globaler Einstieg mit lokaler Umsetzung dort, wo sie hingehört.",
@@ -1060,6 +1074,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "Über Uns" },
       { slug: "cross-border", label: "Cross-border" },
       { slug: "contact", label: "Kontakt" },
+      { slug: "briefs", label: "Briefs" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -1193,6 +1208,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "سوقان. شريك واحد.",
       hubLabel: "المركز العالمي",
       compareMarkets: "مقارنة الأسواق",
+      menuLabel: "القائمة",
       markets: "الأسواق",
       contact: "التواصل",
       footerTitle: "بوابة عالمية مع تنفيذ محلي في المكان الصحيح.",
@@ -1203,6 +1219,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "عنّا" },
       { slug: "cross-border", label: "عبر الحدود" },
       { slug: "contact", label: "التواصل" },
+      { slug: "briefs", label: "الاستمارات" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -1336,6 +1353,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "İki pazar. Tek ortak.",
       hubLabel: "Global Hub",
       compareMarkets: "Pazarları Karşılaştır",
+      menuLabel: "Menü",
       markets: "Pazarlar",
       contact: "İletişim",
       footerTitle: "Yerel icranın doğru yerde kaldığı küresel bir giriş noktası.",
@@ -1346,6 +1364,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "Hakkında" },
       { slug: "cross-border", label: "Sınır Ötesi" },
       { slug: "contact", label: "İletişim" },
+      { slug: "briefs", label: "Briefs" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",
@@ -1479,6 +1498,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       tagline: "Dos mercados. Un socio.",
       hubLabel: "Hub Global",
       compareMarkets: "Comparar Mercados",
+      menuLabel: "Menú",
       markets: "Mercados",
       contact: "Contacto",
       footerTitle: "Una puerta de entrada global con ejecución local donde corresponde.",
@@ -1489,6 +1509,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       { slug: "about", label: "Nosotros" },
       { slug: "cross-border", label: "Cross-border" },
       { slug: "contact", label: "Contacto" },
+      { slug: "briefs", label: "Briefs" },
     ],
     home: {
       eyebrow: "InterLex Global Hub",

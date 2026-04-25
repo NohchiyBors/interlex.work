@@ -80,28 +80,27 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
   }
 
-  const smtpHost = process.env.SMTP_HOST;
-  const smtpPortValue = process.env.SMTP_PORT;
-  const smtpUser = process.env.SMTP_USER;
-  const smtpPass = process.env.SMTP_PASS;
-  const contactToEmail = process.env.CONTACT_TO_EMAIL;
-  const contactFromEmail = process.env.CONTACT_FROM_EMAIL ?? smtpUser;
+  const smtpHost = process.env.SMTP_HOST ?? "mailserver-gx9xlsuj0u69qaftpm783f2m";
+  const smtpPortValue = process.env.SMTP_PORT ?? "25";
+  const smtpUser = process.env.SMTP_USER || undefined;
+  const smtpPass = process.env.SMTP_PASS || undefined;
+  const contactToEmail = process.env.CONTACT_TO_EMAIL ?? "hello@interlex.work";
+  const contactFromEmail = process.env.CONTACT_FROM_EMAIL ?? "noreply@host.ickz.net";
   const contactBccEmail = process.env.CONTACT_BCC_EMAIL;
-
-  if (!smtpHost || !smtpPortValue || !contactToEmail || !contactFromEmail) {
-    return NextResponse.json({ error: "Email transport is not configured." }, { status: 500 });
-  }
 
   const smtpPort = Number.parseInt(smtpPortValue, 10);
   if (Number.isNaN(smtpPort)) {
     return NextResponse.json({ error: "Email transport is not configured." }, { status: 500 });
   }
 
+  const smtpSecure = process.env.SMTP_SECURE === "true" || smtpPort === 465;
+  const smtpAuth = process.env.SMTP_AUTH !== "false" && (smtpUser || smtpPass);
+
   const transporter = nodemailer.createTransport({
     host: smtpHost,
     port: smtpPort,
-    secure: process.env.SMTP_SECURE === "true" || smtpPort === 465,
-    auth: smtpUser || smtpPass ? { user: smtpUser, pass: smtpPass } : undefined,
+    secure: smtpSecure,
+    auth: smtpAuth ? { user: smtpUser, pass: smtpPass } : undefined,
   });
 
   const forwardedFor = request.headers.get("x-forwarded-for") ?? "";
@@ -144,15 +143,28 @@ export async function POST(request: Request) {
     <p>${escapeHtml(message).replaceAll("\n", "<br />")}</p>
   `;
 
-  await transporter.sendMail({
-    to: parseRecipients(contactToEmail),
-    bcc: contactBccEmail ? parseRecipients(contactBccEmail) : undefined,
-    from: contactFromEmail,
-    replyTo: email,
-    subject: `[interlex.work] ${marketLabel} inquiry from ${name}`,
-    text,
-    html,
-  });
+  try {
+    await transporter.sendMail({
+      to: parseRecipients(contactToEmail),
+      bcc: contactBccEmail ? parseRecipients(contactBccEmail) : undefined,
+      from: contactFromEmail,
+      replyTo: email,
+      subject: `[interlex.work] ${marketLabel} inquiry from ${name}`,
+      text,
+      html,
+    });
+  } catch (err) {
+    console.error("[contact] sendMail failed", {
+      smtpHost,
+      smtpPort,
+      smtpSecure,
+      smtpAuth: !!smtpAuth,
+      contactToEmail,
+      contactFromEmail,
+      error: err instanceof Error ? err.message : String(err),
+    });
+    return NextResponse.json({ error: "Email transport error." }, { status: 500 });
+  }
 
   return NextResponse.json({ ok: true });
 }

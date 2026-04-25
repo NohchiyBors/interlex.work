@@ -7,6 +7,7 @@ const routeSlugs = [
   "about",
   "cross-border",
   "contact",
+  "briefs",
   "kazakhstan-vs-georgia",
   "cross-border-structuring",
   "international-market-entry",
