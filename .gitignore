@@ -61,7 +61,7 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-# Служебные заметки и инструкции для агентов/процессов (не код сайта)
+# Служебные заметки, статусы и инструкции для агентов/IDE (не код сайта)
 /AGENTS.md
 /AGENT-TASK.md
 /CLAUDE.md
@@ -69,3 +69,5 @@ next-env.d.ts
 /PROJECT-RESUME.md
 /STATUS-LOG.md
 /TODO.md
+/SEO-PLAN.md
+/.cursor/
