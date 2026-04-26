@@ -1,86 +1,203 @@
 <svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#090F1C"/>
-      <stop offset="60%" stop-color="#111D32"/>
-      <stop offset="100%" stop-color="#1B2D4F"/>
+      <stop offset="0%" stop-color="#060C18"/>
+      <stop offset="50%" stop-color="#0A1525"/>
+      <stop offset="100%" stop-color="#152035"/>
     </linearGradient>
     <radialGradient id="glowKZ" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.45"/>
-      <stop offset="60%" stop-color="#C9A84C" stop-opacity="0.08"/>
+      <stop offset="0%" stop-color="#E8C96A" stop-opacity="0.6"/>
+      <stop offset="35%" stop-color="#C9A84C" stop-opacity="0.25"/>
+      <stop offset="70%" stop-color="#C9A84C" stop-opacity="0.06"/>
       <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="glowGE" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.35"/>
-      <stop offset="60%" stop-color="#C9A84C" stop-opacity="0.06"/>
+      <stop offset="0%" stop-color="#E8C96A" stop-opacity="0.5"/>
+      <stop offset="35%" stop-color="#C9A84C" stop-opacity="0.2"/>
+      <stop offset="70%" stop-color="#C9A84C" stop-opacity="0.05"/>
       <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
     </radialGradient>
     <radialGradient id="centerGlow" cx="50%" cy="50%" r="50%">
-      <stop offset="0%" stop-color="#2A4070" stop-opacity="0.6"/>
-      <stop offset="100%" stop-color="#2A4070" stop-opacity="0"/>
+      <stop offset="0%" stop-color="#1E3A6E" stop-opacity="0.7"/>
+      <stop offset="60%" stop-color="#1E3A6E" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#1E3A6E" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="bgVignette" cx="50%" cy="50%" r="70%">
+      <stop offset="30%" stop-color="#000000" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#000000" stop-opacity="0.55"/>
     </radialGradient>
     <linearGradient id="arcGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.8"/>
-      <stop offset="50%" stop-color="#E8C96A" stop-opacity="1"/>
-      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0.8"/>
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.7"/>
+      <stop offset="30%" stop-color="#F0D878" stop-opacity="1"/>
+      <stop offset="50%" stop-color="#FFEA8A" stop-opacity="1"/>
+      <stop offset="70%" stop-color="#F0D878" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0.7"/>
     </linearGradient>
-    <filter id="blur4"><feGaussianBlur stdDeviation="4"/></filter>
-    <filter id="blur12"><feGaussianBlur stdDeviation="12"/></filter>
-    <filter id="blur20"><feGaussianBlur stdDeviation="20"/></filter>
-    <pattern id="dotGrid" x="0" y="0" width="48" height="48" patternUnits="userSpaceOnUse">
-      <circle cx="24" cy="24" r="1" fill="#C9A84C" opacity="0.10"/>
+    <linearGradient id="arcGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0"/>
+      <stop offset="50%" stop-color="#E8C96A" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </linearGradient>
+    <filter id="blur6"><feGaussianBlur stdDeviation="6"/></filter>
+    <filter id="blur14"><feGaussianBlur stdDeviation="14"/></filter>
+    <filter id="blur28"><feGaussianBlur stdDeviation="28"/></filter>
+    <filter id="blur50"><feGaussianBlur stdDeviation="50"/></filter>
+    <filter id="nodeGlow" x="-100%" y="-100%" width="300%" height="300%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+    <pattern id="stars" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+      <circle cx="10" cy="10" r="0.5" fill="#FFFFFF" opacity="0.5"/>
+      <circle cx="55" cy="28" r="0.7" fill="#FFFFFF" opacity="0.4"/>
+      <circle cx="90" cy="15" r="0.4" fill="#FFFFFF" opacity="0.6"/>
+      <circle cx="22" cy="70" r="0.6" fill="#FFFFFF" opacity="0.35"/>
+      <circle cx="75" cy="55" r="0.5" fill="#FFFFFF" opacity="0.5"/>
+      <circle cx="40" cy="95" r="0.4" fill="#FFFFFF" opacity="0.4"/>
+      <circle cx="105" cy="80" r="0.6" fill="#FFFFFF" opacity="0.45"/>
+      <circle cx="62" cy="110" r="0.5" fill="#FFFFFF" opacity="0.3"/>
     </pattern>
-    <pattern id="fineGrid" x="0" y="0" width="80" height="80" patternUnits="userSpaceOnUse">
-      <line x1="0" y1="0" x2="80" y2="0" stroke="#3A5070" stroke-width="0.3" opacity="0.4"/>
-      <line x1="0" y1="0" x2="0" y2="80" stroke="#3A5070" stroke-width="0.3" opacity="0.4"/>
+    <pattern id="fineGrid" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <line x1="0" y1="0" x2="60" y2="0" stroke="#2A4870" stroke-width="0.25" opacity="0.5"/>
+      <line x1="0" y1="0" x2="0" y2="60" stroke="#2A4870" stroke-width="0.25" opacity="0.5"/>
     </pattern>
   </defs>
+
+  <!-- Base background -->
   <rect width="1200" height="675" fill="url(#bg)"/>
-  <rect width="1200" height="675" fill="url(#fineGrid)" opacity="0.5"/>
-  <rect width="1200" height="675" fill="url(#dotGrid)"/>
-  <ellipse cx="600" cy="338" rx="420" ry="280" fill="url(#centerGlow)"/>
-  <ellipse cx="345" cy="340" rx="220" ry="220" fill="url(#glowKZ)" filter="url(#blur20)"/>
-  <ellipse cx="855" cy="340" rx="170" ry="170" fill="url(#glowGE)" filter="url(#blur20)"/>
-  <path d="M 345 340 C 450 210, 750 210, 855 340" stroke="#C9A84C" stroke-width="8" fill="none" opacity="0.12" filter="url(#blur12)"/>
-  <path d="M 345 340 C 450 210, 750 210, 855 340" stroke="url(#arcGrad)" stroke-width="1.5" fill="none" opacity="0.9"/>
-  <path d="M 345 340 C 450 210, 750 210, 855 340" stroke="#E8C96A" stroke-width="0.6" fill="none" opacity="0.4" stroke-dasharray="3 14"/>
-  <circle cx="600" cy="218" r="3.5" fill="#E8C96A" opacity="0.7"/>
-  <circle cx="600" cy="218" r="8" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
-  <circle cx="345" cy="340" r="110" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.12"/>
-  <circle cx="345" cy="340" r="82" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.22"/>
-  <circle cx="345" cy="340" r="58" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
-  <circle cx="345" cy="340" r="36" fill="#C9A84C" opacity="0.1" filter="url(#blur4)"/>
-  <circle cx="345" cy="340" r="24" fill="#1B2D4F" stroke="#C9A84C" stroke-width="1.5" opacity="0.9"/>
-  <circle cx="345" cy="340" r="7" fill="#E8C96A"/>
-  <line x1="345" y1="282" x2="345" y2="270" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
-  <line x1="403" y1="340" x2="415" y2="340" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
-  <line x1="345" y1="398" x2="345" y2="410" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
-  <line x1="287" y1="340" x2="275" y2="340" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
-  <circle cx="855" cy="340" r="88" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.12"/>
-  <circle cx="855" cy="340" r="64" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.22"/>
-  <circle cx="855" cy="340" r="44" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.35"/>
-  <circle cx="855" cy="340" r="27" fill="#C9A84C" opacity="0.1" filter="url(#blur4)"/>
-  <circle cx="855" cy="340" r="18" fill="#1B2D4F" stroke="#C9A84C" stroke-width="1.5" opacity="0.9"/>
-  <circle cx="855" cy="340" r="6" fill="#E8C96A"/>
-  <text x="345" y="448" text-anchor="middle" fill="#C9A84C" font-family="Georgia, serif" font-size="11" letter-spacing="5" opacity="0.85">KAZAKHSTAN</text>
-  <line x1="290" y1="440" x2="400" y2="440" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
-  <text x="855" y="420" text-anchor="middle" fill="#C9A84C" font-family="Georgia, serif" font-size="11" letter-spacing="5" opacity="0.85">GEORGIA</text>
-  <line x1="812" y1="412" x2="898" y2="412" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
-  <line x1="40" y1="40" x2="100" y2="40" stroke="#C9A84C" stroke-width="1.2" opacity="0.35"/>
-  <line x1="40" y1="40" x2="40" y2="100" stroke="#C9A84C" stroke-width="1.2" opacity="0.35"/>
-  <circle cx="40" cy="40" r="2.5" fill="#C9A84C" opacity="0.5"/>
-  <line x1="1160" y1="635" x2="1100" y2="635" stroke="#C9A84C" stroke-width="1.2" opacity="0.35"/>
-  <line x1="1160" y1="635" x2="1160" y2="575" stroke="#C9A84C" stroke-width="1.2" opacity="0.35"/>
-  <circle cx="1160" cy="635" r="2.5" fill="#C9A84C" opacity="0.5"/>
-  <line x1="1160" y1="40" x2="1100" y2="40" stroke="#C9A84C" stroke-width="1.2" opacity="0.2"/>
-  <line x1="1160" y1="40" x2="1160" y2="100" stroke="#C9A84C" stroke-width="1.2" opacity="0.2"/>
-  <line x1="40" y1="635" x2="100" y2="635" stroke="#C9A84C" stroke-width="1.2" opacity="0.2"/>
-  <line x1="40" y1="635" x2="40" y2="575" stroke="#C9A84C" stroke-width="1.2" opacity="0.2"/>
-  <line x1="140" y1="550" x2="1060" y2="550" stroke="#C9A84C" stroke-width="0.4" opacity="0.15"/>
-  <circle cx="420" cy="570" r="2" fill="#C9A84C" opacity="0.4"/>
-  <line x1="430" y1="570" x2="520" y2="570" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
-  <circle cx="780" cy="570" r="2" fill="#C9A84C" opacity="0.4"/>
-  <line x1="680" y1="570" x2="770" y2="570" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
-  <line x1="160" y1="80" x2="160" y2="595" stroke="#C9A84C" stroke-width="0.3" opacity="0.08"/>
-  <line x1="1040" y1="80" x2="1040" y2="595" stroke="#C9A84C" stroke-width="0.3" opacity="0.08"/>
+  <!-- Stars -->
+  <rect width="1200" height="675" fill="url(#stars)"/>
+  <!-- Fine grid -->
+  <rect width="1200" height="675" fill="url(#fineGrid)"/>
+  <!-- Vignette -->
+  <rect width="1200" height="675" fill="url(#bgVignette)"/>
+
+  <!-- Globe circle suggestion — faint outer ring -->
+  <ellipse cx="600" cy="340" rx="580" ry="320" fill="none" stroke="#2A4870" stroke-width="0.4" opacity="0.25"/>
+  <ellipse cx="600" cy="340" rx="500" ry="275" fill="none" stroke="#2A4870" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Latitude lines (horizontal curves suggesting globe) -->
+  <path d="M 40 200 Q 600 160 1160 200" fill="none" stroke="#2A4870" stroke-width="0.5" opacity="0.35"/>
+  <path d="M 20 280 Q 600 240 1180 280" fill="none" stroke="#2A4870" stroke-width="0.5" opacity="0.4"/>
+  <path d="M 20 360 Q 600 320 1180 360" fill="none" stroke="#2A4870" stroke-width="0.5" opacity="0.45"/>
+  <path d="M 20 440 Q 600 400 1180 440" fill="none" stroke="#2A4870" stroke-width="0.5" opacity="0.4"/>
+  <path d="M 40 520 Q 600 480 1160 520" fill="none" stroke="#2A4870" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Longitude lines -->
+  <path d="M 200 0 Q 210 340 200 675" fill="none" stroke="#2A4870" stroke-width="0.4" opacity="0.25"/>
+  <path d="M 400 0 Q 415 340 400 675" fill="none" stroke="#2A4870" stroke-width="0.4" opacity="0.3"/>
+  <path d="M 600 0 L 600 675" fill="none" stroke="#2A4870" stroke-width="0.4" opacity="0.35"/>
+  <path d="M 800 0 Q 785 340 800 675" fill="none" stroke="#2A4870" stroke-width="0.4" opacity="0.3"/>
+  <path d="M 1000 0 Q 990 340 1000 675" fill="none" stroke="#2A4870" stroke-width="0.4" opacity="0.25"/>
+
+  <!-- Central ambient glow -->
+  <ellipse cx="600" cy="338" rx="380" ry="220" fill="url(#centerGlow)" filter="url(#blur28)"/>
+
+  <!-- KZ halo layers -->
+  <ellipse cx="300" cy="330" rx="240" ry="240" fill="url(#glowKZ)" filter="url(#blur50)"/>
+  <ellipse cx="300" cy="330" rx="140" ry="140" fill="url(#glowKZ)" filter="url(#blur28)"/>
+
+  <!-- GE halo layers -->
+  <ellipse cx="880" cy="345" rx="180" ry="180" fill="url(#glowGE)" filter="url(#blur50)"/>
+  <ellipse cx="880" cy="345" rx="100" ry="100" fill="url(#glowGE)" filter="url(#blur28)"/>
+
+  <!-- Route arc — thick glow -->
+  <path d="M 300 330 C 420 150, 760 150, 880 345" stroke="#C9A84C" stroke-width="16" fill="none" opacity="0.08" filter="url(#blur28)"/>
+  <path d="M 300 330 C 420 150, 760 150, 880 345" stroke="#E8C96A" stroke-width="6" fill="none" opacity="0.15" filter="url(#blur14)"/>
+  <!-- Route arc — main line -->
+  <path d="M 300 330 C 420 150, 760 150, 880 345" stroke="url(#arcGrad)" stroke-width="1.8" fill="none" opacity="0.95"/>
+  <!-- Dashed secondary routes -->
+  <path d="M 300 330 C 440 390, 740 410, 880 345" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.3" stroke-dasharray="4 12"/>
+  <path d="M 300 330 C 460 260, 720 265, 880 345" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.2" stroke-dasharray="2 14"/>
+
+  <!-- Midpoint marker -->
+  <circle cx="590" cy="175" r="5" fill="#FFEA8A" opacity="0.9"/>
+  <circle cx="590" cy="175" r="12" fill="none" stroke="#E8C96A" stroke-width="1" opacity="0.55"/>
+  <circle cx="590" cy="175" r="22" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.3"/>
+  <line x1="590" y1="158" x2="590" y2="148" stroke="#E8C96A" stroke-width="1" opacity="0.6"/>
+  <line x1="573" y1="175" x2="563" y2="175" stroke="#E8C96A" stroke-width="1" opacity="0.6"/>
+  <line x1="607" y1="175" x2="617" y2="175" stroke="#E8C96A" stroke-width="1" opacity="0.6"/>
+
+  <!-- KZ node — outer rings -->
+  <circle cx="300" cy="330" r="130" fill="none" stroke="#C9A84C" stroke-width="0.35" opacity="0.12"/>
+  <circle cx="300" cy="330" r="100" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.18"/>
+  <circle cx="300" cy="330" r="72" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.28"/>
+  <circle cx="300" cy="330" r="50" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.40"/>
+  <circle cx="300" cy="330" r="34" fill="none" stroke="#E8C96A" stroke-width="1.2" opacity="0.60"/>
+  <!-- KZ node glow disk -->
+  <circle cx="300" cy="330" r="22" fill="#C9A84C" opacity="0.18" filter="url(#blur6)"/>
+  <!-- KZ node body -->
+  <circle cx="300" cy="330" r="16" fill="#0D1A2E" stroke="#C9A84C" stroke-width="2"/>
+  <circle cx="300" cy="330" r="8" fill="#E8C96A"/>
+  <!-- KZ crosshair -->
+  <line x1="300" y1="296" x2="300" y2="284" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <line x1="300" y1="364" x2="300" y2="376" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <line x1="266" y1="330" x2="254" y2="330" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <line x1="334" y1="330" x2="346" y2="330" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <!-- KZ label -->
+  <text x="300" y="436" text-anchor="middle" fill="#E8C96A" font-family="Georgia, 'Times New Roman', serif" font-size="10" letter-spacing="6" opacity="0.9">KAZAKHSTAN</text>
+  <line x1="230" y1="427" x2="370" y2="427" stroke="#C9A84C" stroke-width="0.6" opacity="0.35"/>
+  <text x="300" y="452" text-anchor="middle" fill="#C9A84C" font-family="Georgia, serif" font-size="8" letter-spacing="3" opacity="0.55">ALMATY · ASTANA</text>
+
+  <!-- GE node — outer rings -->
+  <circle cx="880" cy="345" r="100" fill="none" stroke="#C9A84C" stroke-width="0.35" opacity="0.12"/>
+  <circle cx="880" cy="345" r="75" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.18"/>
+  <circle cx="880" cy="345" r="54" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.28"/>
+  <circle cx="880" cy="345" r="37" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.40"/>
+  <circle cx="880" cy="345" r="25" fill="none" stroke="#E8C96A" stroke-width="1.2" opacity="0.60"/>
+  <!-- GE glow -->
+  <circle cx="880" cy="345" r="16" fill="#C9A84C" opacity="0.16" filter="url(#blur6)"/>
+  <!-- GE node body -->
+  <circle cx="880" cy="345" r="12" fill="#0D1A2E" stroke="#C9A84C" stroke-width="2"/>
+  <circle cx="880" cy="345" r="6" fill="#E8C96A"/>
+  <!-- GE crosshair -->
+  <line x1="880" y1="320" x2="880" y2="310" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <line x1="880" y1="370" x2="880" y2="380" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <line x1="855" y1="345" x2="845" y2="345" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <line x1="905" y1="345" x2="915" y2="345" stroke="#E8C96A" stroke-width="1.2" opacity="0.7"/>
+  <!-- GE label -->
+  <text x="880" y="428" text-anchor="middle" fill="#E8C96A" font-family="Georgia, 'Times New Roman', serif" font-size="10" letter-spacing="6" opacity="0.9">GEORGIA</text>
+  <line x1="830" y1="419" x2="930" y2="419" stroke="#C9A84C" stroke-width="0.6" opacity="0.35"/>
+  <text x="880" y="444" text-anchor="middle" fill="#C9A84C" font-family="Georgia, serif" font-size="8" letter-spacing="3" opacity="0.55">TBILISI · BATUMI</text>
+
+  <!-- Data nodes — small scattered markers suggesting network -->
+  <circle cx="480" cy="490" r="2.5" fill="#C9A84C" opacity="0.4"/>
+  <circle cx="480" cy="490" r="6" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
+  <line x1="480" y1="490" x2="300" y2="330" stroke="#C9A84C" stroke-width="0.4" opacity="0.12" stroke-dasharray="3 8"/>
+
+  <circle cx="680" cy="510" r="2" fill="#C9A84C" opacity="0.35"/>
+  <circle cx="680" cy="510" r="5" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.2"/>
+  <line x1="680" y1="510" x2="880" y2="345" stroke="#C9A84C" stroke-width="0.4" opacity="0.1" stroke-dasharray="3 8"/>
+
+  <circle cx="160" cy="480" r="2" fill="#C9A84C" opacity="0.3"/>
+  <circle cx="160" cy="480" r="5" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.18"/>
+  <line x1="160" y1="480" x2="300" y2="330" stroke="#C9A84C" stroke-width="0.3" opacity="0.1" stroke-dasharray="2 10"/>
+
+  <circle cx="1050" cy="460" r="2" fill="#C9A84C" opacity="0.3"/>
+  <line x1="1050" y1="460" x2="880" y2="345" stroke="#C9A84C" stroke-width="0.3" opacity="0.1" stroke-dasharray="2 10"/>
+
+  <!-- Bottom data bar -->
+  <line x1="80" y1="590" x2="1120" y2="590" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+  <circle cx="200" cy="590" r="2" fill="#C9A84C" opacity="0.4"/>
+  <line x1="212" y1="590" x2="330" y2="590" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
+  <circle cx="600" cy="590" r="2" fill="#C9A84C" opacity="0.35"/>
+  <circle cx="1000" cy="590" r="2" fill="#C9A84C" opacity="0.4"/>
+  <line x1="870" y1="590" x2="988" y2="590" stroke="#C9A84C" stroke-width="0.5" opacity="0.25"/>
+
+  <!-- Corner brackets TL -->
+  <line x1="40" y1="40" x2="110" y2="40" stroke="#C9A84C" stroke-width="1.4" opacity="0.4"/>
+  <line x1="40" y1="40" x2="40" y2="110" stroke="#C9A84C" stroke-width="1.4" opacity="0.4"/>
+  <circle cx="40" cy="40" r="3" fill="#C9A84C" opacity="0.6"/>
+
+  <!-- Corner brackets TR -->
+  <line x1="1160" y1="40" x2="1090" y2="40" stroke="#C9A84C" stroke-width="1.4" opacity="0.25"/>
+  <line x1="1160" y1="40" x2="1160" y2="110" stroke="#C9A84C" stroke-width="1.4" opacity="0.25"/>
+
+  <!-- Corner brackets BR -->
+  <line x1="1160" y1="635" x2="1090" y2="635" stroke="#C9A84C" stroke-width="1.4" opacity="0.4"/>
+  <line x1="1160" y1="635" x2="1160" y2="565" stroke="#C9A84C" stroke-width="1.4" opacity="0.4"/>
+  <circle cx="1160" cy="635" r="3" fill="#C9A84C" opacity="0.6"/>
+
+  <!-- Corner brackets BL -->
+  <line x1="40" y1="635" x2="110" y2="635" stroke="#C9A84C" stroke-width="1.4" opacity="0.25"/>
+  <line x1="40" y1="635" x2="40" y2="565" stroke="#C9A84C" stroke-width="1.4" opacity="0.25"/>
 </svg>
