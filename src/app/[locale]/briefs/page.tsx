@@ -6,17 +6,38 @@ import { BriefForm } from "@/components/brief-form";
 import { getBriefPageCopy } from "@/lib/brief-copy";
 import { getBreadcrumbJsonLd } from "@/lib/seo";
 
+// Page metadata is localized for the three brief-supported languages: ru, en, ka.
+// Other locales fall back to the English metadata (matches the briefs UI fallback).
+const briefsMetaCopy = {
+  ru: {
+    title: "Клиентские брифы — InterLex",
+    description:
+      "Выберите бриф для вашего проекта — регистрация бизнеса в Казахстане или Грузии, СЭЗ, Virtual Zone, бизнес-сопровождение. Получите документ на email.",
+  },
+  en: {
+    title: "Client Intake Briefs — InterLex",
+    description:
+      "Select an intake brief for your project — business registration in Kazakhstan or Georgia, SEZ, Virtual Zone, business support. Receive the document by email.",
+  },
+  ka: {
+    title: "კლიენტის ბრიფები — InterLex",
+    description:
+      "აირჩიეთ ბრიფი თქვენი პროექტისთვის — ბიზნესის რეგისტრაცია ყაზახეთში ან საქართველოში, SEZ, Virtual Zone, ბიზნესის თანხლება. მიიღეთ დოკუმენტი ელფოსტაზე.",
+  },
+} as const;
+
 export async function generateMetadata(props: PageProps<"/[locale]/briefs">) {
   const { locale } = await props.params;
   if (!hasLocale(locale)) notFound();
 
-  const isRu = locale === "ru";
-  const title = isRu ? "Клиентские брифы — InterLex" : "Client Intake Briefs — InterLex";
-  const description = isRu
-    ? "Выберите бриф для вашего проекта — регистрация бизнеса в Казахстане или Грузии, СЭЗ, Virtual Zone, бизнес-сопровождение. Получите документ на email."
-    : "Select an intake brief for your project — business registration in Kazakhstan or Georgia, SEZ, Virtual Zone, business support. Receive the document by email.";
+  const meta =
+    locale === "ru"
+      ? briefsMetaCopy.ru
+      : locale === "ka"
+        ? briefsMetaCopy.ka
+        : briefsMetaCopy.en;
 
-  return buildMetadata(locale, title, description, "briefs");
+  return buildMetadata(locale, meta.title, meta.description, "briefs");
 }
 
 export default async function BriefsPage(props: PageProps<"/[locale]/briefs">) {

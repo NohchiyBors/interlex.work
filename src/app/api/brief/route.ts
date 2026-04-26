@@ -2,8 +2,68 @@ import path from "node:path";
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 import { briefIds, getBriefById, type BriefId } from "@/lib/brief-copy";
+import type { Locale } from "@/lib/i18n";
 
 export const runtime = "nodejs";
+
+// Client email is localized for the three brief-supported languages: ru, en, ka.
+// Other locales fall back to the English template (matches the briefs UI fallback).
+type ClientEmailTemplate = Readonly<{
+  subject: (briefTitle: string) => string;
+  text: (name: string, briefTitle: string) => string;
+  html: (escapedName: string, escapedBriefTitle: string) => string;
+}>;
+
+const clientEmailTemplates: Record<"ru" | "en" | "ka", ClientEmailTemplate> = {
+  ru: {
+    subject: (briefTitle) => `InterLex — ваш бриф: ${briefTitle}`,
+    text: (name, briefTitle) =>
+      `Здравствуйте, ${name}!\n\nВо вложении — бриф «${briefTitle}».\nЗаполните и отправьте нам в ответ на это письмо или через WhatsApp: https://wa.me/77000070021\n\nС уважением,\nКоманда InterLex`,
+    html: (escapedName, escapedBriefTitle) => `
+    <p>Здравствуйте, ${escapedName}!</p>
+    <p>Во вложении вы найдёте бриф <strong>${escapedBriefTitle}</strong>.</p>
+    <p>Заполните его и отправьте нам в ответ на это письмо или через WhatsApp: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
+    <p>Мы свяжемся с вами в ближайшее время.</p>
+    <p>С уважением,<br/>Команда InterLex</p>
+    `,
+  },
+  en: {
+    subject: (briefTitle) => `InterLex — your brief: ${briefTitle}`,
+    text: (name, briefTitle) =>
+      `Hello ${name},\n\nPlease find attached the brief "${briefTitle}".\nFill it in and reply to this email or reach us on WhatsApp: https://wa.me/77000070021\n\nBest regards,\nInterLex Team`,
+    html: (escapedName, escapedBriefTitle) => `
+    <p>Hello ${escapedName},</p>
+    <p>Please find attached the brief <strong>${escapedBriefTitle}</strong>.</p>
+    <p>Fill it in and send it back to us by replying to this email or via WhatsApp: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
+    <p>We will be in touch shortly.</p>
+    <p>Best regards,<br/>InterLex Team</p>
+    `,
+  },
+  ka: {
+    subject: (briefTitle) => `InterLex — თქვენი ბრიფი: ${briefTitle}`,
+    text: (name, briefTitle) =>
+      `გამარჯობა, ${name}!\n\nთანდართულია ბრიფი „${briefTitle}“.\nშეავსეთ და გამოგვიგზავნეთ ამ წერილზე პასუხად ან WhatsApp-ით: https://wa.me/77000070021\n\nპატივისცემით,\nInterLex-ის გუნდი`,
+    html: (escapedName, escapedBriefTitle) => `
+    <p>გამარჯობა, ${escapedName}!</p>
+    <p>თანდართულად ნახავთ ბრიფს <strong>${escapedBriefTitle}</strong>.</p>
+    <p>შეავსეთ და გამოგვიგზავნეთ ამ წერილზე პასუხად ან WhatsApp-ით: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
+    <p>მალე დაგიკავშირდებით.</p>
+    <p>პატივისცემით,<br/>InterLex-ის გუნდი</p>
+    `,
+  },
+};
+
+function pickClientEmailTemplate(locale: string): ClientEmailTemplate {
+  if (locale === "ru") return clientEmailTemplates.ru;
+  if (locale === "ka") return clientEmailTemplates.ka;
+  return clientEmailTemplates.en;
+}
+
+function pickBriefCopyLocale(locale: string): Locale {
+  // Briefs metadata only exists in ru, en, ka — collapse other locales to en.
+  if (locale === "ru" || locale === "ka") return locale as Locale;
+  return "en";
+}
 
 type BriefRequestBody = {
   briefId?: unknown;
@@ -67,7 +127,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
   }
 
-  const briefMeta = getBriefById(locale as "ru" | "en", briefId);
+  const briefMeta = getBriefById(pickBriefCopyLocale(locale), briefId);
   if (!briefMeta) {
     return NextResponse.json({ error: "Brief not found." }, { status: 400 });
   }
@@ -101,31 +161,10 @@ export async function POST(request: Request) {
   const forwardedFor = request.headers.get("x-forwarded-for") ?? "";
 
   // ── Email to client ───────────────────────────────────────────────────────
-  const isRu = locale === "ru";
-
-  const clientSubject = isRu
-    ? `InterLex — ваш бриф: ${briefMeta.title}`
-    : `InterLex — your brief: ${briefMeta.title}`;
-
-  const clientHtml = isRu
-    ? `
-    <p>Здравствуйте, ${escapeHtml(name)}!</p>
-    <p>Во вложении вы найдёте бриф <strong>${escapeHtml(briefMeta.title)}</strong>.</p>
-    <p>Заполните его и отправьте нам в ответ на это письмо или через WhatsApp: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
-    <p>Мы свяжемся с вами в ближайшее время.</p>
-    <p>С уважением,<br/>Команда InterLex</p>
-    `
-    : `
-    <p>Hello ${escapeHtml(name)},</p>
-    <p>Please find attached the brief <strong>${escapeHtml(briefMeta.title)}</strong>.</p>
-    <p>Fill it in and send it back to us by replying to this email or via WhatsApp: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
-    <p>We will be in touch shortly.</p>
-    <p>Best regards,<br/>InterLex Team</p>
-    `;
-
-  const clientText = isRu
-    ? `Здравствуйте, ${name}!\n\nВо вложении — бриф «${briefMeta.title}».\nЗаполните и отправьте нам в ответ на это письмо или через WhatsApp: https://wa.me/77000070021\n\nС уважением,\nКоманда InterLex`
-    : `Hello ${name},\n\nPlease find attached the brief "${briefMeta.title}".\nFill it in and reply to this email or reach us on WhatsApp: https://wa.me/77000070021\n\nBest regards,\nInterLex Team`;
+  const template = pickClientEmailTemplate(locale);
+  const clientSubject = template.subject(briefMeta.title);
+  const clientText = template.text(name, briefMeta.title);
+  const clientHtml = template.html(escapeHtml(name), escapeHtml(briefMeta.title));
 
   // ── Notification to InterLex ──────────────────────────────────────────────
   const notifySubject = `[interlex.work/briefs] ${briefMeta.title} — ${name}`;

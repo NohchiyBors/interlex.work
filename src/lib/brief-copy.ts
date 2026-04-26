@@ -33,7 +33,14 @@ export type BriefPageCopy = Readonly<{
   briefs: readonly BriefMeta[];
 }>;
 
-const copy: Record<"ru" | "en", BriefPageCopy> = {
+// NOTE: client intake briefs are produced in three languages: ru, en, ka.
+// Other supported locales fall back to the English copy at the resolver level.
+// TODO: when localized .docx briefs become available for ka (and other locales),
+// replace the English `*-en.docx` filenames in the ka entries with the
+// language-specific files (e.g. `kz-reg-ka.docx`).
+type BriefLocale = "ru" | "en" | "ka";
+
+const copy: Record<BriefLocale, BriefPageCopy> = {
   ru: {
     eyebrow: "Клиентские брифы",
     pageTitle: "Получите бриф для вашего проекта.",
@@ -176,10 +183,88 @@ const copy: Record<"ru" | "en", BriefPageCopy> = {
       },
     ],
   },
+  ka: {
+    eyebrow: "კლიენტის ბრიფები",
+    pageTitle: "მიიღეთ ბრიფი თქვენი პროექტისთვის.",
+    pageBody:
+      "აირჩიეთ შესაბამისი ბრიფი, შეავსეთ საკონტაქტო ინფორმაცია — დოკუმენტი მოვა თქვენს ელფოსტაზე. ჩვენც მივიღებთ შეტყობინებას და მალე დაგიკავშირდებით.",
+    step1Label: "01 — აირჩიეთ ბრიფი",
+    step2Label: "02 — თქვენი კონტაქტები",
+    nameLabel: "სახელი",
+    namePlaceholder: "როგორ მოგმართოთ",
+    emailLabel: "ელფოსტა",
+    emailPlaceholder: "name@company.com",
+    phoneLabel: "WhatsApp ან ტელეფონი",
+    phonePlaceholder: "+7 ... / +995 ...",
+    submitIdle: "ბრიფის მიღება",
+    submitPending: "იგზავნება...",
+    successTitle: "ბრიფი გაიგზავნა თქვენს ელფოსტაზე.",
+    successBody:
+      "შეამოწმეთ ფოსტა — დოკუმენტი უკვე გზაშია. თუ წერილი რამდენიმე წუთში არ მოვიდა, შეამოწმეთ „სპამის“ საქაღალდე.",
+    errorMessage: "ბრიფის გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.",
+    backLabel: "← აირჩიეთ სხვა ბრიფი",
+    briefs: [
+      {
+        id: "kz-reg",
+        title: "ბიზნესის რეგისტრაცია ყაზახეთში",
+        subtitle: "TOO / AO / წარმომადგენლობა",
+        description:
+          "სამართლებრივი ფორმის არჩევა, რეგისტრაციის ვადა და ღირებულება, საბანკო თანხლება, საგადასახადო რეჟიმი.",
+        // TODO: replace with `kz-reg-ka.docx` once the Georgian brief is ready.
+        filename: "kz-reg-en.docx",
+      },
+      {
+        id: "kz-sez",
+        title: "სეზ და სპეციალური რეჟიმები ყაზახეთში",
+        subtitle: "AIFC / PIT / MCFS / SEZ",
+        description:
+          "AIFC-ში აკრედიტაცია, PIT-ში ან MCFS-ში რეგისტრაცია, საგადასახადო შეღავათები და საქმიანობის მოთხოვნები.",
+        // TODO: replace with `kz-sez-ka.docx` once the Georgian brief is ready.
+        filename: "kz-sez-en.docx",
+      },
+      {
+        id: "ge-reg",
+        title: "ბიზნესის რეგისტრაცია საქართველოში",
+        subtitle: "LLC / წარმომადგენლობა / ინდ. მეწარმე",
+        description:
+          "სტრუქტურის არჩევა, კომპანიისა და ანგარიშის გახსნა, საგადასახადო რეჟიმები, შესაბამისობის მოთხოვნები.",
+        // TODO: replace with `ge-reg-ka.docx` once the Georgian brief is ready.
+        filename: "ge-reg-en.docx",
+      },
+      {
+        id: "ge-vz",
+        title: "Virtual Zone საქართველოში",
+        subtitle: "VZ სტატუსი IT-კომპანიებისთვის",
+        description:
+          "Virtual Zone სტატუსის მიღება: მოთხოვნები, საგადასახადო შეღავათები, დასაშვები საქმიანობები.",
+        // TODO: replace with `ge-vz-ka.docx` once the Georgian brief is ready.
+        filename: "ge-vz-en.docx",
+      },
+      {
+        id: "support",
+        title: "ბიზნესის თანხლება",
+        subtitle: "ბუღალტერია, იურიდიული მხარდაჭერა, კორპორაციული მართვა",
+        description:
+          "კომპანიის მიმდინარე თანხლება: ბუღალტრული აღრიცხვა, იურიდიული მხარდაჭერა, კორპორაციული ცვლილებები.",
+        // TODO: replace with `support-ka.docx` once the Georgian brief is ready.
+        filename: "support-en.docx",
+      },
+      {
+        id: "acq",
+        title: "აქტივის შეძენა",
+        subtitle: "უძრავი ქონება · ბიზნესი · პროექტი — KZ & GE",
+        description:
+          "უძრავი ქონების შეძენა, მზა ბიზნესის ყიდვა ან პროექტში ინვესტიცია ყაზახეთში ან საქართველოში: გარიგების სტრუქტურა, due diligence, დაფინანსება.",
+        // TODO: replace with `acq-ka.docx` once the Georgian brief is ready.
+        filename: "acq-en.docx",
+      },
+    ],
+  },
 };
 
 export function getBriefPageCopy(locale: Locale): BriefPageCopy {
   if (locale === "ru") return copy.ru;
+  if (locale === "ka") return copy.ka;
   return copy.en;
 }
 
