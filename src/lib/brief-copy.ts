@@ -1,6 +1,17 @@
 import type { Locale } from "@/lib/i18n";
 
-export const briefIds = ["kz-reg", "kz-sez", "ge-reg", "ge-vz", "support", "acq"] as const;
+export const briefIds = [
+  "kz-reg",
+  "ge-reg",
+  "kz-sez",
+  "ge-vz",
+  "support",
+  "governance",
+  "ops",
+  "investors",
+  "ma",
+  "dd",
+] as const;
 
 export type BriefId = (typeof briefIds)[number];
 
@@ -33,11 +44,8 @@ export type BriefPageCopy = Readonly<{
   briefs: readonly BriefMeta[];
 }>;
 
-// NOTE: client intake briefs are produced in three languages: ru, en, ka.
+// Client intake briefs are produced in three languages: ru, en, ka.
 // Other supported locales fall back to the English copy at the resolver level.
-// TODO: when localized .docx briefs become available for ka (and other locales),
-// replace the English `*-en.docx` filenames in the ka entries with the
-// language-specific files (e.g. `kz-reg-ka.docx`).
 type BriefLocale = "ru" | "en" | "ka";
 
 const copy: Record<BriefLocale, BriefPageCopy> = {
@@ -65,50 +73,82 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
       {
         id: "kz-reg",
         title: "Регистрация бизнеса в Казахстане",
-        subtitle: "ТОО / АО / Представительство",
+        subtitle: "ТОО / АО / Филиал · Налоговый режим · Банк",
         description:
-          "Выбор правовой формы, сроки и стоимость регистрации, банковское сопровождение, налоговый режим.",
+          "Выбор формы и налогового режима, юридический адрес, открытие счёта, постановка на налоговый учёт.",
         filename: "kz-reg-ru.docx",
-      },
-      {
-        id: "kz-sez",
-        title: "СЭЗ и специальные режимы в Казахстане",
-        subtitle: "AIFC / PIT / МЦФС / СЭЗ",
-        description:
-          "Аккредитация в МФЦА, регистрация в ПИТ или МЦФС, налоговые льготы и требования к деятельности.",
-        filename: "kz-sez-ru.docx",
       },
       {
         id: "ge-reg",
         title: "Регистрация бизнеса в Грузии",
-        subtitle: "LLC / Представительство / ИП",
+        subtitle: "LLC / ИП / Филиал · Малый бизнес · Банк",
         description:
-          "Выбор структуры, открытие компании и счёта, налоговые режимы, соответствие требованиям.",
+          "Выбор формы, малый бизнес 1% или Virtual Zone, открытие счёта, налоговая постановка.",
         filename: "ge-reg-ru.docx",
+      },
+      {
+        id: "kz-sez",
+        title: "СЭЗ и спец. режимы Казахстана",
+        subtitle: "МФЦА / ПИТ / МЦФС / СЭЗ — выбор и аккредитация",
+        description:
+          "Выбор оптимального режима, аккредитация, налоговые льготы и операционные требования.",
+        filename: "kz-sez-ru.docx",
       },
       {
         id: "ge-vz",
         title: "Virtual Zone в Грузии",
-        subtitle: "Статус VZ для IT-компаний",
+        subtitle: "Статус VZ для IT-компаний — 0% НДС / 5% дивидендов",
         description:
-          "Получение статуса Virtual Zone: требования, налоговые льготы, допустимые виды деятельности.",
+          "Получение статуса Virtual Zone: соответствие требованиям, налоговые льготы, операционные условия.",
         filename: "ge-vz-ru.docx",
       },
       {
         id: "support",
-        title: "Бизнес-сопровождение",
-        subtitle: "Бухгалтерия, юрподдержка, корпоративное управление",
+        title: "Бухгалтерия и юридическая поддержка",
+        subtitle: "Учёт · Отчётность · Договоры · HR",
         description:
-          "Текущее сопровождение компании: бухгалтерский учёт, юридическая поддержка, корпоративные изменения.",
+          "Ежедневное сопровождение компании: бухучёт, налоги, договоры, HR, корпоративные изменения.",
         filename: "support-ru.docx",
       },
       {
-        id: "acq",
-        title: "Приобретение актива",
-        subtitle: "Недвижимость · Бизнес · Проект — KZ & GE",
+        id: "governance",
+        title: "Корпоративный менеджмент",
+        subtitle: "Структура владения · SHA · Регламенты · KEPS / KYC",
         description:
-          "Покупка недвижимости, готового бизнеса или инвестиция в проект в Казахстане или Грузии: структура сделки, due diligence, финансирование.",
-        filename: "acq-ru.docx",
+          "Структура владения и органы управления, акционерные соглашения, регламенты и корпоративный календарь.",
+        filename: "governance-ru.docx",
+      },
+      {
+        id: "ops",
+        title: "Компания под управлением и банк",
+        subtitle: "Номинальный директор · Корп. секретарь · Банковский комплаенс",
+        description:
+          "Управление компанией под ключ: директор, корпоративный секретарь, KYC, банковский и валютный контур.",
+        filename: "ops-ru.docx",
+      },
+      {
+        id: "investors",
+        title: "Инвесторская поддержка и GR",
+        subtitle: "Инвестпроект · Виза инвестора · Соглашения с государством",
+        description:
+          "Структурирование инвестпроекта, льготные режимы, виза инвестора, сопровождение в работе с государством.",
+        filename: "investors-ru.docx",
+      },
+      {
+        id: "ma",
+        title: "M&A — консультирование по сделке",
+        subtitle: "Структура сделки · LOI / SPA · Escrow · Closing",
+        description:
+          "Структура и переговорный контур сделки, подготовка SPA, escrow, closing и пост-сделочная интеграция.",
+        filename: "ma-ru.docx",
+      },
+      {
+        id: "dd",
+        title: "Due Diligence",
+        subtitle: "Legal · Tax · Financial · Commercial — red-flag и full-scope",
+        description:
+          "Правовой, налоговый и финансовый аудит цели до сделки: риски, обязательства, рекомендации.",
+        filename: "dd-ru.docx",
       },
     ],
   },
@@ -136,50 +176,82 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
       {
         id: "kz-reg",
         title: "Business Registration in Kazakhstan",
-        subtitle: "LLP / JSC / Representative Office",
+        subtitle: "LLP / JSC / Branch · Tax regime · Banking",
         description:
-          "Legal form selection, registration timeline and cost, banking setup, tax regime options.",
+          "Entity choice, tax regime, registered address, account opening and tax registration.",
         filename: "kz-reg-en.docx",
-      },
-      {
-        id: "kz-sez",
-        title: "SEZ and Special Regimes in Kazakhstan",
-        subtitle: "AIFC / PIT / ICDF / SEZ",
-        description:
-          "AIFC accreditation, registration in PIT or ICDF, tax benefits and operational requirements.",
-        filename: "kz-sez-en.docx",
       },
       {
         id: "ge-reg",
         title: "Business Registration in Georgia",
-        subtitle: "LLC / Representative Office / Sole Trader",
+        subtitle: "LLC / IE / Branch · Small business · Banking",
         description:
-          "Entity structure, company and account opening, tax regimes, compliance requirements.",
+          "Entity choice, small-business 1% or Virtual Zone, account opening and tax registration.",
         filename: "ge-reg-en.docx",
+      },
+      {
+        id: "kz-sez",
+        title: "SEZ and Special Regimes of Kazakhstan",
+        subtitle: "AIFC / PIT / ICDF / SEZ — selection and accreditation",
+        description:
+          "Pick the right regime, run the accreditation, secure tax benefits and meet operating requirements.",
+        filename: "kz-sez-en.docx",
       },
       {
         id: "ge-vz",
         title: "Virtual Zone in Georgia",
-        subtitle: "VZ Status for IT Companies",
+        subtitle: "VZ status for IT companies — 0% VAT / 5% dividends",
         description:
-          "Obtaining Virtual Zone status: eligibility criteria, tax exemptions, permitted activities.",
+          "Obtaining Virtual Zone status: eligibility, tax benefits, operating conditions.",
         filename: "ge-vz-en.docx",
       },
       {
         id: "support",
-        title: "Business Support",
-        subtitle: "Accounting, Legal, Corporate Governance",
+        title: "Accounting and Legal Support",
+        subtitle: "Bookkeeping · Reporting · Contracts · HR",
         description:
-          "Ongoing company maintenance: bookkeeping, legal support, corporate changes and compliance.",
+          "Ongoing company support: bookkeeping, taxes, contracts, HR, corporate changes.",
         filename: "support-en.docx",
       },
       {
-        id: "acq",
-        title: "Asset Acquisition",
-        subtitle: "Real Estate · Business · Project — KZ & GE",
+        id: "governance",
+        title: "Corporate Governance",
+        subtitle: "Ownership · SHA · Procedures · KEPS / KYC",
         description:
-          "Buying real estate, acquiring a going concern, or investing in a project in Kazakhstan or Georgia: deal structure, due diligence, financing.",
-        filename: "acq-en.docx",
+          "Ownership structure and management bodies, shareholder agreements, procedures and corporate calendar.",
+        filename: "governance-en.docx",
+      },
+      {
+        id: "ops",
+        title: "Managed Company and Banking",
+        subtitle: "Nominee director · Corporate secretary · Banking compliance",
+        description:
+          "Turnkey company management: director, corporate secretary, KYC, banking and FX circuit.",
+        filename: "ops-en.docx",
+      },
+      {
+        id: "investors",
+        title: "Investor Support and GR",
+        subtitle: "Investment project · Investor visa · Government agreements",
+        description:
+          "Investment project structuring, preferential regimes, investor visa and government interaction.",
+        filename: "investors-en.docx",
+      },
+      {
+        id: "ma",
+        title: "M&A — Deal Advisory",
+        subtitle: "Deal structure · LOI / SPA · Escrow · Closing",
+        description:
+          "Deal structure and negotiations, SPA drafting, escrow, closing and post-deal integration.",
+        filename: "ma-en.docx",
+      },
+      {
+        id: "dd",
+        title: "Due Diligence",
+        subtitle: "Legal · Tax · Financial · Commercial — red-flag and full-scope",
+        description:
+          "Legal, tax and financial pre-deal audit of the target: risks, liabilities, recommendations.",
+        filename: "dd-en.docx",
       },
     ],
   },
@@ -207,56 +279,82 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
       {
         id: "kz-reg",
         title: "ბიზნესის რეგისტრაცია ყაზახეთში",
-        subtitle: "TOO / AO / წარმომადგენლობა",
+        subtitle: "TOO / AO / ფილიალი · საგადასახადო რეჟიმი · ბანკი",
         description:
-          "სამართლებრივი ფორმის არჩევა, რეგისტრაციის ვადა და ღირებულება, საბანკო თანხლება, საგადასახადო რეჟიმი.",
-        // TODO: replace with `kz-reg-ka.docx` once the Georgian brief is ready.
-        filename: "kz-reg-en.docx",
-      },
-      {
-        id: "kz-sez",
-        title: "სეზ და სპეციალური რეჟიმები ყაზახეთში",
-        subtitle: "AIFC / PIT / MCFS / SEZ",
-        description:
-          "AIFC-ში აკრედიტაცია, PIT-ში ან MCFS-ში რეგისტრაცია, საგადასახადო შეღავათები და საქმიანობის მოთხოვნები.",
-        // TODO: replace with `kz-sez-ka.docx` once the Georgian brief is ready.
-        filename: "kz-sez-en.docx",
+          "ფორმის და საგადასახადო რეჟიმის არჩევა, იურიდიული მისამართი, ანგარიშის გახსნა, საგადასახადო რეგისტრაცია.",
+        filename: "kz-reg-ka.docx",
       },
       {
         id: "ge-reg",
         title: "ბიზნესის რეგისტრაცია საქართველოში",
-        subtitle: "LLC / წარმომადგენლობა / ინდ. მეწარმე",
+        subtitle: "LLC / ინდმეწარმე / ფილიალი · მცირე ბიზნესი · ბანკი",
         description:
-          "სტრუქტურის არჩევა, კომპანიისა და ანგარიშის გახსნა, საგადასახადო რეჟიმები, შესაბამისობის მოთხოვნები.",
-        // TODO: replace with `ge-reg-ka.docx` once the Georgian brief is ready.
-        filename: "ge-reg-en.docx",
+          "ფორმის არჩევა, მცირე ბიზნესის 1% ან Virtual Zone, ანგარიშის გახსნა და საგადასახადო რეგისტრაცია.",
+        filename: "ge-reg-ka.docx",
+      },
+      {
+        id: "kz-sez",
+        title: "სეზ და სპეციალური რეჟიმები ყაზახეთში",
+        subtitle: "AIFC / PIT / ICDF / SEZ — არჩევა და აკრედიტაცია",
+        description:
+          "ოპტიმალური რეჟიმის არჩევა, აკრედიტაცია, საგადასახადო შეღავათები და ოპერაციული მოთხოვნები.",
+        filename: "kz-sez-ka.docx",
       },
       {
         id: "ge-vz",
         title: "Virtual Zone საქართველოში",
-        subtitle: "VZ სტატუსი IT-კომპანიებისთვის",
+        subtitle: "VZ სტატუსი IT-კომპანიებისთვის — 0% დღგ / 5% დივიდენდი",
         description:
-          "Virtual Zone სტატუსის მიღება: მოთხოვნები, საგადასახადო შეღავათები, დასაშვები საქმიანობები.",
-        // TODO: replace with `ge-vz-ka.docx` once the Georgian brief is ready.
-        filename: "ge-vz-en.docx",
+          "Virtual Zone სტატუსის მოპოვება: შესაბამისობა, საგადასახადო შეღავათები, ოპერაციული პირობები.",
+        filename: "ge-vz-ka.docx",
       },
       {
         id: "support",
-        title: "ბიზნესის თანხლება",
-        subtitle: "ბუღალტერია, იურიდიული მხარდაჭერა, კორპორაციული მართვა",
+        title: "ბუღალტერია და იურიდიული მხარდაჭერა",
+        subtitle: "აღრიცხვა · ანგარიშგება · ხელშეკრულებები · HR",
         description:
-          "კომპანიის მიმდინარე თანხლება: ბუღალტრული აღრიცხვა, იურიდიული მხარდაჭერა, კორპორაციული ცვლილებები.",
-        // TODO: replace with `support-ka.docx` once the Georgian brief is ready.
-        filename: "support-en.docx",
+          "კომპანიის ყოველდღიური თანხლება: ბუღალტერია, გადასახადები, ხელშეკრულებები, HR, კორპორაციული ცვლილებები.",
+        filename: "support-ka.docx",
       },
       {
-        id: "acq",
-        title: "აქტივის შეძენა",
-        subtitle: "უძრავი ქონება · ბიზნესი · პროექტი — KZ & GE",
+        id: "governance",
+        title: "კორპორაციული მენეჯმენტი",
+        subtitle: "მფლობელობა · SHA · რეგლამენტები · KEPS / KYC",
         description:
-          "უძრავი ქონების შეძენა, მზა ბიზნესის ყიდვა ან პროექტში ინვესტიცია ყაზახეთში ან საქართველოში: გარიგების სტრუქტურა, due diligence, დაფინანსება.",
-        // TODO: replace with `acq-ka.docx` once the Georgian brief is ready.
-        filename: "acq-en.docx",
+          "მფლობელობის სტრუქტურა და მართვის ორგანოები, აქციონერთა შეთანხმებები, რეგლამენტები და კორპორაციული კალენდარი.",
+        filename: "governance-ka.docx",
+      },
+      {
+        id: "ops",
+        title: "მართვაში მყოფი კომპანია და ბანკი",
+        subtitle: "სანომერო დირექტორი · კორპორაციული მდივანი · საბანკო კომპლაიენსი",
+        description:
+          "კომპანიის სრული მართვა: დირექტორი, კორპორაციული მდივანი, KYC, საბანკო და სავალუტო კონტური.",
+        filename: "ops-ka.docx",
+      },
+      {
+        id: "investors",
+        title: "ინვესტორთა მხარდაჭერა და GR",
+        subtitle: "საინვესტიციო პროექტი · ინვესტორის ვიზა · სახელმწიფო შეთანხმებები",
+        description:
+          "საინვესტიციო პროექტის სტრუქტურირება, შეღავათიანი რეჟიმები, ინვესტორის ვიზა და სახელმწიფოსთან კომუნიკაცია.",
+        filename: "investors-ka.docx",
+      },
+      {
+        id: "ma",
+        title: "M&A — გარიგების კონსულტაცია",
+        subtitle: "გარიგების სტრუქტურა · LOI / SPA · Escrow · Closing",
+        description:
+          "გარიგების სტრუქტურა და მოლაპარაკებები, SPA, escrow, closing და გარიგების შემდგომი ინტეგრაცია.",
+        filename: "ma-ka.docx",
+      },
+      {
+        id: "dd",
+        title: "Due Diligence",
+        subtitle: "Legal · Tax · Financial · Commercial — red-flag და სრული",
+        description:
+          "სამიზნის სამართლებრივი, საგადასახადო და ფინანსური აუდიტი გარიგებამდე: რისკები, ვალდებულებები, რეკომენდაციები.",
+        filename: "dd-ka.docx",
       },
     ],
   },
