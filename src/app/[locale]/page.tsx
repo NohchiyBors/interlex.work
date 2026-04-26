@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildMetadata, getDictionary, getServicesLabel, hasLocale, localePath } from "@/lib/i18n";
@@ -35,6 +36,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
       <JsonLd data={[getOrganizationJsonLd(locale), getWebsiteJsonLd(locale), getFaqJsonLd(seo.home.faqItems)]} />
       <section className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-6 pb-12 pt-8 md:px-8 xl:px-12 xl:pt-12">
         <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+          <div className="flex flex-col gap-6">
           <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10 xl:px-10 xl:py-12">
             <p className="mb-5 text-xs font-semibold uppercase tracking-[0.34em] text-[var(--accent)]">{dict.home.eyebrow}</p>
             <h1 className="max-w-4xl font-display text-5xl leading-[0.96] tracking-[-0.04em] text-[var(--primary)] md:text-6xl lg:text-7xl">
@@ -56,7 +58,18 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
               </Link>
             </div>
           </div>
+          </div>
 
+          <div className="flex flex-col gap-6">
+          <div className="relative min-h-[220px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
+            <Image
+              src="/images/img-hub.svg"
+              alt="InterLex — Kazakhstan and Georgia"
+              fill
+              className="object-cover"
+              priority
+            />
+          </div>
           <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">
             <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{dict.home.logicLabel}</p>
             <div className="mt-5 space-y-6">
@@ -71,6 +84,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
               <p className="text-sm leading-7 text-[var(--muted)]">{dict.home.logicBody}</p>
             </div>
           </div>
+        </div>
         </div>
 
         <section className="grid gap-6 lg:grid-cols-2">

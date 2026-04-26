@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildMetadata, getDictionary, getServicesLabel, hasLocale, localePath } from "@/lib/i18n";
@@ -43,8 +44,18 @@ export default async function CrossBorderPage(props: PageProps<"/[locale]/cross-
             </h1>
             <p className="mt-6 max-w-3xl text-base leading-8 text-[var(--muted)]">{dict.crossBorder.introBody}</p>
           </div>
-          <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] p-5">
-            <p className="text-sm leading-7 text-[var(--ink)]">{dict.crossBorder.introSide}</p>
+          <div className="flex flex-col gap-4">
+            <div className="relative min-h-[180px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
+              <Image
+                src="/images/img-crossborder.svg"
+                alt="Kazakhstan and Georgia — cross-border structuring"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] p-5">
+              <p className="text-sm leading-7 text-[var(--ink)]">{dict.crossBorder.introSide}</p>
+            </div>
           </div>
         </div>
       </section>

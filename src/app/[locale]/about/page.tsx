@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { buildMetadata, getDictionary, hasLocale, localePath } from "@/lib/i18n";
@@ -37,7 +38,16 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
           <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)]">{dict.about.introBody}</p>
         </div>
 
-        <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">
+        <div className="flex flex-col gap-6">
+          <div className="relative min-h-[220px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
+            <Image
+              src="/images/img-about.svg"
+              alt="InterLex team — professional legal and business advisory"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="border border-[color:rgba(0,9,36,0.08)] bg-[var(--surface-low)] px-6 py-8 md:px-8 md:py-10">
           <p className="text-xs font-semibold uppercase tracking-[0.3em] text-[var(--accent)]">{dict.about.principlesLabel}</p>
           <div className="mt-5 space-y-5">
             {dict.about.principles.map((item, index) => (
@@ -47,6 +57,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
                 <p className="mt-3 text-sm leading-7 text-[var(--muted)]">{item.body}</p>
               </div>
             ))}
+          </div>
           </div>
         </div>
       </section>

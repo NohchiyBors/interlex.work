@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { notFound } from "next/navigation";
 import { buildMetadata, getDictionary, hasLocale, localePath } from "@/lib/i18n";
 import { JsonLd } from "@/components/json-ld";
@@ -35,14 +36,24 @@ export default async function BriefsPage(props: PageProps<"/[locale]/briefs">) {
       />
 
       <section className="grid gap-6 lg:grid-cols-[1fr_1fr]">
-        <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[var(--accent)]">
-            {copy.eyebrow}
-          </p>
-          <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.96] tracking-[-0.04em] text-[var(--primary)] md:text-6xl">
-            {copy.pageTitle}
-          </h1>
-          <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)]">{copy.pageBody}</p>
+        <div className="flex flex-col gap-6">
+          <div className="relative min-h-[220px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
+            <Image
+              src="/images/img-briefs.svg"
+              alt="InterLex client intake briefs"
+              fill
+              className="object-cover"
+            />
+          </div>
+          <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[var(--accent)]">
+              {copy.eyebrow}
+            </p>
+            <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.96] tracking-[-0.04em] text-[var(--primary)] md:text-6xl">
+              {copy.pageTitle}
+            </h1>
+            <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)]">{copy.pageBody}</p>
+          </div>
         </div>
 
         <BriefForm locale={locale} copy={copy} />

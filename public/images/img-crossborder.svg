@@ -1,0 +1,113 @@
+<svg viewBox="0 0 1200 675" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090F1C"/>
+      <stop offset="100%" stop-color="#131F35"/>
+    </linearGradient>
+    <radialGradient id="glowA" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glowB" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#C9A84C" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#C9A84C" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softBlur"><feGaussianBlur stdDeviation="5"/></filter>
+    <filter id="medBlur"><feGaussianBlur stdDeviation="15"/></filter>
+    <filter id="bigBlur"><feGaussianBlur stdDeviation="35"/></filter>
+    <pattern id="dots" x="0" y="0" width="40" height="40" patternUnits="userSpaceOnUse">
+      <circle cx="20" cy="20" r="0.8" fill="#C9A84C" opacity="0.09"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect width="1200" height="675" fill="url(#dots)"/>
+
+  <!-- Longitude lines (vertical, subtle) -->
+  <line x1="200" y1="0" x2="200" y2="675" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="400" y1="0" x2="400" y2="675" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="600" y1="0" x2="600" y2="675" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="800" y1="0" x2="800" y2="675" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="1000" y1="0" x2="1000" y2="675" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Latitude lines (horizontal, subtle) -->
+  <line x1="0" y1="135" x2="1200" y2="135" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="0" y1="270" x2="1200" y2="270" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="0" y1="405" x2="1200" y2="405" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+  <line x1="0" y1="540" x2="1200" y2="540" stroke="#3A5580" stroke-width="0.4" opacity="0.3"/>
+
+  <!-- Topographic contours around KZ node (left, 320,300) -->
+  <ellipse cx="320" cy="300" rx="200" ry="130" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+  <ellipse cx="320" cy="300" rx="155" ry="100" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.16"/>
+  <ellipse cx="320" cy="300" rx="110" ry="72" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.22"/>
+  <ellipse cx="320" cy="300" rx="70" ry="46" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.30"/>
+
+  <!-- Topographic contours around GE node (right, 880,360) -->
+  <ellipse cx="880" cy="360" rx="160" ry="110" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.12"/>
+  <ellipse cx="880" cy="360" rx="120" ry="80" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.16"/>
+  <ellipse cx="880" cy="360" rx="82" ry="56" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.22"/>
+  <ellipse cx="880" cy="360" rx="50" ry="35" fill="none" stroke="#C9A84C" stroke-width="0.6" opacity="0.30"/>
+
+  <!-- Glow halos -->
+  <ellipse cx="320" cy="300" rx="180" ry="180" fill="url(#glowA)" filter="url(#bigBlur)"/>
+  <ellipse cx="880" cy="360" rx="140" ry="140" fill="url(#glowB)" filter="url(#bigBlur)"/>
+
+  <!-- Route 1 — main arc (upper) -->
+  <path d="M 320 300 C 450 120, 750 140, 880 360" stroke="#C9A84C" stroke-width="6" fill="none" opacity="0.1" filter="url(#medBlur)"/>
+  <path d="M 320 300 C 450 120, 750 140, 880 360" stroke="#C9A84C" stroke-width="1.8" fill="none" opacity="0.85"/>
+
+  <!-- Route 2 — second arc (lower) -->
+  <path d="M 320 300 C 480 420, 720 450, 880 360" stroke="#C9A84C" stroke-width="0.8" fill="none" opacity="0.35" stroke-dasharray="5 10"/>
+
+  <!-- Route 3 — middle dashed route -->
+  <path d="M 320 300 C 520 260, 700 280, 880 360" stroke="#C9A84C" stroke-width="0.6" fill="none" opacity="0.25" stroke-dasharray="2 12"/>
+
+  <!-- Midpoint marker on main arc -->
+  <circle cx="600" cy="185" r="4" fill="#E8C96A" opacity="0.8"/>
+  <circle cx="600" cy="185" r="10" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="600" cy="185" r="18" fill="none" stroke="#C9A84C" stroke-width="0.4" opacity="0.2"/>
+
+  <!-- KZ Node -->
+  <circle cx="320" cy="300" r="52" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.25"/>
+  <circle cx="320" cy="300" r="36" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.38"/>
+  <circle cx="320" cy="300" r="22" fill="#C9A84C" opacity="0.12" filter="url(#softBlur)"/>
+  <circle cx="320" cy="300" r="15" fill="#101C2E" stroke="#C9A84C" stroke-width="1.8"/>
+  <circle cx="320" cy="300" r="6" fill="#E8C96A"/>
+  <!-- KZ crosshair ticks -->
+  <line x1="320" y1="264" x2="320" y2="255" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <line x1="320" y1="336" x2="320" y2="345" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <line x1="256" y1="300" x2="247" y2="300" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <line x1="384" y1="300" x2="393" y2="300" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <!-- KZ label -->
+  <text x="320" y="388" text-anchor="middle" fill="#C9A84C" font-family="Georgia, serif" font-size="10" letter-spacing="4" opacity="0.8">KAZAKHSTAN</text>
+  <line x1="270" y1="381" x2="370" y2="381" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- GE Node -->
+  <circle cx="880" cy="360" rx="42" ry="42" fill="none" stroke="#C9A84C" stroke-width="0.7" opacity="0.25"/>
+  <circle cx="880" cy="360" r="28" fill="none" stroke="#C9A84C" stroke-width="1" opacity="0.38"/>
+  <circle cx="880" cy="360" r="17" fill="#C9A84C" opacity="0.12" filter="url(#softBlur)"/>
+  <circle cx="880" cy="360" r="12" fill="#101C2E" stroke="#C9A84C" stroke-width="1.8"/>
+  <circle cx="880" cy="360" r="5" fill="#E8C96A"/>
+  <!-- GE ticks -->
+  <line x1="880" y1="332" x2="880" y2="324" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <line x1="880" y1="388" x2="880" y2="396" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <line x1="852" y1="360" x2="844" y2="360" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <line x1="908" y1="360" x2="916" y2="360" stroke="#C9A84C" stroke-width="1" opacity="0.55"/>
+  <!-- GE label -->
+  <text x="880" y="438" text-anchor="middle" fill="#C9A84C" font-family="Georgia, serif" font-size="10" letter-spacing="4" opacity="0.8">GEORGIA</text>
+  <line x1="840" y1="431" x2="920" y2="431" stroke="#C9A84C" stroke-width="0.5" opacity="0.3"/>
+
+  <!-- Scale bar -->
+  <line x1="480" y1="600" x2="720" y2="600" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+  <line x1="480" y1="595" x2="480" y2="605" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+  <line x1="600" y1="595" x2="600" y2="605" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+  <line x1="720" y1="595" x2="720" y2="605" stroke="#C9A84C" stroke-width="0.8" opacity="0.3"/>
+
+  <!-- Corner marks -->
+  <line x1="35" y1="35" x2="90" y2="35" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <line x1="35" y1="35" x2="35" y2="90" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="35" cy="35" r="2" fill="#C9A84C" opacity="0.5"/>
+  <line x1="1165" y1="640" x2="1110" y2="640" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <line x1="1165" y1="640" x2="1165" y2="585" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <circle cx="1165" cy="640" r="2" fill="#C9A84C" opacity="0.5"/>
+</svg>

@@ -1,0 +1,149 @@
+<svg viewBox="0 0 800 800" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0A1220"/>
+      <stop offset="100%" stop-color="#141F35"/>
+    </linearGradient>
+    <linearGradient id="docGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#F5F0E8"/>
+      <stop offset="100%" stop-color="#E8E0CC"/>
+    </linearGradient>
+    <linearGradient id="docGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#EDE5D4"/>
+      <stop offset="100%" stop-color="#DDD4BE"/>
+    </linearGradient>
+    <linearGradient id="docGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#E4DBCa"/>
+      <stop offset="100%" stop-color="#D6CCB6"/>
+    </linearGradient>
+    <linearGradient id="penGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E8C96A"/>
+      <stop offset="30%" stop-color="#C9A84C"/>
+      <stop offset="70%" stop-color="#B8962E"/>
+      <stop offset="100%" stop-color="#8A6E1E"/>
+    </linearGradient>
+    <linearGradient id="sealGrad" cx="50%" cy="50%" r="50%" id="sealRad" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#E8C96A"/>
+      <stop offset="100%" stop-color="#9A7520"/>
+    </linearGradient>
+    <filter id="docShadow">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="#000000" flood-opacity="0.4"/>
+    </filter>
+    <filter id="docShadow2">
+      <feDropShadow dx="3" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.35"/>
+    </filter>
+    <filter id="penShadow">
+      <feDropShadow dx="3" dy="5" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+    <pattern id="dots" x="0" y="0" width="44" height="44" patternUnits="userSpaceOnUse">
+      <circle cx="22" cy="22" r="0.8" fill="#C9A84C" opacity="0.08"/>
+    </pattern>
+  </defs>
+
+  <rect width="800" height="800" fill="url(#bg)"/>
+  <rect width="800" height="800" fill="url(#dots)"/>
+
+  <!-- Ambient warm light source top-right -->
+  <ellipse cx="700" cy="150" rx="300" ry="250" fill="#C9A84C" opacity="0.04" filter="url(#softGlow)"/>
+
+  <!-- Document 3 (bottom / backmost) — rotated left -->
+  <g transform="rotate(-8, 400, 400)" filter="url(#docShadow)">
+    <rect x="165" y="200" width="340" height="440" rx="2" fill="url(#docGrad3)"/>
+    <!-- Lines on doc 3 -->
+    <line x1="200" y1="270" x2="470" y2="270" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="200" y1="295" x2="470" y2="295" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="200" y1="320" x2="470" y2="320" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="200" y1="345" x2="420" y2="345" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="200" y1="240" x2="350" y2="240" stroke="#8A6E1E" stroke-width="1.5" opacity="0.35"/>
+    <rect x="200" y="380" width="70" height="8" rx="1" fill="#B8A080" opacity="0.3"/>
+    <rect x="200" y="396" width="55" height="8" rx="1" fill="#B8A080" opacity="0.3"/>
+  </g>
+
+  <!-- Document 2 (middle) — rotated right -->
+  <g transform="rotate(5, 400, 400)" filter="url(#docShadow2)">
+    <rect x="210" y="170" width="340" height="440" rx="2" fill="url(#docGrad2)"/>
+    <!-- Lines on doc 2 -->
+    <line x1="245" y1="240" x2="520" y2="240" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="245" y1="265" x2="520" y2="265" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="245" y1="290" x2="520" y2="290" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="245" y1="315" x2="490" y2="315" stroke="#B8A080" stroke-width="1" opacity="0.4"/>
+    <line x1="245" y1="210" x2="420" y2="210" stroke="#8A6E1E" stroke-width="1.5" opacity="0.35"/>
+    <!-- Seal on doc 2 -->
+    <circle cx="480" cy="530" r="28" fill="none" stroke="#C9A84C" stroke-width="1.5" opacity="0.5"/>
+    <circle cx="480" cy="530" r="22" fill="#C9A84C" opacity="0.08"/>
+    <circle cx="480" cy="530" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+    <!-- Radial lines on seal -->
+    <line x1="480" y1="502" x2="480" y2="510" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+    <line x1="480" y1="550" x2="480" y2="558" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+    <line x1="452" y1="530" x2="460" y2="530" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+    <line x1="500" y1="530" x2="508" y2="530" stroke="#C9A84C" stroke-width="1" opacity="0.5"/>
+    <line x1="460" y1="510" x2="466" y2="516" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+    <line x1="494" y1="544" x2="500" y2="550" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+    <line x1="494" y1="510" x2="500" y2="516" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+    <line x1="460" y1="544" x2="466" y2="550" stroke="#C9A84C" stroke-width="1" opacity="0.4"/>
+  </g>
+
+  <!-- Document 1 (top / frontmost) — slightly tilted -->
+  <g transform="rotate(-2, 400, 400)" filter="url(#docShadow)">
+    <rect x="240" y="140" width="340" height="440" rx="2" fill="url(#docGrad1)"/>
+    <!-- Header bar -->
+    <rect x="240" y="140" width="340" height="52" rx="2" fill="#1B2D4F" opacity="0.85"/>
+    <!-- Header accent line -->
+    <rect x="240" y="186" width="340" height="3" fill="#C9A84C" opacity="0.8"/>
+    <!-- Header logo mark -->
+    <rect x="262" y="158" width="24" height="16" rx="1" fill="#C9A84C" opacity="0.7"/>
+    <!-- Lines on doc 1 -->
+    <line x1="275" y1="230" x2="555" y2="230" stroke="#8A8070" stroke-width="1.2" opacity="0.3"/>
+    <line x1="275" y1="255" x2="555" y2="255" stroke="#8A8070" stroke-width="1" opacity="0.25"/>
+    <line x1="275" y1="278" x2="555" y2="278" stroke="#8A8070" stroke-width="1" opacity="0.25"/>
+    <line x1="275" y1="301" x2="555" y2="301" stroke="#8A8070" stroke-width="1" opacity="0.25"/>
+    <line x1="275" y1="324" x2="520" y2="324" stroke="#8A8070" stroke-width="1" opacity="0.25"/>
+    <line x1="275" y1="347" x2="535" y2="347" stroke="#8A8070" stroke-width="1" opacity="0.25"/>
+    <line x1="275" y1="370" x2="510" y2="370" stroke="#8A8070" stroke-width="1" opacity="0.25"/>
+    <!-- Section divider -->
+    <line x1="275" y1="398" x2="555" y2="398" stroke="#C9A84C" stroke-width="0.8" opacity="0.4"/>
+    <!-- Second section lines -->
+    <line x1="275" y1="422" x2="555" y2="422" stroke="#8A8070" stroke-width="1" opacity="0.22"/>
+    <line x1="275" y1="445" x2="555" y2="445" stroke="#8A8070" stroke-width="1" opacity="0.22"/>
+    <line x1="275" y1="468" x2="520" y2="468" stroke="#8A8070" stroke-width="1" opacity="0.22"/>
+    <!-- Field labels (small gold blocks) -->
+    <rect x="275" y="215" width="60" height="7" rx="1" fill="#C9A84C" opacity="0.45"/>
+    <rect x="275" y="408" width="48" height="7" rx="1" fill="#C9A84C" opacity="0.35"/>
+    <!-- Bottom gold accent bar -->
+    <rect x="240" y="574" width="340" height="6" fill="#C9A84C" opacity="0.25"/>
+    <!-- Corner fold -->
+    <polygon points="580,140 580,168 552,140" fill="#D4C8A8" opacity="0.8"/>
+    <line x1="552" y1="140" x2="580" y2="168" stroke="#B8A880" stroke-width="0.8" opacity="0.6"/>
+  </g>
+
+  <!-- Gold pen — diagonal across documents -->
+  <g transform="rotate(-35, 400, 400)" filter="url(#penShadow)">
+    <!-- Pen body -->
+    <rect x="360" y="60" width="14" height="420" rx="7" fill="url(#penGrad)"/>
+    <!-- Pen clip -->
+    <rect x="371" y="70" width="4" height="100" rx="2" fill="#8A6E1E" opacity="0.8"/>
+    <!-- Pen cap band -->
+    <rect x="358" y="180" width="18" height="8" rx="1" fill="#E8C96A" opacity="0.9"/>
+    <rect x="358" y="192" width="18" height="3" rx="1" fill="#9A7520" opacity="0.7"/>
+    <!-- Pen tip (nib section) -->
+    <rect x="362" y="440" width="10" height="30" rx="4" fill="#B8962E"/>
+    <!-- Nib -->
+    <polygon points="362,470 372,470 367,495" fill="#8A6E1E"/>
+    <!-- Nib split line -->
+    <line x1="367" y1="470" x2="367" y2="490" stroke="#6A5010" stroke-width="0.8" opacity="0.7"/>
+    <!-- Pen barrel texture rings -->
+    <line x1="360" y1="220" x2="374" y2="220" stroke="#E8C96A" stroke-width="0.6" opacity="0.4"/>
+    <line x1="360" y1="240" x2="374" y2="240" stroke="#E8C96A" stroke-width="0.6" opacity="0.3"/>
+    <line x1="360" y1="260" x2="374" y2="260" stroke="#E8C96A" stroke-width="0.6" opacity="0.3"/>
+    <line x1="360" y1="280" x2="374" y2="280" stroke="#E8C96A" stroke-width="0.6" opacity="0.3"/>
+  </g>
+
+  <!-- Corner marks -->
+  <line x1="30" y1="30" x2="80" y2="30" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <line x1="30" y1="30" x2="30" y2="80" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <line x1="770" y1="770" x2="720" y2="770" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+  <line x1="770" y1="770" x2="770" y2="720" stroke="#C9A84C" stroke-width="1.2" opacity="0.3"/>
+</svg>

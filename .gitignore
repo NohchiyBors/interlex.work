@@ -71,3 +71,7 @@ next-env.d.ts
 /TODO.md
 /SEO-PLAN.md
 /.cursor/
+
+# Локальные материалы и выгрузки, не входящие в Next.js (макеты, zip, черновики)
+/files/
+/*.zip
