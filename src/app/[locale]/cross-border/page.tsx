@@ -47,7 +47,7 @@ export default async function CrossBorderPage(props: PageProps<"/[locale]/cross-
           <div className="flex flex-col gap-4">
             <div className="relative min-h-[180px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
               <Image
-                src="/images/img-crossborder.png"
+                src="/images/img-crossborder.jpg"
                 alt="Kazakhstan and Georgia — cross-border structuring"
                 fill
                 className="object-cover"

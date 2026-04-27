@@ -63,7 +63,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
           <div className="flex flex-col gap-6">
           <div className="relative min-h-[220px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
             <Image
-              src="/images/img-hub.png"
+              src="/images/img-hub.jpg"
               alt="InterLex — Kazakhstan and Georgia"
               fill
               className="object-cover"
