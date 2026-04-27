@@ -41,7 +41,7 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
         <div className="flex flex-col gap-6">
           <div className="relative min-h-[220px] overflow-hidden border border-[color:rgba(0,9,36,0.08)]">
             <Image
-              src="/images/img-about.svg"
+              src="/images/img-about.png"
               alt="InterLex team — professional legal and business advisory"
               fill
               className="object-cover"
