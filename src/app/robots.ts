@@ -2,6 +2,14 @@ import type { MetadataRoute } from "next";
 import { baseUrl } from "@/lib/i18n";
 
 export default function robots(): MetadataRoute.Robots {
+  const isProduction = process.env.NEXT_PUBLIC_SITE_ENV === "production";
+
+  if (!isProduction) {
+    return {
+      rules: [{ userAgent: "*", disallow: "/" }],
+    };
+  }
+
   return {
     rules: [
       {
