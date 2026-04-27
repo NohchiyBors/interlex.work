@@ -32,7 +32,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Governance", services: ["Corporate Management"] },
       { category: "Operations", services: ["Company Under Management", "Banking Support"] },
       { category: "Investment", services: ["Investor Support and GR"] },
-      { category: "Transactions", services: ["M&A Advisory", "Due Diligence"] },
+      { category: "Transactions", services: ["M&A Advisory", "Due Diligence", "Asset Transactions — Real Estate, Manufacturing, Mineral Deposits"] },
     ],
   },
   ru: {
@@ -51,7 +51,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Управление", services: ["Корпоративный менеджмент"] },
       { category: "Операции", services: ["Компания под управлением", "Банковское сопровождение"] },
       { category: "Инвестиции", services: ["Инвесторская поддержка и GR"] },
-      { category: "Сделки", services: ["M&A-консультирование", "Due diligence"] },
+      { category: "Сделки", services: ["M&A-консультирование", "Due diligence", "Сделки с активами — недвижимость, производство, месторождения"] },
     ],
   },
   zh: {
@@ -70,7 +70,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "治理", services: ["公司治理"] },
       { category: "运营", services: ["受托管理公司", "银行支持"] },
       { category: "投资", services: ["投资者支持与政府关系"] },
-      { category: "交易", services: ["并购顾问", "尽职调查"] },
+      { category: "交易", services: ["并购顾问", "尽职调查", "资产交易——不动产、制造业、矿产资源"] },
     ],
   },
   it: {
@@ -89,7 +89,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Governance", services: ["Gestione societaria"] },
       { category: "Operatività", services: ["Società in gestione", "Supporto bancario"] },
       { category: "Investimenti", services: ["Supporto agli investitori e GR"] },
-      { category: "Operazioni straordinarie", services: ["Consulenza M&A", "Due diligence"] },
+      { category: "Operazioni straordinarie", services: ["Consulenza M&A", "Due diligence", "Operazioni su asset — immobiliare, manifatturiero, giacimenti"] },
     ],
   },
   fr: {
@@ -108,7 +108,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Gouvernance", services: ["Gestion corporate"] },
       { category: "Opérations", services: ["Société sous gestion", "Support bancaire"] },
       { category: "Investissement", services: ["Support investisseurs et GR"] },
-      { category: "Transactions", services: ["Conseil M&A", "Due diligence"] },
+      { category: "Transactions", services: ["Conseil M&A", "Due diligence", "Transactions d'actifs — immobilier, industrie, gisements"] },
     ],
   },
   ka: {
@@ -127,7 +127,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "მართვა", services: ["კორპორაციული მენეჯმენტი"] },
       { category: "ოპერაციები", services: ["კომპანია მართვაში", "საბანკო მხარდაჭერა"] },
       { category: "ინვესტიციები", services: ["ინვესტორის მხარდაჭერა და GR"] },
-      { category: "გარიგებები", services: ["M&A კონსულტაცია", "Due diligence"] },
+      { category: "გარიგებები", services: ["M&A კონსულტაცია", "Due diligence", "აქტივების გარიგებები — უძრავი ქონება, წარმოება, საბადოები"] },
     ],
   },
   de: {
@@ -146,7 +146,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Governance", services: ["Corporate Management"] },
       { category: "Betrieb", services: ["Gesellschaft unter Management", "Bankbegleitung"] },
       { category: "Investitionen", services: ["Investorenbegleitung und GR"] },
-      { category: "Transaktionen", services: ["M&A-Beratung", "Due Diligence"] },
+      { category: "Transaktionen", services: ["M&A-Beratung", "Due Diligence", "Asset-Transaktionen — Immobilien, Produktion, Lagerstätten"] },
     ],
   },
   ar: {
@@ -165,7 +165,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "الحوكمة", services: ["الإدارة المؤسسية"] },
       { category: "العمليات", services: ["شركة تحت الإدارة", "الدعم المصرفي"] },
       { category: "الاستثمار", services: ["دعم المستثمرين وGR"] },
-      { category: "الصفقات", services: ["استشارات الاندماج والاستحواذ", "العناية الواجبة"] },
+      { category: "الصفقات", services: ["استشارات الاندماج والاستحواذ", "العناية الواجبة", "صفقات الأصول — عقارات، تصنيع، رواسب معدنية"] },
     ],
   },
   tr: {
@@ -184,7 +184,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Yönetişim", services: ["Kurumsal yönetim"] },
       { category: "Operasyonlar", services: ["Yönetim altındaki şirket", "Bankacılık desteği"] },
       { category: "Yatırım", services: ["Yatırımcı desteği ve GR"] },
-      { category: "İşlemler", services: ["M&A danışmanlığı", "Due diligence"] },
+      { category: "İşlemler", services: ["M&A danışmanlığı", "Due diligence", "Varlık işlemleri — gayrimenkul, üretim, maden yatakları"] },
     ],
   },
   es: {
@@ -203,7 +203,7 @@ const content: Record<Locale, ServiceScopeContent> = {
       { category: "Gobierno", services: ["Gestión corporativa"] },
       { category: "Operaciones", services: ["Empresa bajo gestión", "Soporte bancario"] },
       { category: "Inversión", services: ["Apoyo al inversor y GR"] },
-      { category: "Transacciones", services: ["Asesoría M&A", "Due diligence"] },
+      { category: "Transacciones", services: ["Asesoría M&A", "Due diligence", "Operaciones sobre activos — inmuebles, producción, yacimientos"] },
     ],
   },
 };

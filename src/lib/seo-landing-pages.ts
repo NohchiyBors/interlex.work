@@ -134,6 +134,77 @@ const ruHubGuideCardOverrides: Record<string, Omit<SeoGuideCard, "slug">> = {
     title: "Преференции, гранты и GR лучше собирать до переговоров, а не после.",
     body: "InterLex помогает упаковать проект, понять, где нужны льготы, и выстроить прямой рабочий диалог с профильными органами.",
   },
+  "ma/dd": {
+    eyebrow: "Сделки с активами",
+    title: "Недвижимость, производство, месторождения — сначала проверка, потом покупка.",
+    body: "Юридический, налоговый и финансовый аудит актива до сделки. Риски, скрытые обязательства и рекомендации по структуре.",
+  },
+};
+
+const hubGuideCardOverrides: Partial<Record<Locale, Record<string, Omit<SeoGuideCard, "slug">>>> = {
+  en: {
+    "ma/dd": {
+      eyebrow: "Asset Transactions",
+      title: "Real estate, manufacturing, mineral deposits — verify before you buy.",
+      body: "Legal, tax and financial audit of the asset before closing. Risks, hidden liabilities and structure recommendations.",
+    },
+  },
+  zh: {
+    "ma/dd": {
+      eyebrow: "资产交易",
+      title: "不动产、制造业、矿产——先核查，再购买。",
+      body: "交割前对目标资产进行法律、税务和财务审计。识别风险、隐性负债，并提供结构建议。",
+    },
+  },
+  it: {
+    "ma/dd": {
+      eyebrow: "Operazioni su asset",
+      title: "Immobiliare, produzione, giacimenti — prima la verifica, poi l'acquisto.",
+      body: "Audit legale, fiscale e finanziario dell'asset prima della chiusura. Rischi, passività nascoste e raccomandazioni sulla struttura.",
+    },
+  },
+  fr: {
+    "ma/dd": {
+      eyebrow: "Transactions d'actifs",
+      title: "Immobilier, industrie, gisements — vérifier avant d'acheter.",
+      body: "Audit juridique, fiscal et financier de l'actif avant la clôture. Risques, passifs cachés et recommandations de structure.",
+    },
+  },
+  ka: {
+    "ma/dd": {
+      eyebrow: "აქტივების გარიგებები",
+      title: "უძრავი ქონება, წარმოება, საბადოები — ჯერ შემოწმება, შემდეგ ყიდვა.",
+      body: "სამართლებრივი, საგადასახადო და ფინანსური აუდიტი გარიგებამდე. რისკები, ფარული ვალდებულებები და სტრუქტურული რეკომენდაციები.",
+    },
+  },
+  de: {
+    "ma/dd": {
+      eyebrow: "Asset-Transaktionen",
+      title: "Immobilien, Produktion, Lagerstätten — erst prüfen, dann kaufen.",
+      body: "Rechtliche, steuerliche und finanzielle Prüfung des Assets vor dem Abschluss. Risiken, versteckte Verbindlichkeiten und Strukturempfehlungen.",
+    },
+  },
+  ar: {
+    "ma/dd": {
+      eyebrow: "صفقات الأصول",
+      title: "عقارات، تصنيع، رواسب معدنية — التحقق أولاً، ثم الشراء.",
+      body: "تدقيق قانوني وضريبي ومالي للأصل قبل الإغلاق. المخاطر والالتزامات المخفية وتوصيات الهيكلة.",
+    },
+  },
+  tr: {
+    "ma/dd": {
+      eyebrow: "Varlık işlemleri",
+      title: "Gayrimenkul, üretim, maden yatakları — önce doğrula, sonra satın al.",
+      body: "Kapanış öncesi varlığın hukuki, vergi ve finansal denetimi. Riskler, gizli yükümlülükler ve yapılandırma önerileri.",
+    },
+  },
+  es: {
+    "ma/dd": {
+      eyebrow: "Operaciones sobre activos",
+      title: "Inmuebles, producción, yacimientos — primero verificar, luego comprar.",
+      body: "Auditoría legal, fiscal y financiera del activo antes del cierre. Riesgos, pasivos ocultos y recomendaciones de estructura.",
+    },
+  },
 };
 
 const kazakhstanVsGeorgiaContent: Record<Locale, ComparisonLandingPage> = {
@@ -1435,11 +1506,14 @@ export function getSeoGuideCards(locale: Locale): SeoGuideCard[] {
   const comparison = getKazakhstanVsGeorgiaContent(locale);
   const structuring = getCrossBorderStructuringContent(locale);
   const marketEntry = getInternationalMarketEntryContent(locale);
-  const hubCards = ["kz/sez", "ge/vz", "ma", "investors"]
+  const hubCards = ["kz/sez", "ge/vz", "ma", "investors", "ma/dd"]
     .map((slug) => getHubSeoPage(locale, slug))
     .filter((page): page is HubSeoPageContent => page !== null)
     .map((page) => {
-      const override = locale === "ru" ? ruHubGuideCardOverrides[page.slug] : undefined;
+      const override =
+        locale === "ru"
+          ? ruHubGuideCardOverrides[page.slug]
+          : hubGuideCardOverrides[locale]?.[page.slug];
 
       return {
         slug: page.slug,

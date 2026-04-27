@@ -13,9 +13,9 @@ import type { Locale } from "@/lib/i18n";
 
 export const runtime = "nodejs";
 
-function pickBriefCopyLocale(locale: string): Locale {
+function pickBriefCopyLocale(locale: string): "ru" | "en" | "ka" {
   // Briefs metadata only exists in ru, en, ka — collapse other locales to en.
-  if (locale === "ru" || locale === "ka") return locale as Locale;
+  if (locale === "ru" || locale === "ka") return locale as "ru" | "ka";
   return "en";
 }
 

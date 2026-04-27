@@ -23,7 +23,7 @@ export default async function ContactPage(props: PageProps<"/[locale]/contact">)
   const dict = getDictionary(locale);
   const formCopy = getContactFormCopy(locale);
   const whatsappHref = "https://wa.me/77000070021";
-  const whatsappLabel = locale === "ru" ? "Написать в WhatsApp" : "Write on WhatsApp";
+  const whatsappLabel = formCopy.whatsappLabel;
 
   return (
     <main className="mx-auto w-full max-w-7xl px-6 pb-14 pt-8 md:px-8 xl:px-12 xl:pt-12">

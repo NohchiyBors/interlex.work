@@ -16,8 +16,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   ru: {
     home: {
       label: "Отдельные маршруты",
-      title: "СЭЗ, Virtual Zone, M&A и инвестиционные проекты лучше открывать отдельным маршрутом.",
-      body: "Эти страницы нужны, когда клиент уже понимает тип задачи: выбрать режим, купить актив, пройти due diligence или собрать инвестиционный вход без лишней теории и общих формулировок.",
+      title: "Уже знаете задачу — открывайте нужный маршрут.",
+      body: "СЭЗ и Virtual Zone — для выбора режима. M&A и due diligence — для подготовки к сделке. Инвестиционный маршрут — для упаковки проекта под вход.",
     },
     crossBorder: {
       label: "С чего начать",
@@ -33,8 +33,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   en: {
     home: {
       label: "Key Pages",
-      title: "Choose the work format that brings the project to launch faster.",
-      body: "These pages help the client decide where to start: with jurisdiction comparison, with structure design, or with preparation for entering a new market.",
+      title: "Know what you need — go straight to the right page.",
+      body: "SEZ and Virtual Zone — for choosing a regime. M&A and due diligence — for preparing a deal. Investment route — for structuring a project entry.",
     },
     crossBorder: {
       label: "Where To Start",
@@ -50,8 +50,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   zh: {
     home: {
       label: "关键页面",
-      title: "先选择最能推动项目落地的工作方向。",
-      body: "这些页面帮助客户判断应先比较司法辖区、先设计结构，还是先准备进入新市场。",
+      title: "明确任务了吗——直接打开对应页面。",
+      body: "SEZ 和 Virtual Zone——用于选择制度。M&A 和尽职调查——用于准备交易。投资路径——用于打包项目入场。",
     },
     crossBorder: {
       label: "从哪里开始",
@@ -67,8 +67,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   it: {
     home: {
       label: "Pagine Chiave",
-      title: "Scegli il formato di lavoro che porta il progetto al lancio piu rapidamente.",
-      body: "Queste pagine aiutano a capire se conviene iniziare dal confronto tra giurisdizioni, dalla struttura o dalla preparazione dell'ingresso nel mercato.",
+      title: "Sai già cosa ti serve — vai direttamente alla pagina giusta.",
+      body: "SEZ e Virtual Zone — per scegliere il regime. M&A e due diligence — per preparare la transazione. Percorso investimento — per strutturare l'ingresso nel progetto.",
     },
     crossBorder: {
       label: "Da Dove Iniziare",
@@ -84,8 +84,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   fr: {
     home: {
       label: "Pages Clés",
-      title: "Choisissez le format de travail qui mène le plus vite au lancement.",
-      body: "Ces pages aident a comprendre s'il faut commencer par la comparaison des juridictions, par la structuration ou par la preparation de l'entree sur le marche.",
+      title: "Vous savez ce dont vous avez besoin — allez directement à la bonne page.",
+      body: "SEZ et Virtual Zone — pour choisir le régime. M&A et due diligence — pour préparer la transaction. Parcours investissement — pour structurer l'entrée dans le projet.",
     },
     crossBorder: {
       label: "Par Où Commencer",
@@ -101,8 +101,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   ka: {
     home: {
       label: "მთავარი გვერდები",
-      title: "აირჩიეთ სამუშაო ფორმატი, რომელიც პროექტს უფრო სწრაფად მიიყვანს გაშვებამდე.",
-      body: "ეს გვერდები ეხმარება კლიენტს გადაწყვიტოს, საიდან ჯობს დაწყება: იურისდიქციების შედარებიდან, სტრუქტურის აწყობიდან თუ ახალ ბაზარზე გასვლის მომზადებიდან.",
+      title: "ამოცანა ცხადია — გახსენით სასურველი გვერდი.",
+      body: "SEZ და Virtual Zone — რეჟიმის ასარჩევად. M&A და due diligence — გარიგების მოსამზადებლად. საინვესტიციო მარშრუტი — პროექტში შესვლის სტრუქტურირებისთვის.",
     },
     crossBorder: {
       label: "საიდან დავიწყოთ",
@@ -118,8 +118,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   de: {
     home: {
       label: "Wichtige Seiten",
-      title: "Wählen Sie das Arbeitsformat, das das Projekt schneller zum Start bringt.",
-      body: "Diese Seiten helfen zu verstehen, ob man mit dem Jurisdiktionsvergleich, mit der Struktur oder mit der Vorbereitung des Markteintritts beginnen sollte.",
+      title: "Sie wissen, was Sie brauchen — gehen Sie direkt zur richtigen Seite.",
+      body: "SEZ und Virtual Zone — zur Auswahl des Regimes. M&A und Due Diligence — zur Vorbereitung des Deals. Investitionsroute — zur Strukturierung des Projekteinstiegs.",
     },
     crossBorder: {
       label: "Wo Beginnen",
@@ -135,8 +135,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   ar: {
     home: {
       label: "صفحات أساسية",
-      title: "اختر صيغة العمل التي تقود المشروع إلى الإطلاق بشكل أسرع.",
-      body: "تساعد هذه الصفحات العميل على فهم ما إذا كان يجب البدء بمقارنة الولايات القضائية أو ببناء الهيكل أو بالتحضير لدخول سوق جديد.",
+      title: "تعرف ما تحتاجه — انتقل مباشرةً إلى الصفحة المناسبة.",
+      body: "SEZ وVirtual Zone — لاختيار النظام. M&A والعناية الواجبة — للتحضير للصفقة. مسار الاستثمار — لهيكلة دخول المشروع.",
     },
     crossBorder: {
       label: "من أين نبدأ",
@@ -152,8 +152,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   tr: {
     home: {
       label: "Temel Sayfalar",
-      title: "Projeyi lansmana daha hizli goturen calisma formatini secin.",
-      body: "Bu sayfalar ise nereden baslamanin daha dogru oldugunu gosterir: jurisdiksiyon karsilastirmasi, yapi kurulumu ya da yeni pazara giris hazirligi.",
+      title: "Ne gerektiğini biliyorsunuz — doğru sayfaya gidin.",
+      body: "SEZ ve Virtual Zone — rejim seçimi için. M&A ve due diligence — anlaşma hazırlığı için. Yatırım rotası — proje girişini yapılandırmak için.",
     },
     crossBorder: {
       label: "Nereden Baslanir",
@@ -169,8 +169,8 @@ const seoGuideSections: Record<Locale, GuideSectionSet> = {
   es: {
     home: {
       label: "Paginas Clave",
-      title: "Elija el formato de trabajo que lleve el proyecto al lanzamiento mas rapido.",
-      body: "Estas paginas ayudan a entender si conviene empezar por la comparacion de jurisdicciones, por la estructura o por la preparacion de la entrada al mercado.",
+      title: "Ya sabe lo que necesita — vaya directamente a la página correcta.",
+      body: "SEZ y Virtual Zone — para elegir el régimen. M&A y due diligence — para preparar la operación. Ruta de inversión — para estructurar la entrada al proyecto.",
     },
     crossBorder: {
       label: "Por Donde Empezar",

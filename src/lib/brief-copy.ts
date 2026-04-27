@@ -361,19 +361,20 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
         title: "Due Diligence",
         subtitle: "Legal · Tax · Financial · Commercial — red-flag და სრული",
         description:
-          "სამიზნის სამართლებრივი, საგადასახადო და ფინანსური აუდიტი გარიგებამდე: რისკები, ვალდებულებები, რეკომენდაციები.",
+          "სამიზნის სამართლებრივი, საგადასახადო და ფინანსური აუდიტი გარიგებამდე: რისკები, ვალდებულებები და ფარული ხარვეზები.",
         filename: "dd-ka.docx",
       },
     ],
   },
 };
 
-export function getBriefPageCopy(locale: Locale): BriefPageCopy {
+export function getBriefPageCopy(locale: string): BriefPageCopy {
   if (locale === "ru") return copy.ru;
   if (locale === "ka") return copy.ka;
   return copy.en;
 }
 
-export function getBriefById(locale: Locale, id: BriefId): BriefMeta | undefined {
-  return getBriefPageCopy(locale).briefs.find((b) => b.id === id);
+export function getBriefById(locale: BriefLocale, id: BriefId): BriefMeta | undefined {
+  const src = locale === "ru" ? copy.ru : locale === "ka" ? copy.ka : copy.en;
+  return src.briefs.find((b) => b.id === id);
 }
