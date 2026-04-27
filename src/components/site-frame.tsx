@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { getCookieConsentCopy } from "@/lib/cookie-consent-copy";
 
 type Props = Readonly<{
   children: React.ReactNode;
@@ -12,6 +13,7 @@ type Props = Readonly<{
 export function SiteFrame({ children, locale, dict }: Props) {
   const stickyCtaLabel = locale === "ru" ? "Бесплатная консультация" : dict.site.compareMarkets;
   const stickyCtaHref = locale === "ru" ? localePath(locale, "contact") : localePath(locale, "cross-border");
+  const cookieCopy = getCookieConsentCopy(locale);
 
   return (
     <div className="relative min-h-screen overflow-hidden bg-[var(--background)] text-[var(--ink)]">
@@ -123,6 +125,20 @@ export function SiteFrame({ children, locale, dict }: Props) {
                 </a>
               ))}
             </div>
+          </div>
+        </div>
+
+        <div className="border-t border-[color:rgba(0,9,36,0.06)]">
+          <div className="mx-auto flex w-full max-w-7xl flex-wrap items-center justify-between gap-3 px-6 py-5 text-[11px] uppercase tracking-[0.2em] text-[color:rgba(25,28,30,0.56)] md:px-8 xl:px-12">
+            <p>
+              © {new Date().getFullYear()} {dict.site.brand}
+            </p>
+            <Link
+              href={localePath(locale, "cookies")}
+              className="border-b border-transparent pb-0.5 transition-colors hover:border-[var(--accent)] hover:text-[var(--primary)]"
+            >
+              {cookieCopy.footer.linkLabel}
+            </Link>
           </div>
         </div>
       </footer>

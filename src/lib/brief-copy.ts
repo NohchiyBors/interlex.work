@@ -40,6 +40,8 @@ export type BriefPageCopy = Readonly<{
   successTitle: string;
   successBody: string;
   errorMessage: string;
+  nameError: string;
+  emailError: string;
   backLabel: string;
   briefs: readonly BriefMeta[];
 }>;
@@ -68,6 +70,8 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
     successBody:
       "Проверьте почту — документ уже в пути. Если письмо не пришло в течение нескольких минут, проверьте папку «Спам».",
     errorMessage: "Не удалось отправить бриф. Попробуйте ещё раз или напишите нам в WhatsApp.",
+    nameError: "Укажите ваше имя",
+    emailError: "Введите корректный email",
     backLabel: "← Выбрать другой бриф",
     briefs: [
       {
@@ -171,6 +175,8 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
     successBody:
       "Check your inbox — the document is on its way. If the email does not arrive within a few minutes, please check your Spam folder.",
     errorMessage: "Could not send the brief. Please try again or reach us on WhatsApp.",
+    nameError: "Please enter your name",
+    emailError: "Please enter a valid email address",
     backLabel: "← Choose a different brief",
     briefs: [
       {
@@ -274,6 +280,8 @@ const copy: Record<BriefLocale, BriefPageCopy> = {
     successBody:
       "შეამოწმეთ ფოსტა — დოკუმენტი უკვე გზაშია. თუ წერილი რამდენიმე წუთში არ მოვიდა, შეამოწმეთ „სპამის“ საქაღალდე.",
     errorMessage: "ბრიფის გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.",
+    nameError: "შეიყვანეთ თქვენი სახელი",
+    emailError: "შეიყვანეთ სწორი ელფოსტის მისამართი",
     backLabel: "← აირჩიეთ სხვა ბრიფი",
     briefs: [
       {

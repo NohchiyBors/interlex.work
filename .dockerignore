@@ -1,0 +1,22 @@
+node_modules
+.next
+.git
+.gitignore
+*.md
+.env*
+!.env.example
+
+# Служебные файлы
+AGENTS.md
+AGENT-TASK.md
+CLAUDE.md
+MEMORY.md
+PROJECT-RESUME.md
+STATUS-LOG.md
+TODO.md
+SEO-PLAN.md
+.cursor/
+
+# Локальные материалы
+files/
+*.zip

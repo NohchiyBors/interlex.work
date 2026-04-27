@@ -28,6 +28,9 @@ export type ContactFormCopy = Readonly<{
   submitPending: string;
   successMessage: string;
   errorMessage: string;
+  nameError: string;
+  emailError: string;
+  messageError: string;
   marketOptions: readonly MarketOption[];
 }>;
 
@@ -59,6 +62,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Sending...",
     successMessage: "The message has been sent. We received the request by email.",
     errorMessage: "The message could not be sent right now. Please try again or use WhatsApp.",
+    nameError: "Please enter your name",
+    emailError: "Please enter a valid email address",
+    messageError: "Please describe your request (at least 10 characters)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Need help deciding" },
       { value: baseMarkets.kz, label: "Kazakhstan" },
@@ -86,6 +92,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Отправляем...",
     successMessage: "Сообщение отправлено. Мы получили запрос на email.",
     errorMessage: "Сейчас не удалось отправить сообщение. Повторите попытку или используйте WhatsApp.",
+    nameError: "Укажите ваше имя",
+    emailError: "Введите корректный email",
+    messageError: "Опишите запрос (минимум 10 символов)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Нужна помощь с выбором" },
       { value: baseMarkets.kz, label: "Казахстан" },
@@ -113,6 +122,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "发送中...",
     successMessage: "消息已发送。我们已通过邮箱收到请求。",
     errorMessage: "当前无法发送消息。请稍后重试或使用 WhatsApp。",
+    nameError: "请输入您的姓名",
+    emailError: "请输入有效的邮箱地址",
+    messageError: "请描述您的请求（至少10个字符）",
     marketOptions: [
       { value: baseMarkets.compare, label: "需要帮助判断" },
       { value: baseMarkets.kz, label: "哈萨克斯坦" },
@@ -140,6 +152,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Invio...",
     successMessage: "Messaggio inviato. Abbiamo ricevuto la richiesta via email.",
     errorMessage: "Impossibile inviare il messaggio adesso. Riprova o usa WhatsApp.",
+    nameError: "Inserisci il tuo nome",
+    emailError: "Inserisci un'email valida",
+    messageError: "Descrivi la richiesta (almeno 10 caratteri)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Serve aiuto per decidere" },
       { value: baseMarkets.kz, label: "Kazakistan" },
@@ -167,6 +182,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Envoi...",
     successMessage: "Le message a ete envoye. Nous avons recu la demande par email.",
     errorMessage: "Impossible d'envoyer le message pour le moment. Reessayez ou utilisez WhatsApp.",
+    nameError: "Veuillez entrer votre nom",
+    emailError: "Veuillez entrer une adresse email valide",
+    messageError: "Veuillez decrire votre demande (au moins 10 caracteres)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Besoin d'aide pour choisir" },
       { value: baseMarkets.kz, label: "Kazakhstan" },
@@ -194,6 +212,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "იგზავნება...",
     successMessage: "შეტყობინება გაიგზავნა. მოთხოვნა ელფოსტაზე მივიღეთ.",
     errorMessage: "ახლა შეტყობინების გაგზავნა ვერ მოხერხდა. სცადეთ თავიდან ან გამოიყენეთ WhatsApp.",
+    nameError: "შეიყვანეთ თქვენი სახელი",
+    emailError: "შეიყვანეთ სწორი ელფოსტის მისამართი",
+    messageError: "აღწერეთ მოთხოვნა (მინიმუმ 10 სიმბოლო)",
     marketOptions: [
       { value: baseMarkets.compare, label: "მჭირდება არჩევაში დახმარება" },
       { value: baseMarkets.kz, label: "ყაზახეთი" },
@@ -221,6 +242,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Wird gesendet...",
     successMessage: "Die Nachricht wurde gesendet. Wir haben die Anfrage per E-Mail erhalten.",
     errorMessage: "Die Nachricht konnte gerade nicht gesendet werden. Bitte erneut versuchen oder WhatsApp nutzen.",
+    nameError: "Bitte geben Sie Ihren Namen ein",
+    emailError: "Bitte geben Sie eine gueltige E-Mail-Adresse ein",
+    messageError: "Bitte beschreiben Sie Ihre Anfrage (mind. 10 Zeichen)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Hilfe bei der Entscheidung" },
       { value: baseMarkets.kz, label: "Kasachstan" },
@@ -248,6 +272,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "جار الارسال...",
     successMessage: "تم ارسال الرسالة. وصلنا الطلب عبر البريد.",
     errorMessage: "تعذر ارسال الرسالة حاليا. حاول مرة اخرى او استخدم WhatsApp.",
+    nameError: "يرجى ادخال اسمك",
+    emailError: "يرجى ادخال بريد الكتروني صحيح",
+    messageError: "يرجى وصف طلبك (10 احرف على الاقل)",
     marketOptions: [
       { value: baseMarkets.compare, label: "احتاج مساعدة في الاختيار" },
       { value: baseMarkets.kz, label: "كازاخستان" },
@@ -275,6 +302,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Gonderiliyor...",
     successMessage: "Mesaj gonderildi. Talebi e-posta ile aldik.",
     errorMessage: "Mesaj su anda gonderilemedi. Tekrar deneyin veya WhatsApp kullanin.",
+    nameError: "Lutfen adinizi girin",
+    emailError: "Lutfen gecerli bir e-posta adresi girin",
+    messageError: "Lutfen talebinizi aciklayin (en az 10 karakter)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Karar icin yardim gerekiyor" },
       { value: baseMarkets.kz, label: "Kazakistan" },
@@ -302,6 +332,9 @@ const copy: Record<Locale, ContactFormCopy> = {
     submitPending: "Enviando...",
     successMessage: "El mensaje fue enviado. Hemos recibido la solicitud por email.",
     errorMessage: "No se pudo enviar el mensaje ahora. Intente de nuevo o use WhatsApp.",
+    nameError: "Por favor ingrese su nombre",
+    emailError: "Por favor ingrese un email valido",
+    messageError: "Describa su solicitud (al menos 10 caracteres)",
     marketOptions: [
       { value: baseMarkets.compare, label: "Necesito ayuda para decidir" },
       { value: baseMarkets.kz, label: "Kazajistan" },

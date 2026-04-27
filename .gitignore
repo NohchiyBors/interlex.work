@@ -51,11 +51,18 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
-.env*
+# env files — реальные секреты не коммитим
+.env
+.env.local
+.env.*.local
+# .env.example НЕ игнорируем — это шаблон для команды и CI
 
 # vercel
 .vercel
+
+# lighthouse / локальные HTML+JSON отчёты (не в репозиторий)
+lighthouse-*.html
+lighthouse-*.json
 
 # typescript
 *.tsbuildinfo

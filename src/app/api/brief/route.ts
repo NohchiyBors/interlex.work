@@ -2,67 +2,72 @@ import path from "node:path";
 import nodemailer from "nodemailer";
 import { NextResponse } from "next/server";
 import { briefIds, getBriefById, type BriefId } from "@/lib/brief-copy";
+import { verifyTurnstile } from "@/lib/turnstile";
+import { getBriefAutoreplyTemplate } from "@/lib/autoreply-copy";
+import {
+  buildContextLines,
+  collectServerRequestContext,
+  type ClientContext,
+} from "@/lib/request-context";
 import type { Locale } from "@/lib/i18n";
 
 export const runtime = "nodejs";
-
-// Client email is localized for the three brief-supported languages: ru, en, ka.
-// Other locales fall back to the English template (matches the briefs UI fallback).
-type ClientEmailTemplate = Readonly<{
-  subject: (briefTitle: string) => string;
-  text: (name: string, briefTitle: string) => string;
-  html: (escapedName: string, escapedBriefTitle: string) => string;
-}>;
-
-const clientEmailTemplates: Record<"ru" | "en" | "ka", ClientEmailTemplate> = {
-  ru: {
-    subject: (briefTitle) => `InterLex — ваш бриф: ${briefTitle}`,
-    text: (name, briefTitle) =>
-      `Здравствуйте, ${name}!\n\nВо вложении — бриф «${briefTitle}».\nЗаполните и отправьте нам в ответ на это письмо или через WhatsApp: https://wa.me/77000070021\n\nС уважением,\nКоманда InterLex`,
-    html: (escapedName, escapedBriefTitle) => `
-    <p>Здравствуйте, ${escapedName}!</p>
-    <p>Во вложении вы найдёте бриф <strong>${escapedBriefTitle}</strong>.</p>
-    <p>Заполните его и отправьте нам в ответ на это письмо или через WhatsApp: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
-    <p>Мы свяжемся с вами в ближайшее время.</p>
-    <p>С уважением,<br/>Команда InterLex</p>
-    `,
-  },
-  en: {
-    subject: (briefTitle) => `InterLex — your brief: ${briefTitle}`,
-    text: (name, briefTitle) =>
-      `Hello ${name},\n\nPlease find attached the brief "${briefTitle}".\nFill it in and reply to this email or reach us on WhatsApp: https://wa.me/77000070021\n\nBest regards,\nInterLex Team`,
-    html: (escapedName, escapedBriefTitle) => `
-    <p>Hello ${escapedName},</p>
-    <p>Please find attached the brief <strong>${escapedBriefTitle}</strong>.</p>
-    <p>Fill it in and send it back to us by replying to this email or via WhatsApp: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
-    <p>We will be in touch shortly.</p>
-    <p>Best regards,<br/>InterLex Team</p>
-    `,
-  },
-  ka: {
-    subject: (briefTitle) => `InterLex — თქვენი ბრიფი: ${briefTitle}`,
-    text: (name, briefTitle) =>
-      `გამარჯობა, ${name}!\n\nთანდართულია ბრიფი „${briefTitle}“.\nშეავსეთ და გამოგვიგზავნეთ ამ წერილზე პასუხად ან WhatsApp-ით: https://wa.me/77000070021\n\nპატივისცემით,\nInterLex-ის გუნდი`,
-    html: (escapedName, escapedBriefTitle) => `
-    <p>გამარჯობა, ${escapedName}!</p>
-    <p>თანდართულად ნახავთ ბრიფს <strong>${escapedBriefTitle}</strong>.</p>
-    <p>შეავსეთ და გამოგვიგზავნეთ ამ წერილზე პასუხად ან WhatsApp-ით: <a href="https://wa.me/77000070021">wa.me/77000070021</a>.</p>
-    <p>მალე დაგიკავშირდებით.</p>
-    <p>პატივისცემით,<br/>InterLex-ის გუნდი</p>
-    `,
-  },
-};
-
-function pickClientEmailTemplate(locale: string): ClientEmailTemplate {
-  if (locale === "ru") return clientEmailTemplates.ru;
-  if (locale === "ka") return clientEmailTemplates.ka;
-  return clientEmailTemplates.en;
-}
 
 function pickBriefCopyLocale(locale: string): Locale {
   // Briefs metadata only exists in ru, en, ka — collapse other locales to en.
   if (locale === "ru" || locale === "ka") return locale as Locale;
   return "en";
+}
+
+function sanitizeClientContext(value: unknown): ClientContext | undefined {
+  if (!value || typeof value !== "object") return undefined;
+  const v = value as Record<string, unknown>;
+  const str = (x: unknown, max: number) =>
+    typeof x === "string" ? x.trim().slice(0, max) || undefined : undefined;
+  const num = (x: unknown) => (typeof x === "number" && Number.isFinite(x) ? x : undefined);
+  const bool = (x: unknown) => (typeof x === "boolean" ? x : undefined);
+  const arr = (x: unknown, max: number) =>
+    Array.isArray(x)
+      ? x
+          .map((s) => (typeof s === "string" ? s.slice(0, 40) : ""))
+          .filter(Boolean)
+          .slice(0, max)
+      : undefined;
+
+  const utmRaw = v.utm;
+  let utm: Record<string, string> | undefined;
+  if (utmRaw && typeof utmRaw === "object") {
+    utm = {};
+    for (const [k, val] of Object.entries(utmRaw as Record<string, unknown>)) {
+      if (typeof val === "string" && k.length <= 40) {
+        utm[k.slice(0, 40)] = val.slice(0, 200);
+      }
+    }
+    if (Object.keys(utm).length === 0) utm = undefined;
+  }
+
+  const colorScheme = str(v.colorScheme, 8);
+  return {
+    pagePath: str(v.pagePath, 260),
+    pageUrl: str(v.pageUrl, 500),
+    referrer: str(v.referrer, 500),
+    screenWidth: num(v.screenWidth),
+    screenHeight: num(v.screenHeight),
+    pixelRatio: num(v.pixelRatio),
+    viewportWidth: num(v.viewportWidth),
+    viewportHeight: num(v.viewportHeight),
+    language: str(v.language, 16),
+    languages: arr(v.languages, 12),
+    platform: str(v.platform, 80),
+    timezone: str(v.timezone, 64),
+    hardwareConcurrency: num(v.hardwareConcurrency),
+    deviceMemoryGb: num(v.deviceMemoryGb),
+    touchPoints: num(v.touchPoints),
+    colorScheme: colorScheme === "light" || colorScheme === "dark" ? colorScheme : undefined,
+    reducedMotion: bool(v.reducedMotion),
+    utm,
+    sessionMs: num(v.sessionMs),
+  };
 }
 
 type BriefRequestBody = {
@@ -72,6 +77,8 @@ type BriefRequestBody = {
   phone?: unknown;
   locale?: unknown;
   website?: unknown;
+  clientContext?: unknown;
+  cfTurnstileToken?: unknown;
 };
 
 function isNonEmptyString(value: unknown) {
@@ -80,6 +87,11 @@ function isNonEmptyString(value: unknown) {
 
 function sanitize(value: unknown, maxLength: number) {
   return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+}
+
+// Убираем \r и \n чтобы предотвратить email header injection
+function sanitizeHeader(value: string): string {
+  return value.replace(/[\r\n]/g, "");
 }
 
 function isValidEmail(value: string) {
@@ -113,15 +125,21 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  const turnstileToken = typeof body.cfTurnstileToken === "string" ? body.cfTurnstileToken : null;
+  const turnstileOk = await verifyTurnstile(turnstileToken);
+  if (!turnstileOk) {
+    return NextResponse.json({ error: "Bot verification failed." }, { status: 403 });
+  }
+
   const briefId = isValidBriefId(body.briefId) ? body.briefId : null;
   if (!briefId) {
     return NextResponse.json({ error: "Invalid brief selection." }, { status: 400 });
   }
 
-  const name = sanitize(body.name, 120);
-  const email = sanitize(body.email, 160);
-  const phone = sanitize(body.phone, 80);
-  const locale = sanitize(body.locale, 16) || "en";
+  const name = sanitizeHeader(sanitize(body.name, 120));
+  const email = sanitizeHeader(sanitize(body.email, 160));
+  const phone = sanitizeHeader(sanitize(body.phone, 80));
+  const locale = sanitizeHeader(sanitize(body.locale, 16)) || "en";
 
   if (name.length < 2 || !isValidEmail(email)) {
     return NextResponse.json({ error: "Please provide valid contact details." }, { status: 400 });
@@ -156,12 +174,19 @@ export async function POST(request: Request) {
 
   // Resolve the docx file path — public/briefs/ is served statically but we
   // need the filesystem path for the nodemailer attachment.
-  const briefFilePath = path.join(process.cwd(), "public", "briefs", briefMeta.filename);
+  const brifsBaseDir = path.resolve(process.cwd(), "public", "briefs");
+  const briefFilePath = path.resolve(brifsBaseDir, briefMeta.filename);
+  if (!briefFilePath.startsWith(brifsBaseDir + path.sep)) {
+    console.error("[brief] path traversal attempt", { filename: briefMeta.filename });
+    return NextResponse.json({ error: "Invalid brief file." }, { status: 400 });
+  }
 
-  const forwardedFor = request.headers.get("x-forwarded-for") ?? "";
+  const serverContext = collectServerRequestContext(request);
+  const clientContext = sanitizeClientContext(body.clientContext);
+  const ctxLines = buildContextLines(serverContext, clientContext);
 
   // ── Email to client ───────────────────────────────────────────────────────
-  const template = pickClientEmailTemplate(locale);
+  const template = getBriefAutoreplyTemplate(locale);
   const clientSubject = template.subject(briefMeta.title);
   const clientText = template.text(name, briefMeta.title);
   const clientHtml = template.html(escapeHtml(name), escapeHtml(briefMeta.title));
@@ -172,26 +197,31 @@ export async function POST(request: Request) {
   const notifyText = [
     "New brief request from interlex.work/briefs",
     "",
+    "── Submission ──",
     `Brief: ${briefMeta.title} (${briefId})`,
     `File: ${briefMeta.filename}`,
-    "",
     `Name: ${name}`,
     `Email: ${email}`,
     `Phone: ${phone || "-"}`,
     `Locale: ${locale}`,
-    `IP: ${forwardedFor || "-"}`,
+    "",
+    "── Visitor context ──",
+    ctxLines.text,
   ].join("\n");
 
   const notifyHtml = `
-    <h2>New brief request — interlex.work/briefs</h2>
-    <p><strong>Brief:</strong> ${escapeHtml(briefMeta.title)} (${escapeHtml(briefId)})</p>
-    <p><strong>File:</strong> ${escapeHtml(briefMeta.filename)}</p>
-    <hr />
-    <p><strong>Name:</strong> ${escapeHtml(name)}</p>
-    <p><strong>Email:</strong> <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
-    <p><strong>Phone:</strong> ${escapeHtml(phone || "-")}</p>
-    <p><strong>Locale:</strong> ${escapeHtml(locale)}</p>
-    <p><strong>IP:</strong> ${escapeHtml(forwardedFor || "-")}</p>
+    <h1 style="margin:0 0 12px;font:600 18px/1.3 sans-serif">New brief request — interlex.work/briefs</h1>
+    <h2 style="margin:18px 0 8px;font:600 14px/1.2 sans-serif;color:#001F3F">Submission</h2>
+    <table role="presentation" cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-size:13px;line-height:1.4">
+      <tr><td style="color:#666;padding-right:14px"><strong>Brief</strong></td><td>${escapeHtml(briefMeta.title)} (${escapeHtml(briefId)})</td></tr>
+      <tr><td style="color:#666;padding-right:14px"><strong>File</strong></td><td>${escapeHtml(briefMeta.filename)}</td></tr>
+      <tr><td style="color:#666;padding-right:14px"><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
+      <tr><td style="color:#666;padding-right:14px"><strong>Email</strong></td><td><a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></td></tr>
+      <tr><td style="color:#666;padding-right:14px"><strong>Phone</strong></td><td>${escapeHtml(phone || "-")}</td></tr>
+      <tr><td style="color:#666;padding-right:14px"><strong>Locale</strong></td><td>${escapeHtml(locale)}</td></tr>
+    </table>
+    <h2 style="margin:18px 0 8px;font:600 14px/1.2 sans-serif;color:#001F3F">Visitor context</h2>
+    ${ctxLines.html}
   `;
 
   try {
@@ -222,7 +252,6 @@ export async function POST(request: Request) {
     });
   } catch (err) {
     console.error("[brief] sendMail failed", {
-      smtpHost,
       smtpPort,
       smtpSecure,
       smtpAuth: !!smtpAuth,

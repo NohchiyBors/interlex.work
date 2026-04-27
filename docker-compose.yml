@@ -1,0 +1,32 @@
+services:
+
+  # ─── Next.js приложение ────────────────────────────────────────────────────
+  # Coolify управляет reverse proxy (Traefik) и SSL — nginx не нужен.
+  # Traefik проксирует по внутреннему порту контейнера без host mapping.
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        # NEXT_PUBLIC_* встраивается в JS-бандл при сборке
+        NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY: ${NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY}
+    restart: unless-stopped
+    expose:
+      - "3000"         # внутренний порт — Traefik подхватит автоматически
+    env_file:
+      - .env           # секреты: CF_TURNSTILE_SECRET, SMTP_*, CONTACT_*
+    depends_on:
+      - mailserver
+
+  # ─── Mailpit: SMTP-catcher для staging ────────────────────────────────────
+  # Перехватывает все исходящие письма — ни одно не уходит наружу.
+  # На production: убрать этот сервис и настроить внешний SMTP в .env.
+  mailserver:
+    image: axllent/mailpit
+    restart: unless-stopped
+    expose:
+      - "1025"   # SMTP внутри Docker-сети (SMTP_HOST=mailserver, SMTP_PORT=1025)
+      - "8025"   # веб-UI внутри Docker-сети — не публикуется на хост
+    environment:
+      MP_SMTP_AUTH_ACCEPT_ANY: "1"
+      MP_SMTP_AUTH_ALLOW_INSECURE: "1"

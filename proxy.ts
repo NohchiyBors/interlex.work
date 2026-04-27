@@ -15,6 +15,7 @@ const localizedSlugs = new Set([
   "/about",
   "/cross-border",
   "/contact",
+  "/cookies",
   "/kz",
   "/kz/sez",
   "/kz/aifc",

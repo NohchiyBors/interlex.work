@@ -1,8 +1,12 @@
 "use client";
 
-import { useState, type ChangeEvent, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type ChangeEvent, type FocusEvent, type FormEvent } from "react";
 import type { Locale } from "@/lib/i18n";
 import type { BriefId, BriefPageCopy } from "@/lib/brief-copy";
+import { collectClientContext } from "@/lib/client-context";
+import { TurnstileWidget } from "@/components/turnstile-widget";
+
+const TURNSTILE_SITE_KEY = process.env.NEXT_PUBLIC_CF_TURNSTILE_SITE_KEY ?? "";
 
 type Props = Readonly<{
   locale: Locale;
@@ -16,6 +20,11 @@ type ContactState = {
   website: string; // honeypot
 };
 
+type FieldErrors = {
+  name?: string;
+  email?: string;
+};
+
 const initialContact: ContactState = {
   name: "",
   email: "",
@@ -23,15 +32,63 @@ const initialContact: ContactState = {
   website: "",
 };
 
+function isValidEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+}
+
+const inputBase =
+  "border bg-white px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors placeholder:text-[color:rgba(25,28,30,0.38)] focus:border-[var(--accent)]";
+const inputNormal = `${inputBase} border-[color:rgba(0,9,36,0.12)]`;
+const inputError = `${inputBase} border-[color:#8b2d1f]`;
+
 export function BriefForm({ locale, copy }: Props) {
   const [selectedId, setSelectedId] = useState<BriefId | null>(null);
   const [contact, setContact] = useState<ContactState>(initialContact);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
+  const pageLoadedAtRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    pageLoadedAtRef.current = Date.now();
+  }, []);
+
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  const handleTurnstileExpire = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
+
+  function validateField(name: string, value: string): string | undefined {
+    if (name === "name") return value.trim().length < 2 ? copy.nameError : undefined;
+    if (name === "email") return !isValidEmail(value.trim()) ? copy.emailError : undefined;
+    return undefined;
+  }
 
   function updateField(event: ChangeEvent<HTMLInputElement>) {
     const { name, value } = event.target;
     setContact((current) => ({ ...current, [name]: value }));
+    if (name in fieldErrors) {
+      setFieldErrors((current) => ({ ...current, [name]: undefined }));
+    }
+  }
+
+  function handleBlur(event: FocusEvent<HTMLInputElement>) {
+    const { name, value } = event.target;
+    const error = validateField(name, value);
+    if (error) {
+      setFieldErrors((current) => ({ ...current, [name]: error }));
+    }
+  }
+
+  function validateAll(): FieldErrors {
+    return {
+      name: validateField("name", contact.name),
+      email: validateField("email", contact.email),
+    };
   }
 
   function selectBrief(id: BriefId) {
@@ -42,16 +99,30 @@ export function BriefForm({ locale, copy }: Props) {
   function goBack() {
     setSelectedId(null);
     setStatus("idle");
+    setFieldErrors({});
   }
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (!selectedId) return;
 
+    const errors = validateAll();
+    const hasErrors = Object.values(errors).some(Boolean);
+    if (hasErrors) {
+      setFieldErrors(errors);
+      return;
+    }
+
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setStatus("error");
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus("idle");
 
     try {
+      const clientContext = collectClientContext(pageLoadedAtRef.current ?? undefined);
       const response = await fetch("/api/brief", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -62,6 +133,8 @@ export function BriefForm({ locale, copy }: Props) {
           phone: contact.phone,
           website: contact.website,
           locale,
+          clientContext,
+          cfTurnstileToken: turnstileToken,
         }),
       });
 
@@ -70,6 +143,8 @@ export function BriefForm({ locale, copy }: Props) {
       }
 
       setContact(initialContact);
+      setFieldErrors({});
+      setTurnstileToken(null);
       setStatus("success");
     } catch {
       setStatus("error");
@@ -146,7 +221,7 @@ export function BriefForm({ locale, copy }: Props) {
         </div>
       ) : null}
 
-      <form className="mt-5 grid gap-4" onSubmit={handleSubmit}>
+      <form className="mt-5 grid gap-4" onSubmit={handleSubmit} noValidate>
         {/* Honeypot */}
         <div className="hidden" aria-hidden>
           <input
@@ -159,36 +234,44 @@ export function BriefForm({ locale, copy }: Props) {
           />
         </div>
 
-        <label className="grid gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
-            {copy.nameLabel}
-          </span>
-          <input
-            required
-            name="name"
-            value={contact.name}
-            onChange={updateField}
-            placeholder={copy.namePlaceholder}
-            autoComplete="name"
-            className="border border-[color:rgba(0,9,36,0.12)] bg-white px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors placeholder:text-[color:rgba(25,28,30,0.38)] focus:border-[var(--accent)]"
-          />
-        </label>
+        <div className="grid gap-1">
+          <label className="grid gap-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
+              {copy.nameLabel}
+            </span>
+            <input
+              name="name"
+              value={contact.name}
+              onChange={updateField}
+              onBlur={handleBlur}
+              placeholder={copy.namePlaceholder}
+              autoComplete="name"
+              aria-invalid={!!fieldErrors.name}
+              className={fieldErrors.name ? inputError : inputNormal}
+            />
+          </label>
+          {fieldErrors.name ? <p className="text-xs text-[color:#8b2d1f]">{fieldErrors.name}</p> : null}
+        </div>
 
-        <label className="grid gap-2">
-          <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
-            {copy.emailLabel}
-          </span>
-          <input
-            required
-            type="email"
-            name="email"
-            value={contact.email}
-            onChange={updateField}
-            placeholder={copy.emailPlaceholder}
-            autoComplete="email"
-            className="border border-[color:rgba(0,9,36,0.12)] bg-white px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors placeholder:text-[color:rgba(25,28,30,0.38)] focus:border-[var(--accent)]"
-          />
-        </label>
+        <div className="grid gap-1">
+          <label className="grid gap-2">
+            <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
+              {copy.emailLabel}
+            </span>
+            <input
+              type="email"
+              name="email"
+              value={contact.email}
+              onChange={updateField}
+              onBlur={handleBlur}
+              placeholder={copy.emailPlaceholder}
+              autoComplete="email"
+              aria-invalid={!!fieldErrors.email}
+              className={fieldErrors.email ? inputError : inputNormal}
+            />
+          </label>
+          {fieldErrors.email ? <p className="text-xs text-[color:#8b2d1f]">{fieldErrors.email}</p> : null}
+        </div>
 
         <label className="grid gap-2">
           <span className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--primary)]">
@@ -200,9 +283,17 @@ export function BriefForm({ locale, copy }: Props) {
             onChange={updateField}
             placeholder={copy.phonePlaceholder}
             autoComplete="tel"
-            className="border border-[color:rgba(0,9,36,0.12)] bg-white px-4 py-3 text-sm text-[var(--ink)] outline-none transition-colors placeholder:text-[color:rgba(25,28,30,0.38)] focus:border-[var(--accent)]"
+            className={inputNormal}
           />
         </label>
+
+        {TURNSTILE_SITE_KEY ? (
+          <TurnstileWidget
+            siteKey={TURNSTILE_SITE_KEY}
+            onVerify={handleTurnstileVerify}
+            onExpire={handleTurnstileExpire}
+          />
+        ) : null}
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
           <div className="flex gap-4">
@@ -215,7 +306,7 @@ export function BriefForm({ locale, copy }: Props) {
             </button>
             <button
               type="submit"
-              disabled={isSubmitting}
+              disabled={isSubmitting || (TURNSTILE_SITE_KEY !== "" && !turnstileToken)}
               className="btn-primary inline-flex items-center justify-center border px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition-colors disabled:cursor-not-allowed disabled:opacity-72"
             >
               {isSubmitting ? copy.submitPending : copy.submitIdle}
