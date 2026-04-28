@@ -82,3 +82,8 @@ next-env.d.ts
 # Локальные материалы и выгрузки, не входящие в Next.js (макеты, zip, черновики)
 /files/
 /*.zip
+
+# Логи локального запуска (Codex/Next.js)
+/.codex-next-*.log
+/.codex-next-*.err.log
+/logs/
