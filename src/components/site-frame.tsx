@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { getDictionary, localePath, type Locale } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
+import { MobileMenu } from "@/components/mobile-menu";
 import { getCookieConsentCopy } from "@/lib/cookie-consent-copy";
 
 type Props = Readonly<{
@@ -56,26 +57,7 @@ export function SiteFrame({ children, locale, dict }: Props) {
             {stickyCtaLabel}
           </Link>
 
-          <details className="order-4 basis-full border-t border-[color:rgba(0,9,36,0.06)] pt-3 md:hidden">
-            <summary className="flex cursor-pointer list-none items-center justify-between border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--primary)]">
-              <span>{dict.site.menuLabel}</span>
-              <span aria-hidden>+</span>
-            </summary>
-            <div className="mt-2 grid gap-2">
-              {dict.nav.map((item) => (
-                <Link
-                  key={item.slug}
-                  href={localePath(locale, item.slug)}
-                  className="border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2.5 text-[11px] font-medium uppercase tracking-[0.16em] text-[color:rgba(25,28,30,0.72)] transition-colors hover:border-[var(--accent)] hover:text-[var(--primary)]"
-                >
-                  {item.label}
-                </Link>
-              ))}
-              <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-3 py-2.5">
-                <LanguageSwitcher locale={locale} mobileInMenu />
-              </div>
-            </div>
-          </details>
+          <MobileMenu locale={locale} nav={dict.nav} menuLabel={dict.site.menuLabel} />
         </div>
 
         <div className="mx-auto hidden w-full max-w-7xl justify-end border-t border-[color:rgba(0,9,36,0.06)] px-4 py-1.5 md:flex md:px-8 md:py-2 xl:px-12">

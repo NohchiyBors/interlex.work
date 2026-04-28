@@ -1,4 +1,4 @@
-import type { Locale } from "@/lib/i18n";
+import { baseUrl, type Locale, locales } from "@/lib/i18n";
 
 type SeoPageMeta = {
   description: string;
@@ -675,18 +675,62 @@ export function getSeoContent(locale: Locale) {
   return seoContent[locale];
 }
 
-const baseUrl = "https://interlex.work";
+const ORG_ID = `${baseUrl}/#organization`;
+const SITE_ID = `${baseUrl}/#website`;
+const LOGO_URL = `${baseUrl}/brand/logo-512.png`;
+
+const SCHEMA_LANGUAGES: Record<Locale, string> = {
+  en: "en",
+  ru: "ru",
+  zh: "zh-Hans",
+  it: "it",
+  fr: "fr",
+  ka: "ka",
+  de: "de",
+  ar: "ar",
+  tr: "tr",
+  es: "es",
+};
 
 export function getOrganizationJsonLd(locale: Locale) {
   const seo = seoContent[locale];
   return {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "InterLex",
-    url: baseUrl,
-    logo: `${baseUrl}/favicon.ico`,
-    sameAs: ["https://interlex.kz", "https://interlex.ge"],
-    description: seo.home.description,
+    "@graph": [
+      {
+        "@type": ["Organization", "LegalService", "ProfessionalService"],
+        "@id": ORG_ID,
+        name: "InterLex",
+        alternateName: "InterLex Global Hub",
+        url: baseUrl,
+        logo: {
+          "@type": "ImageObject",
+          url: LOGO_URL,
+          width: 512,
+          height: 512,
+        },
+        image: LOGO_URL,
+        description: seo.home.description,
+        slogan:
+          locale === "ru" ? "Два рынка. Один партнёр." : "Two Markets. One Partner.",
+        sameAs: ["https://interlex.kz", "https://interlex.ge"],
+        areaServed: [
+          { "@type": "Country", name: "Kazakhstan", identifier: "KZ" },
+          { "@type": "Country", name: "Georgia", identifier: "GE" },
+        ],
+        knowsLanguage: locales.map((value) => SCHEMA_LANGUAGES[value]),
+        contactPoint: [
+          {
+            "@type": "ContactPoint",
+            contactType: "customer support",
+            email: "hello@interlex.work",
+            telephone: "+7-700-007-0021",
+            availableLanguage: locales.map((value) => SCHEMA_LANGUAGES[value]),
+            areaServed: ["KZ", "GE", "Worldwide"],
+          },
+        ],
+      },
+    ],
   };
 }
 
@@ -695,10 +739,13 @@ export function getWebsiteJsonLd(locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "WebSite",
+    "@id": SITE_ID,
     name: "InterLex",
+    alternateName: "InterLex Global Hub",
     url: `${baseUrl}/${locale}`,
-    inLanguage: locale,
+    inLanguage: SCHEMA_LANGUAGES[locale],
     description: seo.home.description,
+    publisher: { "@id": ORG_ID },
   };
 }
 

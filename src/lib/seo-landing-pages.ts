@@ -139,6 +139,11 @@ const ruHubGuideCardOverrides: Record<string, Omit<SeoGuideCard, "slug">> = {
     title: "Недвижимость, производство, месторождения — сначала проверка, потом покупка.",
     body: "Юридический, налоговый и финансовый аудит актива до сделки. Риски, скрытые обязательства и рекомендации по структуре.",
   },
+  "kz/aifc": {
+    eyebrow: "Казахстан / AIFC",
+    title: "МФЦА: финтех, фонды и холдинги по английскому праву.",
+    body: "Вход в МФЦА для финтеха, фондов и инвестиционных структур. Правильный регуляторный маршрут без лишних шагов.",
+  },
 };
 
 const hubGuideCardOverrides: Partial<Record<Locale, Record<string, Omit<SeoGuideCard, "slug">>>> = {
@@ -1506,7 +1511,7 @@ export function getSeoGuideCards(locale: Locale): SeoGuideCard[] {
   const comparison = getKazakhstanVsGeorgiaContent(locale);
   const structuring = getCrossBorderStructuringContent(locale);
   const marketEntry = getInternationalMarketEntryContent(locale);
-  const hubCards = ["kz/sez", "ge/vz", "ma", "investors", "ma/dd"]
+  const hubCards = ["kz/sez", "ge/vz", "ma", "investors", "ma/dd", "kz/aifc"]
     .map((slug) => getHubSeoPage(locale, slug))
     .filter((page): page is HubSeoPageContent => page !== null)
     .map((page) => {

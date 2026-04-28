@@ -122,11 +122,59 @@ export function localePath(locale: Locale, slug = "") {
   return slug ? `/${locale}/${slug}` : `/${locale}`;
 }
 
+// BCP 47 hreflang mapping. URL segments stay short (/zh, /ar) but search engines
+// receive precise language tags via the alternates.languages map.
+export const hreflangMap: Record<Locale, string> = {
+  en: "en",
+  ru: "ru",
+  zh: "zh-Hans",
+  it: "it",
+  fr: "fr",
+  ka: "ka",
+  de: "de",
+  ar: "ar",
+  tr: "tr",
+  es: "es",
+};
+
+// Open Graph requires xx_YY locale codes. Keep one place to translate
+// our short URL locale into the regional variant Facebook/LinkedIn expect.
+export const openGraphLocaleMap: Record<Locale, string> = {
+  en: "en_US",
+  ru: "ru_RU",
+  zh: "zh_CN",
+  it: "it_IT",
+  fr: "fr_FR",
+  ka: "ka_GE",
+  de: "de_DE",
+  ar: "ar_AR",
+  tr: "tr_TR",
+  es: "es_ES",
+};
+
 export function buildMetadata(locale: Locale, title: string, description: string, slug = ""): Metadata {
   const pathname = localePath(locale, slug);
   const url = new URL(pathname, baseUrl);
-  const languages = Object.fromEntries(locales.map((item) => [item, localePath(item, slug)]));
+  const languages = Object.fromEntries(
+    locales.map((item) => [hreflangMap[item], localePath(item, slug)]),
+  );
   languages["x-default"] = localePath(defaultLocale, slug);
+
+  const alternateLocale = locales
+    .filter((value) => value !== locale)
+    .map((value) => openGraphLocaleMap[value]);
+
+  const verification = (() => {
+    const google = process.env.NEXT_PUBLIC_GSC_VERIFICATION;
+    const yandex = process.env.NEXT_PUBLIC_YANDEX_VERIFICATION;
+    const bing = process.env.NEXT_PUBLIC_BING_VERIFICATION;
+    if (!google && !yandex && !bing) return undefined;
+    return {
+      ...(google ? { google } : {}),
+      ...(yandex ? { yandex } : {}),
+      ...(bing ? { other: { "msvalidate.01": bing } } : {}),
+    };
+  })();
 
   return {
     title,
@@ -141,7 +189,8 @@ export function buildMetadata(locale: Locale, title: string, description: string
       url: url.toString(),
       siteName: "InterLex",
       type: "website",
-      locale,
+      locale: openGraphLocaleMap[locale],
+      alternateLocale,
       images: [
         {
           url: `${baseUrl}${localePath(locale, "opengraph-image")}`,
@@ -157,6 +206,7 @@ export function buildMetadata(locale: Locale, title: string, description: string
       description,
       images: [`${baseUrl}${localePath(locale, "twitter-image")}`],
     },
+    ...(verification ? { verification } : {}),
   };
 }
 
@@ -169,7 +219,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇬🇧",
     servicesLabel: "Services",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — Cross-border Legal Hub for Kazakhstan & Georgia",
       description: "Global hub for InterLex with multilingual routing into Kazakhstan and Georgia.",
       brand: "InterLex",
       tagline: "Two Markets. One Partner.",
@@ -314,7 +364,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇷🇺",
     servicesLabel: "Услуги",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — регистрация компаний и сделки в Казахстане и Грузии",
       description: "Глобальный хаб InterLex с мультиязычным маршрутом в Казахстан и Грузию.",
       brand: "InterLex",
       tagline: "Два рынка. Один партнёр.",
@@ -426,7 +476,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       description: "Начните разговор с InterLex и поймите, должен ли запрос идти в Казахстан или в Грузию.",
       eyebrow: "Контакты",
       introTitle: "Начните с задачи. Дальше маршрут должен быть точным.",
-      introBody: "Глобальный хаб — правильная точка первого контакта, когда вопрос ещё нужно собрать в понятную структуру. После этого разговор переходит в Казахстан или Грузию, в зависимости от логики запроса.",
+      introBody: "Если задача пока не разобрана или затрагивает оба рынка — хаб поможет её структурировать. После первого разговора запрос перейдёт туда, где его выполнят: в Казахстан или Грузию.",
       flowLabel: "Как проходит первый контакт",
       steps: [
         "Опишите, какие рынки и какая задача задействованы.",
@@ -477,7 +527,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇨🇳",
     servicesLabel: "服务",
     site: {
-      title: "InterLex 全球枢纽",
+      title: "InterLex — 哈萨克斯坦与格鲁吉亚跨境法律咨询枢纽",
       description: "InterLex 的多语言全球枢纽，可将需求路由到哈萨克斯坦和格鲁吉亚。",
       brand: "InterLex",
       tagline: "两个市场，一个伙伴。",
@@ -622,7 +672,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇮🇹",
     servicesLabel: "Servizi",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — Hub legale cross-border per Kazakistan e Georgia",
       description: "Hub globale multilingue di InterLex con instradamento verso Kazakistan e Georgia.",
       brand: "InterLex",
       tagline: "Due mercati. Un partner.",
@@ -767,7 +817,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇫🇷",
     servicesLabel: "Services",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — Hub juridique cross-border pour le Kazakhstan et la Géorgie",
       description: "Hub mondial multilingue d’InterLex avec routage vers le Kazakhstan et la Géorgie.",
       brand: "InterLex",
       tagline: "Deux marchés. Un partenaire.",
@@ -912,7 +962,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇬🇪",
     servicesLabel: "სერვისები",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — საერთაშორისო იურიდიული ჰაბი ყაზახეთსა და საქართველოში",
       description: "InterLex-ის მრავალენოვანი გლობალური ჰაბი, რომელიც მომხმარებელს ყაზახეთისა და საქართველოს მიმართულებით გადაამისამართებს.",
       brand: "InterLex",
       tagline: "ორი ბაზარი. ერთი პარტნიორი.",
@@ -1057,7 +1107,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇩🇪",
     servicesLabel: "Leistungen",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — Cross-border Rechts-Hub für Kasachstan und Georgien",
       description: "Mehrsprachiger globaler Hub von InterLex mit Routing nach Kasachstan und Georgien.",
       brand: "InterLex",
       tagline: "Zwei Märkte. Ein Partner.",
@@ -1202,7 +1252,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇸🇦",
     servicesLabel: "الخدمات",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — مركز قانوني عابر للحدود لكازاخستان وجورجيا",
       description: "المركز العالمي متعدد اللغات لـ InterLex مع توجيه نحو كازاخستان وجورجيا.",
       brand: "InterLex",
       tagline: "سوقان. شريك واحد.",
@@ -1347,7 +1397,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇹🇷",
     servicesLabel: "Hizmetler",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — Kazakistan ve Gürcistan için sınır ötesi hukuk hub’ı",
       description: "InterLex’in Kazakistan ve Gürcistan’a yönlendiren çok dilli global hub’ı.",
       brand: "InterLex",
       tagline: "İki pazar. Tek ortak.",
@@ -1492,7 +1542,7 @@ const dictionaries: Record<Locale, Dictionary> = {
     flag: "🇪🇸",
     servicesLabel: "Servicios",
     site: {
-      title: "InterLex Global Hub",
+      title: "InterLex — Hub legal cross-border para Kazajistán y Georgia",
       description: "Hub global multilingüe de InterLex con enrutamiento hacia Kazajistán y Georgia.",
       brand: "InterLex",
       tagline: "Dos mercados. Un socio.",

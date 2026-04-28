@@ -32,6 +32,7 @@ export type ContactFormCopy = Readonly<{
   emailError: string;
   messageError: string;
   whatsappLabel: string;
+  telegramLabel: string;
   marketOptions: readonly MarketOption[];
 }>;
 
@@ -67,6 +68,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Please enter a valid email address",
     messageError: "Please describe your request (at least 10 characters)",
     whatsappLabel:   "Write on WhatsApp",
+    telegramLabel:   "Write on Telegram",
     marketOptions: [
       { value: baseMarkets.compare, label: "Need help deciding" },
       { value: baseMarkets.kz, label: "Kazakhstan" },
@@ -98,6 +100,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Введите корректный email",
     messageError: "Опишите запрос (минимум 10 символов)",
     whatsappLabel:   "Написать в WhatsApp",
+    telegramLabel:   "Написать в Telegram",
     marketOptions: [
       { value: baseMarkets.compare, label: "Нужна помощь с выбором" },
       { value: baseMarkets.kz, label: "Казахстан" },
@@ -129,6 +132,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "请输入有效的邮箱地址",
     messageError: "请描述您的请求（至少10个字符）",
     whatsappLabel:   "通过 WhatsApp 联系",
+    telegramLabel:   "通过 Telegram 联系",
     marketOptions: [
       { value: baseMarkets.compare, label: "需要帮助判断" },
       { value: baseMarkets.kz, label: "哈萨克斯坦" },
@@ -160,6 +164,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Inserisci un'email valida",
     messageError: "Descrivi la richiesta (almeno 10 caratteri)",
     whatsappLabel:   "Scrivi su WhatsApp",
+    telegramLabel:   "Scrivi su Telegram",
     marketOptions: [
       { value: baseMarkets.compare, label: "Serve aiuto per decidere" },
       { value: baseMarkets.kz, label: "Kazakistan" },
@@ -191,6 +196,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Veuillez entrer une adresse email valide",
     messageError: "Veuillez decrire votre demande (au moins 10 caracteres)",
     whatsappLabel:   "Écrire sur WhatsApp",
+    telegramLabel:   "Écrire sur Telegram",
     marketOptions: [
       { value: baseMarkets.compare, label: "Besoin d'aide pour choisir" },
       { value: baseMarkets.kz, label: "Kazakhstan" },
@@ -222,6 +228,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "შეიყვანეთ სწორი ელფოსტის მისამართი",
     messageError: "აღწერეთ მოთხოვნა (მინიმუმ 10 სიმბოლო)",
     whatsappLabel:   "WhatsApp-ზე წერა",
+    telegramLabel:   "Telegram-ზე წერა",
     marketOptions: [
       { value: baseMarkets.compare, label: "მჭირდება არჩევაში დახმარება" },
       { value: baseMarkets.kz, label: "ყაზახეთი" },
@@ -253,6 +260,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Bitte geben Sie eine gueltige E-Mail-Adresse ein",
     messageError: "Bitte beschreiben Sie Ihre Anfrage (mind. 10 Zeichen)",
     whatsappLabel:   "Auf WhatsApp schreiben",
+    telegramLabel:   "Auf Telegram schreiben",
     marketOptions: [
       { value: baseMarkets.compare, label: "Hilfe bei der Entscheidung" },
       { value: baseMarkets.kz, label: "Kasachstan" },
@@ -284,6 +292,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "يرجى ادخال بريد الكتروني صحيح",
     messageError: "يرجى وصف طلبك (10 احرف على الاقل)",
     whatsappLabel:   "الكتابة على واتساب",
+    telegramLabel:   "الكتابة على تيليغرام",
     marketOptions: [
       { value: baseMarkets.compare, label: "احتاج مساعدة في الاختيار" },
       { value: baseMarkets.kz, label: "كازاخستان" },
@@ -315,6 +324,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Lutfen gecerli bir e-posta girin",
     messageError: "Lutfen talebinizi aciklayin (en az 10 karakter)",
     whatsappLabel:   "WhatsApp'ta yaz",
+    telegramLabel:   "Telegram'da yaz",
     marketOptions: [
       { value: baseMarkets.compare, label: "Karar vermekte yardima ihtiyacim var" },
       { value: baseMarkets.kz, label: "Kazakistan" },
@@ -346,6 +356,7 @@ const copy: Record<Locale, ContactFormCopy> = {
     emailError: "Por favor ingrese un correo valido",
     messageError: "Por favor describa su solicitud (minimo 10 caracteres)",
     whatsappLabel:   "Escribir por WhatsApp",
+    telegramLabel:   "Escribir por Telegram",
     marketOptions: [
       { value: baseMarkets.compare, label: "Necesito ayuda para elegir" },
       { value: baseMarkets.kz, label: "Kazajistan" },

@@ -16,10 +16,12 @@ export async function generateMetadata(props: PageProps<"/[locale]/about">) {
   };
 }
 
+
 export default async function AboutPage(props: PageProps<"/[locale]/about">) {
   const { locale } = await props.params;
   if (!hasLocale(locale)) notFound();
   const dict = getDictionary(locale);
+  const [kz, ge] = dict.regionLinks;
 
   return (
     <main className="mx-auto w-full max-w-7xl px-6 pb-14 pt-8 md:px-8 xl:px-12 xl:pt-12">
@@ -30,12 +32,38 @@ export default async function AboutPage(props: PageProps<"/[locale]/about">) {
         ])}
       />
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
+        <div className="flex flex-col border border-[color:rgba(0,9,36,0.08)] bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
           <p className="text-xs font-semibold uppercase tracking-[0.32em] text-[var(--accent)]">{dict.about.eyebrow}</p>
           <h1 className="mt-5 max-w-4xl font-display text-5xl leading-[0.96] tracking-[-0.04em] text-[var(--primary)] md:text-6xl">
             {dict.about.introTitle}
           </h1>
           <p className="mt-6 max-w-2xl text-base leading-8 text-[var(--muted)]">{dict.about.introBody}</p>
+
+          {/* Плюшки KZ / GE */}
+          <div className="mt-auto grid grid-cols-2 gap-px border border-[color:rgba(0,9,36,0.08)] bg-[color:rgba(0,9,36,0.08)] pt-8">
+            <div className="bg-[var(--surface-low)] px-5 py-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">{kz.language}</p>
+              <ul className="mt-3 space-y-2">
+                {kz.points.map((pt) => (
+                  <li key={pt} className="flex gap-2 text-xs leading-5 text-[var(--ink)]">
+                    <span className="mt-0.5 shrink-0 text-[var(--accent)]">—</span>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-[var(--surface-low)] px-5 py-5">
+              <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[var(--accent)]">{ge.language}</p>
+              <ul className="mt-3 space-y-2">
+                {ge.points.map((pt) => (
+                  <li key={pt} className="flex gap-2 text-xs leading-5 text-[var(--ink)]">
+                    <span className="mt-0.5 shrink-0 text-[var(--accent)]">—</span>
+                    <span>{pt}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
         </div>
 
         <div className="flex flex-col gap-6">

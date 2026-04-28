@@ -52,7 +52,7 @@ export async function generateMetadata(props: LayoutProps<"/[locale]">): Promise
   return {
     metadataBase: new URL(baseUrl),
     applicationName: "InterLex",
-    manifest: "/site.webmanifest",
+    manifest: "/manifest.webmanifest",
     title: {
       default: dict.site.title,
       template: `%s | ${dict.site.brand}`,
