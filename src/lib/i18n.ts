@@ -1073,7 +1073,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       {
         name: "ყაზახეთი",
         ...sharedDomains[0],
-        language: "RU-first market site",
+        language: "RU-first საბაზრო საიტი",
         strapline: "ბაზარზე შესვლა, იურიდიული მხარდაჭერა, ბუღალტერია, გადასახადები და ოპერაციული შესრულება ყაზახეთში.",
         points: [
           "ფაუნდერებისთვის, ინვესტორებისთვის და ოპერაციული გუნდებისთვის, რომლებიც ყაზახეთში შედიან ან იქ ზრდიან საქმიანობას.",
@@ -1084,7 +1084,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       {
         name: "საქართველო",
         ...sharedDomains[1],
-        language: "EN-first market site",
+        language: "EN-first საბაზრო საიტი",
         strapline: "სტრუქტურირება, FIZ გზები, საგადასახადო ლოგიკა და cross-border ოპერაციული მხარდაჭერა საქართველოში.",
         points: [
           "საერთაშორისო კლიენტებისთვის, რომლებიც ადარებენ ბაზარზე შესვლის მოდელებს, ჰოლდინგურ ლოგიკასა და რეგიონულ სტრუქტურებს.",
@@ -1508,7 +1508,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       {
         name: "Kazakistan",
         ...sharedDomains[0],
-        language: "RU-first market site",
+        language: "RU-first pazar sitesi",
         strapline: "Pazara giriş, hukuki destek, muhasebe, vergi ve operasyonel icra Kazakistan’da.",
         points: [
           "Kazakistan’a giren veya orada büyüyen kurucular, yatırımcılar ve ekipler için.",
@@ -1519,7 +1519,7 @@ const dictionaries: Record<Locale, Dictionary> = {
       {
         name: "Gürcistan",
         ...sharedDomains[1],
-        language: "EN-first market site",
+        language: "EN-first pazar sitesi",
         strapline: "Yapılandırma, FIZ yolları, vergi konumlandırması ve sınır ötesi operasyon desteği Gürcistan’da.",
         points: [
           "Giriş modellerini, holding mantığını ve bölgesel yapıları karşılaştıran uluslararası müşteriler için.",

@@ -157,7 +157,7 @@ export default async function HomePage(props: PageProps<"/[locale]">) {
             </h2>
             <p className="mt-4 text-base leading-8 text-[var(--muted)]">{guideSection.home.body}</p>
           </div>
-          <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <div className="mt-8 grid gap-4 lg:grid-cols-3">
             {guideCards.map((card) => (
               <Link
                 key={card.slug}
