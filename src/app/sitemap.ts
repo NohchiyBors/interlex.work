@@ -8,6 +8,10 @@ const routeSlugs = [
   "cross-border",
   "contact",
   "briefs",
+  "invest-projects",
+  "invest-projects/khorgos",
+  "invest-projects/antimony",
+  "invest-projects/orangerie-hills",
   "cookies",
   "kazakhstan-vs-georgia",
   "cross-border-structuring",
@@ -18,7 +22,7 @@ const routeSlugs = [
 // Stable lastModified — bumped manually when sitemap content (routes/locales)
 // changes meaningfully, so search engines see a real signal instead of a
 // build-time `new Date()` that flips on every deploy.
-const lastModified = new Date("2026-04-28T00:00:00Z");
+const lastModified = new Date("2026-04-29T00:00:00Z");
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return routeSlugs.flatMap((slug) => {
