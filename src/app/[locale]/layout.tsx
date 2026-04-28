@@ -76,13 +76,16 @@ export default async function LocaleLayout(props: LayoutProps<"/[locale]">) {
       <body className="min-h-full">
         {/*
           Inline Consent Mode v2 default — must run BEFORE the GA tag so
-          analytics_storage starts denied. We use a plain <script> rather
-          than next/script so it executes synchronously during HTML
-          parsing; next/script with strategy="beforeInteractive" is only
-          fully supported in the root layout in App Router, and this
-          project's only layout sits at [locale]/layout.tsx.
+          analytics_storage starts denied. Script with strategy="beforeInteractive"
+          and dangerouslySetInnerHTML is supported in Next.js 16 + React 19
+          and suppresses the React 19 warning about plain <script> tags in
+          Server Components.
         */}
-        <script dangerouslySetInnerHTML={{ __html: GA_CONSENT_DEFAULT_SCRIPT }} />
+        <Script
+          id="ga-consent-default"
+          strategy="beforeInteractive"
+          dangerouslySetInnerHTML={{ __html: GA_CONSENT_DEFAULT_SCRIPT }}
+        />
         <SiteFrame locale={locale} dict={dict}>
           {props.children}
         </SiteFrame>

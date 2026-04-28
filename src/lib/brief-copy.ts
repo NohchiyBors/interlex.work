@@ -1,5 +1,3 @@
-import type { Locale } from "@/lib/i18n";
-
 export const briefIds = [
   "kz-reg",
   "ge-reg",

@@ -50,14 +50,15 @@ export function SiteFrame({ children, locale, dict }: Props) {
             ))}
           </nav>
 
-          <Link
-            href={stickyCtaHref}
-            className="btn-primary ml-auto inline-flex shrink-0 items-center border px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors md:px-4 md:text-xs md:tracking-[0.18em] xl:ml-0"
-          >
-            {stickyCtaLabel}
-          </Link>
-
-          <MobileMenu locale={locale} nav={dict.nav} menuLabel={dict.site.menuLabel} />
+          <div className="ml-auto flex shrink-0 items-center gap-2 xl:ml-0">
+            <Link
+              href={stickyCtaHref}
+              className="btn-primary inline-flex shrink-0 items-center border px-3 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] transition-colors md:px-4 md:text-xs md:tracking-[0.18em]"
+            >
+              {stickyCtaLabel}
+            </Link>
+            <MobileMenu locale={locale} nav={dict.nav} menuLabel={dict.site.menuLabel} />
+          </div>
         </div>
 
         <div className="mx-auto hidden w-full max-w-7xl justify-end border-t border-[color:rgba(0,9,36,0.06)] px-4 py-1.5 md:flex md:px-8 md:py-2 xl:px-12">

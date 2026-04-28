@@ -9,7 +9,6 @@ import {
   collectServerRequestContext,
   type ClientContext,
 } from "@/lib/request-context";
-import type { Locale } from "@/lib/i18n";
 
 export const runtime = "nodejs";
 
