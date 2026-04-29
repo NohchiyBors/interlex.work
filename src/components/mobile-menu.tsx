@@ -16,11 +16,7 @@ type Props = {
 
 export function MobileMenu({ locale, nav, menuLabel }: Props) {
   const [open, setOpen] = useState(false);
-  const [mounted, setMounted] = useState(false);
-
-  useEffect(() => {
-    setMounted(true);
-  }, []);
+  const portalTarget = typeof window === "undefined" ? null : document.body;
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -68,7 +64,7 @@ export function MobileMenu({ locale, nav, menuLabel }: Props) {
         )}
       </button>
 
-      {mounted && open && createPortal(overlay, document.body)}
+      {portalTarget && open ? createPortal(overlay, portalTarget) : null}
     </>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type ChangeEvent, type FormEvent } from "react";
+import { collectClientContext } from "@/lib/client-context";
+import { TurnstileWidget } from "@/components/turnstile-widget";
 
 type Props = {
   projectName: string;
@@ -47,7 +49,21 @@ export function InvestModal({ projectName, triggerLabel, triggerClass, locale }:
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [status, setStatus] = useState<"idle" | "success" | "error">("idle");
+  const [turnstileToken, setTurnstileToken] = useState<string | null>(null);
   const dialogRef = useRef<HTMLDivElement>(null);
+  const pageLoadedAtRef = useRef<number | null>(null);
+
+  useEffect(() => {
+    pageLoadedAtRef.current = Date.now();
+  }, []);
+
+  const handleTurnstileVerify = useCallback((token: string) => {
+    setTurnstileToken(token);
+  }, []);
+
+  const handleTurnstileExpire = useCallback(() => {
+    setTurnstileToken(null);
+  }, []);
 
   // Close on Escape
   useEffect(() => {
@@ -68,6 +84,7 @@ export function InvestModal({ projectName, triggerLabel, triggerClass, locale }:
     setForm(initialState);
     setFieldErrors({});
     setStatus("idle");
+    setTurnstileToken(null);
     setOpen(true);
   }
 
@@ -98,6 +115,11 @@ export function InvestModal({ projectName, triggerLabel, triggerClass, locale }:
       return;
     }
 
+    if (TURNSTILE_SITE_KEY && !turnstileToken) {
+      setStatus("error");
+      return;
+    }
+
     setIsSubmitting(true);
     setStatus("idle");
 
@@ -119,15 +141,17 @@ export function InvestModal({ projectName, triggerLabel, triggerClass, locale }:
           message: messageBody,
           website: form.website,
           locale,
-          pagePath: `/invest-projects`,
+          pagePath: typeof window !== "undefined" ? window.location.pathname : "/invest-projects",
           sourceSurface: `invest-modal — ${projectName}`,
           referrer: typeof document !== "undefined" ? document.referrer : "",
-          cfTurnstileToken: TURNSTILE_SITE_KEY ? null : "bypass",
+          clientContext: collectClientContext(pageLoadedAtRef.current ?? undefined),
+          cfTurnstileToken: turnstileToken,
         }),
       });
 
       if (!res.ok) throw new Error("failed");
       setStatus("success");
+      setTurnstileToken(null);
     } catch {
       setStatus("error");
     } finally {
@@ -261,10 +285,19 @@ export function InvestModal({ projectName, triggerLabel, triggerClass, locale }:
                   />
                 </label>
 
+                {TURNSTILE_SITE_KEY ? (
+                  <TurnstileWidget
+                    siteKey={TURNSTILE_SITE_KEY}
+                    onVerify={handleTurnstileVerify}
+                    onExpire={handleTurnstileExpire}
+                    onError={handleTurnstileExpire}
+                  />
+                ) : null}
+
                 <div className="flex flex-col gap-3 pt-1 sm:flex-row sm:items-center sm:justify-between">
                   <button
                     type="submit"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || (TURNSTILE_SITE_KEY !== "" && !turnstileToken)}
                     className="btn-primary inline-flex items-center justify-center border px-6 py-3 text-xs font-semibold uppercase tracking-[0.18em] transition-colors disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {isSubmitting ? "Отправка…" : "Отправить запрос"}

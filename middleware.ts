@@ -10,41 +10,33 @@ const publicFiles = [
   "/site.webmanifest",
 ];
 
-const localizedSlugs = new Set([
-  "/",
-  "/about",
-  "/cross-border",
-  "/contact",
-  "/cookies",
-  "/kz",
-  "/kz/sez",
-  "/kz/aifc",
-  "/ge",
-  "/ge/vz",
-  "/ma",
-  "/ma/dd",
-  "/investors",
-]);
-
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
-  const normalizedPathname = pathname !== "/" && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+  const normalizedPathname =
+    pathname !== "/" && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
 
+  // Pass through: Next internals, API routes, static files, public assets,
+  // and anything already prefixed with a locale.
   if (
     normalizedPathname.startsWith("/_next/") ||
     normalizedPathname.startsWith("/api/") ||
     normalizedPathname.includes(".") ||
-    publicFiles.some((file) => normalizedPathname === file || normalizedPathname.startsWith(`${file}/`)) ||
-    hasLocalePrefix(normalizedPathname) ||
-    !localizedSlugs.has(normalizedPathname)
+    publicFiles.some(
+      (file) =>
+        normalizedPathname === file ||
+        normalizedPathname.startsWith(`${file}/`),
+    ) ||
+    hasLocalePrefix(normalizedPathname)
   ) {
     return NextResponse.next();
   }
 
+  // Redirect every other path to the locale-prefixed version.
+  // No slug whitelist needed — new routes are handled automatically.
   const locale = detectLocaleFromHeader(request.headers.get("accept-language"));
-  const slug = normalizedPathname === "/" ? "" : normalizedPathname.slice(1);
+  const slug =
+    normalizedPathname === "/" ? "" : normalizedPathname.slice(1);
   const url = request.nextUrl.clone();
-
   url.pathname = localePath(locale, slug);
 
   return NextResponse.redirect(url);

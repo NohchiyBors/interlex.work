@@ -300,6 +300,7 @@ export function BriefForm({ locale, copy }: Props) {
           <div className="flex gap-4">
             <button
               type="button"
+              onClick={goBack}
               className="text-xs font-semibold uppercase tracking-[0.18em] text-[var(--muted)] hover:text-[var(--accent)]"
             >
               {copy.backLabel}
