@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { localePath, type Locale } from "@/lib/i18n";
 import { LanguageSwitcher } from "@/components/language-switcher";
@@ -15,6 +16,11 @@ type Props = {
 
 export function MobileMenu({ locale, nav, menuLabel }: Props) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -22,6 +28,26 @@ export function MobileMenu({ locale, nav, menuLabel }: Props) {
       document.body.style.overflow = "";
     };
   }, [open]);
+
+  const overlay = (
+    <div className="fixed inset-x-0 bottom-0 top-[4.9rem] z-50 flex flex-col overflow-y-auto bg-[rgba(247,249,252,0.97)] md:hidden">
+      <nav className="flex flex-col">
+        {nav.map((item) => (
+          <Link
+            key={item.slug}
+            href={localePath(locale, item.slug)}
+            onClick={() => setOpen(false)}
+            className="flex items-center border-b border-[color:rgba(0,9,36,0.06)] px-6 py-5 text-[13px] font-semibold uppercase tracking-[0.22em] text-[var(--primary)] transition-colors active:bg-[var(--surface-low)]"
+          >
+            {item.label}
+          </Link>
+        ))}
+      </nav>
+      <div className="border-t border-[color:rgba(0,9,36,0.06)] px-6 py-5">
+        <LanguageSwitcher locale={locale} mobileInMenu />
+      </div>
+    </div>
+  );
 
   return (
     <>
@@ -42,25 +68,7 @@ export function MobileMenu({ locale, nav, menuLabel }: Props) {
         )}
       </button>
 
-      {open && (
-        <div className="fixed inset-x-0 bottom-0 top-[4.9rem] z-40 flex flex-col overflow-y-auto bg-[rgba(247,249,252,0.97)] md:hidden">
-          <nav className="flex flex-col">
-            {nav.map((item) => (
-              <Link
-                key={item.slug}
-                href={localePath(locale, item.slug)}
-                onClick={() => setOpen(false)}
-                className="flex items-center border-b border-[color:rgba(0,9,36,0.06)] px-6 py-5 text-[13px] font-semibold uppercase tracking-[0.22em] text-[var(--primary)] transition-colors active:bg-[var(--surface-low)]"
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-          <div className="border-t border-[color:rgba(0,9,36,0.06)] px-6 py-5">
-            <LanguageSwitcher locale={locale} mobileInMenu />
-          </div>
-        </div>
-      )}
+      {mounted && open && createPortal(overlay, document.body)}
     </>
   );
 }
